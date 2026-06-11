@@ -1,56 +1,60 @@
-"use client";
-
-import { useState } from "react";
+import type { Metadata } from "next";
+import Link from "next/link";
 import { teams } from "../data/teams";
+import { teamPointsMap } from "../lib/scores";
+import PoolTabs, { resolvePool } from "../components/PoolTabs";
 
-export default function LeaderboardPage() {
-  const [selectedPool, setSelectedPool] = useState("pool1");
+export const metadata: Metadata = { title: "Leaderboard — TSZ WC 2026" };
+
+export default async function LeaderboardPage(
+  props: PageProps<"/leaderboard">,
+) {
+  const { pool } = await props.searchParams;
+  const poolId = resolvePool(pool);
+  const points = teamPointsMap();
 
   const filteredTeams = teams
-    .filter((team) => team.poolId === selectedPool)
-    .sort((a, b) => b.points - a.points);
+    .filter((team) => team.poolId === poolId)
+    .map((team) => ({ team, pts: points.get(team.id) ?? 0 }))
+    .sort((a, b) => b.pts - a.pts);
 
   return (
-    <main className="min-h-screen bg-black text-white p-6">
-      <h1 className="text-3xl font-bold mb-6">Leaderboard</h1>
+    <main>
+      <h1 className="mb-6 text-3xl font-bold">Leaderboard</h1>
 
-      <div className="flex gap-3 mb-6">
-        <button
-          onClick={() => setSelectedPool("pool1")}
-          className={`px-4 py-2 rounded-lg ${
-            selectedPool === "pool1"
-              ? "bg-blue-600"
-              : "bg-zinc-800"
-          }`}
-        >
-          Pool 1
-        </button>
+      <PoolTabs basePath="/leaderboard" active={poolId} />
 
-        <button
-          onClick={() => setSelectedPool("pool2")}
-          className={`px-4 py-2 rounded-lg ${
-            selectedPool === "pool2"
-              ? "bg-blue-600"
-              : "bg-zinc-800"
-          }`}
-        >
-          Pool 2
-        </button>
-      </div>
-
-      <div className="space-y-2">
-        {filteredTeams.map((team, index) => (
-          <div
-            key={team.id}
-            className="flex justify-between p-4 rounded-lg bg-zinc-900"
-          >
-            <span>
-              #{index + 1} {team.name}
-            </span>
-            <span>{team.points}</span>
-          </div>
-        ))}
-      </div>
+      {filteredTeams.length === 0 ? (
+        <div className="rounded-xl border border-dashed border-zinc-700 bg-zinc-900/30 p-6 text-center text-zinc-400">
+          No teams in this pool yet.
+        </div>
+      ) : (
+        <div className="overflow-hidden rounded-xl border border-zinc-800">
+          {filteredTeams.map(({ team, pts }, index) => (
+            <Link
+              key={team.id}
+              href={`/team/${team.id}`}
+              className="flex items-center justify-between border-b border-zinc-800 bg-zinc-900/30 px-4 py-3 last:border-b-0 transition-colors hover:bg-zinc-900"
+            >
+              <span className="flex items-center gap-3">
+                <span
+                  className={`w-6 text-center text-sm font-bold ${
+                    index === 0
+                      ? "text-emerald-400"
+                      : index < 3
+                        ? "text-zinc-300"
+                        : "text-zinc-600"
+                  }`}
+                >
+                  {index + 1}
+                </span>
+                <span className="font-medium">{team.name}</span>
+              </span>
+              <span className="font-semibold tabular-nums">{pts}</span>
+            </Link>
+          ))}
+        </div>
+      )}
     </main>
   );
 }

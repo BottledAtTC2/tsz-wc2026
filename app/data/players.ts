@@ -1,0 +1,138 @@
+import type { Player } from "./types";
+
+// Real World Cup 2026 players, populated from the league draft.
+// `id` is a stable kebab-case slug; `sofascoreId` (added later) links each
+// player to the stats pipeline. Clubs are 2025–26 and may need touch-ups.
+export const players: Player[] = [
+  // --- Team ShivaDip ---
+  { id: "courtois", name: "Thibaut Courtois", country: "Belgium", position: "GK", club: "Real Madrid" },
+  { id: "guehi", name: "Marc Guéhi", country: "England", position: "DEF", club: "Crystal Palace" },
+  { id: "hakimi", name: "Achraf Hakimi", country: "Morocco", position: "DEF", club: "Paris Saint-Germain" },
+  { id: "van-de-ven", name: "Micky van de Ven", country: "Netherlands", position: "DEF", club: "Tottenham" },
+  { id: "de-bruyne", name: "Kevin De Bruyne", country: "Belgium", position: "MID", club: "Napoli" },
+  { id: "arda-guler", name: "Arda Güler", country: "Turkey", position: "MID", club: "Real Madrid" },
+  { id: "odegaard", name: "Martin Ødegaard", country: "Norway", position: "MID", club: "Arsenal" },
+  { id: "vitinha", name: "Vitinha", country: "Portugal", position: "MID", club: "Paris Saint-Germain" },
+  { id: "dembele", name: "Ousmane Dembélé", country: "France", position: "FWD", club: "Paris Saint-Germain" },
+  { id: "depay", name: "Memphis Depay", country: "Netherlands", position: "FWD", club: "Corinthians" },
+  { id: "trossard", name: "Leandro Trossard", country: "Belgium", position: "FWD", club: "Arsenal" },
+
+  // --- Team Yash ---
+  { id: "maignan", name: "Mike Maignan", country: "France", position: "GK", club: "AC Milan" },
+  { id: "reece-james", name: "Reece James", country: "England", position: "DEF", club: "Chelsea" },
+  { id: "cristian-romero", name: "Cristian Romero", country: "Argentina", position: "DEF", club: "Tottenham" },
+  { id: "david-raum", name: "David Raum", country: "Germany", position: "DEF", club: "RB Leipzig" },
+  { id: "pavlovic", name: "Aleksandar Pavlović", country: "Germany", position: "MID", club: "Bayern Munich" },
+  { id: "reijnders", name: "Tijjani Reijnders", country: "Netherlands", position: "MID", club: "Manchester City" },
+  { id: "paredes", name: "Leandro Paredes", country: "Argentina", position: "MID", club: "Boca Juniors" },
+  { id: "vinicius", name: "Vinícius Júnior", country: "Brazil", position: "FWD", club: "Real Madrid" },
+  { id: "lautaro", name: "Lautaro Martínez", country: "Argentina", position: "FWD", club: "Inter" },
+  { id: "oyarzabal", name: "Mikel Oyarzabal", country: "Spain", position: "FWD", club: "Real Sociedad" },
+  { id: "saka", name: "Bukayo Saka", country: "England", position: "FWD", club: "Arsenal" },
+
+  // --- Team Aggarwal Sweets ---
+  { id: "pickford", name: "Jordan Pickford", country: "England", position: "GK", club: "Everton" },
+  { id: "inacio", name: "Gonçalo Inácio", country: "Portugal", position: "DEF", club: "Sporting CP" },
+  { id: "cucurella", name: "Marc Cucurella", country: "Spain", position: "DEF", club: "Chelsea" },
+  { id: "ryerson", name: "Julian Ryerson", country: "Norway", position: "DEF", club: "Borussia Dortmund" },
+  { id: "joao-neves", name: "João Neves", country: "Portugal", position: "MID", club: "Paris Saint-Germain" },
+  { id: "wirtz", name: "Florian Wirtz", country: "Germany", position: "MID", club: "Liverpool" },
+  { id: "paqueta", name: "Lucas Paquetá", country: "Brazil", position: "MID", club: "West Ham" },
+  { id: "kimmich", name: "Joshua Kimmich", country: "Germany", position: "MID", club: "Bayern Munich" },
+  { id: "mbappe", name: "Kylian Mbappé", country: "France", position: "FWD", club: "Real Madrid" },
+  { id: "rashford", name: "Marcus Rashford", country: "England", position: "FWD", club: "Barcelona" },
+  { id: "endrick", name: "Endrick", country: "Brazil", position: "FWD", club: "Real Madrid" },
+
+  // --- Team Aman ---
+  { id: "diogo-costa", name: "Diogo Costa", country: "Portugal", position: "GK", club: "FC Porto" },
+  { id: "upamecano", name: "Dayot Upamecano", country: "France", position: "DEF", club: "Bayern Munich" },
+  { id: "van-dijk", name: "Virgil van Dijk", country: "Netherlands", position: "DEF", club: "Liverpool" },
+  { id: "pacho", name: "Willian Pacho", country: "Ecuador", position: "DEF", club: "Paris Saint-Germain" },
+  { id: "bruno-fernandes", name: "Bruno Fernandes", country: "Portugal", position: "MID", club: "Manchester United" },
+  { id: "de-jong", name: "Frenkie de Jong", country: "Netherlands", position: "MID", club: "Barcelona" },
+  { id: "elliot-anderson", name: "Elliot Anderson", country: "England", position: "MID", club: "Nottingham Forest" },
+  { id: "julian-alvarez", name: "Julián Álvarez", country: "Argentina", position: "FWD", club: "Atlético Madrid" },
+  { id: "luis-suarez", name: "Luis Suárez", country: "Colombia", position: "FWD", club: "Sporting CP" },
+  { id: "patrik-schick", name: "Patrik Schick", country: "Czechia", position: "FWD", club: "Bayer Leverkusen" },
+  { id: "xhaka", name: "Granit Xhaka", country: "Switzerland", position: "MID", club: "Sunderland" },
+
+  // --- Team Tanmay ---
+  { id: "bounou", name: "Yassine Bounou", country: "Morocco", position: "GK", club: "Al-Hilal" },
+  { id: "ruben-dias", name: "Rúben Dias", country: "Portugal", position: "DEF", club: "Manchester City" },
+  { id: "oreilly", name: "Nico O'Reilly", country: "England", position: "DEF", club: "Manchester City" },
+  { id: "van-hecke", name: "Jan Paul van Hecke", country: "Netherlands", position: "DEF", club: "Brighton" },
+  { id: "yildiz", name: "Kenan Yıldız", country: "Turkey", position: "MID", club: "Juventus" },
+  { id: "tchouameni", name: "Aurélien Tchouaméni", country: "France", position: "MID", club: "Real Madrid" },
+  { id: "modric", name: "Luka Modrić", country: "Croatia", position: "MID", club: "AC Milan" },
+  { id: "yamal", name: "Lamine Yamal", country: "Spain", position: "FWD", club: "Barcelona" },
+  { id: "matheus-cunha", name: "Matheus Cunha", country: "Brazil", position: "FWD", club: "Manchester United" },
+  { id: "luis-diaz", name: "Luis Díaz", country: "Colombia", position: "FWD", club: "Bayern Munich" },
+  { id: "brahim-diaz", name: "Brahim Díaz", country: "Morocco", position: "FWD", club: "Real Madrid" },
+
+  // --- Team UDKohli ---
+  { id: "unai-simon", name: "Unai Simón", country: "Spain", position: "GK", club: "Athletic Bilbao" },
+  { id: "nuno-mendes", name: "Nuno Mendes", country: "Portugal", position: "DEF", club: "Paris Saint-Germain" },
+  { id: "schlotterbeck", name: "Nico Schlotterbeck", country: "Germany", position: "DEF", club: "Borussia Dortmund" },
+  { id: "dumfries", name: "Denzel Dumfries", country: "Netherlands", position: "DEF", club: "Inter" },
+  { id: "casemiro", name: "Casemiro", country: "Brazil", position: "MID", club: "Manchester United" },
+  { id: "bruno-guimaraes", name: "Bruno Guimarães", country: "Brazil", position: "MID", club: "Newcastle United" },
+  { id: "valverde", name: "Federico Valverde", country: "Uruguay", position: "MID", club: "Real Madrid" },
+  { id: "morgan-rogers", name: "Morgan Rogers", country: "England", position: "MID", club: "Aston Villa" },
+  { id: "kane", name: "Harry Kane", country: "England", position: "FWD", club: "Bayern Munich" },
+  { id: "ronaldo", name: "Cristiano Ronaldo", country: "Portugal", position: "FWD", club: "Al-Nassr" },
+  { id: "salah", name: "Mohamed Salah", country: "Egypt", position: "FWD", club: "Liverpool" },
+
+  // --- Team Zeeshan ---
+  { id: "messi", name: "Lionel Messi", country: "Argentina", position: "FWD", club: "Inter Miami" },
+  { id: "musiala", name: "Jamal Musiala", country: "Germany", position: "MID", club: "Bayern Munich" },
+  { id: "enzo-fernandez", name: "Enzo Fernández", country: "Argentina", position: "MID", club: "Chelsea" },
+  { id: "pedri", name: "Pedri", country: "Spain", position: "MID", club: "Barcelona" },
+  { id: "cubarsi", name: "Pau Cubarsí", country: "Spain", position: "DEF", club: "Barcelona" },
+  { id: "konsa", name: "Ezri Konsa", country: "England", position: "DEF", club: "Aston Villa" },
+  { id: "molina", name: "Nahuel Molina", country: "Argentina", position: "DEF", club: "Atlético Madrid" },
+  { id: "ferran-torres", name: "Ferran Torres", country: "Spain", position: "FWD", club: "Barcelona" },
+  { id: "embolo", name: "Breel Embolo", country: "Switzerland", position: "FWD", club: "Rennes" },
+  { id: "raul-jimenez", name: "Raúl Jiménez", country: "Mexico", position: "FWD", club: "Fulham" },
+  { id: "neuer", name: "Manuel Neuer", country: "Germany", position: "GK", club: "Bayern Munich" },
+
+  // --- Team Abhishek (positions inferred) ---
+  { id: "olise", name: "Michael Olise", country: "France", position: "MID", club: "Bayern Munich" },
+  { id: "nico-williams", name: "Nico Williams", country: "Spain", position: "FWD", club: "Athletic Bilbao" },
+  { id: "marcos-llorente", name: "Marcos Llorente", country: "Spain", position: "DEF", club: "Atlético Madrid" },
+  { id: "mac-allister", name: "Alexis Mac Allister", country: "Argentina", position: "MID", club: "Liverpool" },
+  { id: "giovanni-simeone", name: "Giovanni Simeone", country: "Argentina", position: "FWD", club: "Torino" },
+  { id: "raphinha", name: "Raphinha", country: "Brazil", position: "FWD", club: "Barcelona" },
+  { id: "alex-sandro", name: "Alex Sandro", country: "Brazil", position: "DEF", club: "Flamengo" },
+  { id: "tah", name: "Jonathan Tah", country: "Germany", position: "DEF", club: "Bayern Munich" },
+  { id: "baumann", name: "Oliver Baumann", country: "Germany", position: "GK", club: "Hoffenheim" },
+  { id: "sane", name: "Leroy Sané", country: "Germany", position: "FWD", club: "Galatasaray" },
+  { id: "mctominay", name: "Scott McTominay", country: "Scotland", position: "MID", club: "Napoli" },
+
+  // --- Team MFK (positions inferred) ---
+  { id: "theo-hernandez", name: "Theo Hernández", country: "France", position: "DEF", club: "Al-Hilal" },
+  { id: "bernardo-silva", name: "Bernardo Silva", country: "Portugal", position: "MID", club: "Manchester City" },
+  { id: "cancelo", name: "João Cancelo", country: "Portugal", position: "DEF", club: "Al-Hilal" },
+  { id: "rodri", name: "Rodri", country: "Spain", position: "MID", club: "Manchester City" },
+  { id: "declan-rice", name: "Declan Rice", country: "England", position: "MID", club: "Arsenal" },
+  { id: "marquinhos", name: "Marquinhos", country: "Brazil", position: "DEF", club: "Paris Saint-Germain" },
+  { id: "alisson", name: "Alisson", country: "Brazil", position: "GK", club: "Liverpool" },
+  { id: "haaland", name: "Erling Haaland", country: "Norway", position: "FWD", club: "Manchester City" },
+  { id: "kai-havertz", name: "Kai Havertz", country: "Germany", position: "FWD", club: "Arsenal" },
+  { id: "doku", name: "Jérémy Doku", country: "Belgium", position: "FWD", club: "Manchester City" },
+  { id: "sorloth", name: "Alexander Sørloth", country: "Norway", position: "FWD", club: "Atlético Madrid" },
+
+  // --- Team Jemin (positions inferred) ---
+  { id: "saliba", name: "William Saliba", country: "France", position: "DEF", club: "Arsenal" },
+  { id: "cherki", name: "Rayan Cherki", country: "France", position: "MID", club: "Manchester City" },
+  { id: "doue", name: "Désiré Doué", country: "France", position: "MID", club: "Paris Saint-Germain" },
+  { id: "kounde", name: "Jules Koundé", country: "France", position: "DEF", club: "Barcelona" },
+  { id: "fabian-ruiz", name: "Fabián Ruiz", country: "Spain", position: "MID", club: "Paris Saint-Germain" },
+  { id: "dani-olmo", name: "Dani Olmo", country: "Spain", position: "MID", club: "Barcelona" },
+  { id: "emi-martinez", name: "Emiliano Martínez", country: "Argentina", position: "GK", club: "Aston Villa" },
+  { id: "bellingham", name: "Jude Bellingham", country: "England", position: "MID", club: "Real Madrid" },
+  { id: "neymar", name: "Neymar", country: "Brazil", position: "FWD", club: "Santos" },
+  { id: "gabriel", name: "Gabriel Magalhães", country: "Brazil", position: "DEF", club: "Arsenal" },
+  { id: "gakpo", name: "Cody Gakpo", country: "Netherlands", position: "FWD", club: "Liverpool" },
+];
+
+export const playerById = new Map(players.map((p) => [p.id, p]));
