@@ -1,0 +1,13 @@
+# Render Blueprint — deploys the site as a long-running Node web service.
+# In Render: New > Blueprint, point it at this repo, and it reads this file.
+services:
+  - type: web
+    name: tsz-wc2026
+    runtime: node
+    plan: free
+    # `next start` binds to Render's $PORT automatically.
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_VERSION
+        value: 22.12.0
