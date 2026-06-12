@@ -7,11 +7,19 @@
 import { scoreEvent } from "../app/lib/sofascore/ingest";
 import type { SofaMatchBundle } from "../app/lib/sofascore/types";
 
-const bundle: SofaMatchBundle = {
+let failures = 0;
+function check(name: string, actual: unknown, want: unknown) {
+  const ok = actual === want;
+  if (!ok) failures++;
+  console.log(`${ok ? "✓" : "✗"} ${name}: got ${actual}, want ${want}`);
+}
+
+// --- Scenario 1: Argentina vs Spain — scoring, clean sheet, cards, captain ---
+const argSpain: SofaMatchBundle = {
   event: {
     id: 9999,
-    homeTeam: { name: "Test Home" },
-    awayTeam: { name: "Test Away" },
+    homeTeam: { name: "Argentina" },
+    awayTeam: { name: "Spain" },
     homeScore: { normaltime: 2 },
     awayScore: { normaltime: 1 },
     status: { type: "finished" },
@@ -20,7 +28,7 @@ const bundle: SofaMatchBundle = {
     home: {
       players: [
         {
-          // Zeeshan captain, FWD. Accent-free name to test normalization.
+          // Zeeshan captain, FWD.
           player: { id: 1, name: "Lionel Messi" },
           substitute: false,
           statistics: {
@@ -34,7 +42,7 @@ const bundle: SofaMatchBundle = {
         },
         {
           // Zeeshan DEF, subbed off at 60' before the 75' goal → clean sheet.
-          player: { id: 2, name: "Pau Cubarsi" },
+          player: { id: 2, name: "Nahuel Molina" },
           substitute: false,
           statistics: {
             minutesPlayed: 60,
@@ -44,8 +52,8 @@ const bundle: SofaMatchBundle = {
           },
         },
         {
-          // Zeeshan GK, full match → concedes the 75' goal, no clean sheet.
-          player: { id: 3, name: "Manuel Neuer" },
+          // Jemin GK, full match → concedes the 75' goal, no clean sheet.
+          player: { id: 3, name: "Emiliano Martinez" },
           substitute: false,
           statistics: { minutesPlayed: 90, saves: 4, penaltySave: 1 },
         },
@@ -54,8 +62,8 @@ const bundle: SofaMatchBundle = {
     away: {
       players: [
         {
-          // Yash captain, FWD, with a yellow card.
-          player: { id: 4, name: "Vinicius Junior" },
+          // Tanmay captain, FWD, scores and picks up a yellow.
+          player: { id: 4, name: "Lamine Yamal" },
           substitute: false,
           statistics: { minutesPlayed: 90, goals: 1 },
         },
@@ -77,55 +85,65 @@ const bundle: SofaMatchBundle = {
   },
 };
 
-const result = scoreEvent(bundle);
+const r1 = scoreEvent(argSpain);
+const by1 = new Map(r1.players.map((p) => [p.playerId, p]));
 
-const expected: Record<string, number> = {
-  messi: 192, // (4+40+20+6+18+8) ×2
-  cubarsi: 46, // 4 + 10 + 8 + 4 + 20(clean sheet)
-  neuer: 76, // 4 + 24 + 50 − 2(conceded)
-  vinicius: 80, // (4 + 40 − 4) ×2
+check("messi (FWD ×2 captain)", by1.get("messi")?.total, 192);
+check("molina (DEF clean sheet)", by1.get("molina")?.total, 46);
+check("emi-martinez (GK conceded 1)", by1.get("emi-martinez")?.total, 76);
+check("yamal (FWD ×2 captain, yellow)", by1.get("yamal")?.total, 80);
+check("scored player count", r1.players.length, 4);
+check("team zeeshan total", (by1.get("messi")!.total + by1.get("molina")!.total), 238);
+check("molina clean sheet", by1.get("molina")?.stats.cleanSheet ? 1 : 0, 1);
+check("emi-martinez conceded", by1.get("emi-martinez")?.stats.goalsConceded, 1);
+check("yamal yellow", by1.get("yamal")?.stats.yellowCards, 1);
+check("unresolved has Random Person", r1.unresolved.includes("Random Person") ? 1 : 0, 1);
+
+// --- Scenario 2: cross-country name collisions must NOT match (the bug) ---
+const mexRSA: SofaMatchBundle = {
+  event: {
+    id: 8888,
+    homeTeam: { name: "Mexico" },
+    awayTeam: { name: "South Africa" },
+    homeScore: { normaltime: 2 },
+    awayScore: { normaltime: 0 },
+    status: { type: "finished" },
+  },
+  lineups: {
+    home: {
+      players: [
+        {
+          player: { id: 10, name: "Raul Jimenez" }, // Mexican, drafted → scores
+          substitute: false,
+          statistics: { minutesPlayed: 90, goals: 1 },
+        },
+        {
+          player: { id: 11, name: "Diego Alvarez" }, // Mexican → must NOT be Julián Álvarez
+          substitute: false,
+          statistics: { minutesPlayed: 90, goals: 1 },
+        },
+      ],
+    },
+    away: {
+      players: [
+        {
+          player: { id: 12, name: "Aubrey Williams" }, // S.African → must NOT be Nico Williams
+          substitute: false,
+          statistics: { minutesPlayed: 90 },
+        },
+      ],
+    },
+  },
+  incidents: { incidents: [] },
 };
 
-let failures = 0;
-function check(name: string, actual: number, want: number) {
-  const ok = actual === want;
-  if (!ok) failures++;
-  console.log(`${ok ? "✓" : "✗"} ${name}: got ${actual}, want ${want}`);
-}
+const r2 = scoreEvent(mexRSA);
+const ids2 = new Set(r2.players.map((p) => p.playerId));
 
-const byId = new Map(result.players.map((p) => [p.playerId, p]));
-for (const [id, want] of Object.entries(expected)) {
-  check(id, byId.get(id)?.total ?? NaN, want);
-}
-
-// Undrafted player must not appear.
-check(
-  "undrafted ignored (player count)",
-  result.players.length,
-  Object.keys(expected).length,
-);
-
-// Team aggregation.
-const teamTotals = new Map<string, number>();
-for (const p of result.players)
-  teamTotals.set(p.teamId, (teamTotals.get(p.teamId) ?? 0) + p.total);
-check("team zeeshan total", teamTotals.get("zeeshan") ?? NaN, 192 + 46 + 76);
-check("team yash total", teamTotals.get("yash") ?? NaN, 80);
-
-// Clean-sheet vs conceded specifics.
-check("cubarsi clean sheet", byId.get("cubarsi")?.stats.cleanSheet ? 1 : 0, 1);
-check("neuer conceded", byId.get("neuer")?.stats.goalsConceded ?? NaN, 1);
-check("vinicius yellow", byId.get("vinicius")?.stats.yellowCards ?? NaN, 1);
-
-// Diagnostics: the undrafted featured player is the only unresolved one;
-// the fictional team names match no nation, so no unmatched drafted players.
-check("unresolved count", result.unresolved.length, 1);
-check(
-  "unresolved is Random Person",
-  result.unresolved[0] === "Random Person" ? 1 : 0,
-  1,
-);
-check("unmatchedDrafted count", result.unmatchedDrafted.length, 0);
+check("collision: only Raúl Jiménez scored", r2.players.length, 1);
+check("collision: raul-jimenez present", ids2.has("raul-jimenez") ? 1 : 0, 1);
+check("collision: julian-alvarez NOT matched", ids2.has("julian-alvarez") ? 1 : 0, 0);
+check("collision: nico-williams NOT matched", ids2.has("nico-williams") ? 1 : 0, 0);
 
 console.log(failures === 0 ? "\nALL PASS" : `\n${failures} FAILURE(S)`);
 process.exit(failures === 0 ? 0 : 1);

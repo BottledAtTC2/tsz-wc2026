@@ -43,12 +43,20 @@ for (const p of players) {
   bySurname.set(surname, list);
 }
 
-/**
- * Resolve a Sofascore player to one of our drafted players, or null.
- * Tries: learned id-map → player's own sofascoreId → exact normalized name →
- * unique surname match. `idMap` is the learned sofascoreId → our-id store.
- */
-export function resolvePlayer(
+const COUNTRY_ALIASES: Record<string, string> = {
+  türkiye: "turkey",
+  turkiye: "turkey",
+  "czech republic": "czechia",
+};
+
+/** Normalize a country / national-team name for comparison. */
+export function normalizeCountry(c?: string): string {
+  if (!c) return "";
+  const x = c.toLowerCase().trim();
+  return COUNTRY_ALIASES[x] ?? x;
+}
+
+function findCandidate(
   sofascoreId: number | undefined,
   name: string,
   idMap?: Map<number, string>,
@@ -73,4 +81,26 @@ export function resolvePlayer(
   if (candidates && candidates.length === 1) return candidates[0];
 
   return null;
+}
+
+/**
+ * Resolve a Sofascore player to one of our drafted players, or null.
+ * Tries: learned id-map → player's own sofascoreId → exact normalized name →
+ * unique surname match. When `expectedCountry` (the side's nation) is given,
+ * the candidate must be from that nation — this prevents cross-country false
+ * matches (e.g. a Mexican "Álvarez" matching our Argentine Julián Álvarez).
+ */
+export function resolvePlayer(
+  sofascoreId: number | undefined,
+  name: string,
+  idMap?: Map<number, string>,
+  expectedCountry?: string,
+): Player | null {
+  const candidate = findCandidate(sofascoreId, name, idMap);
+  if (!candidate) return null;
+  if (expectedCountry) {
+    const want = normalizeCountry(expectedCountry);
+    if (want && normalizeCountry(candidate.country) !== want) return null;
+  }
+  return candidate;
 }

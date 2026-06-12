@@ -12,7 +12,7 @@ import type {
   PlayerMatchStats,
   ScoreLine,
 } from "../scoring";
-import { resolvePlayer } from "./matchPlayers";
+import { resolvePlayer, normalizeCountry } from "./matchPlayers";
 import type {
   SofaEvent,
   SofaIncident,
@@ -191,11 +191,18 @@ export function scoreEvent(
 
   const sides: Side[] = ["home", "away"];
   for (const side of sides) {
+    const sideCountry =
+      side === "home" ? event.homeTeam?.name : event.awayTeam?.name;
     const entries = lineups[side]?.players ?? [];
     for (const entry of entries) {
       const sofaId = entry.player.id;
       const featured = (entry.statistics?.minutesPlayed ?? 0) > 0;
-      const player = resolvePlayer(sofaId, entry.player.name, idMap);
+      const player = resolvePlayer(
+        sofaId,
+        entry.player.name,
+        idMap,
+        sideCountry,
+      );
       if (!player) {
         // Only flag players who actually played — an unmatched bench-warmer
         // is noise; an unmatched starter may be a name mismatch.
@@ -236,18 +243,6 @@ export function scoreEvent(
     unresolved,
     unmatchedDrafted: unmatchedDrafted(event, scoredIds),
   };
-}
-
-const COUNTRY_ALIASES: Record<string, string> = {
-  türkiye: "turkey",
-  turkiye: "turkey",
-  "czech republic": "czechia",
-};
-
-function normalizeCountry(c?: string): string {
-  if (!c) return "";
-  const x = c.toLowerCase().trim();
-  return COUNTRY_ALIASES[x] ?? x;
 }
 
 /** Drafted players whose nation played this match but who weren't scored. */
