@@ -99,6 +99,27 @@ def _http_get(path: str) -> dict:
     )
 
 
+# Hide the automation signals the challenge looks for.
+_STEALTH_JS = """
+Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+Object.defineProperty(navigator, 'languages', {get: () => ['en-US', 'en']});
+Object.defineProperty(navigator, 'plugins', {get: () => [1, 2, 3, 4, 5]});
+window.chrome = window.chrome || { runtime: {} };
+const _q = window.navigator.permissions && window.navigator.permissions.query;
+if (_q) {
+  window.navigator.permissions.query = (p) =>
+    p && p.name === 'notifications'
+      ? Promise.resolve({ state: Notification.permission })
+      : _q(p);
+}
+"""
+
+_UA = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+)
+
+
 class _Browser:
     """Real-Chrome backend (Playwright) that solves the JS challenge."""
 
@@ -106,31 +127,51 @@ class _Browser:
         try:
             from playwright.sync_api import sync_playwright
         except ImportError:
-            sys.exit(
-                "Browser mode needs Playwright. Run:\n"
-                "    pip install playwright"
-            )
+            sys.exit("Browser mode needs Playwright. Run:\n    pip install playwright")
         self._pw = sync_playwright().start()
         try:
             # Use the real Chrome you already have installed.
             self._browser = self._pw.chromium.launch(channel="chrome", headless=False)
         except Exception:
             self._browser = self._pw.chromium.launch(headless=False)
-        self._page = self._browser.new_context().new_page()
+        ctx = self._browser.new_context(
+            user_agent=_UA, locale="en-US", viewport={"width": 1280, "height": 800}
+        )
+        ctx.add_init_script(_STEALTH_JS)
+        self._page = ctx.new_page()
         print("Opening Sofascore in Chrome to clear the challenge…")
-        self._page.goto(f"{BASE}/", wait_until="domcontentloaded", timeout=60000)
-        time.sleep(6)  # let the challenge auto-solve
+        self._goto_home()
 
-    def get_json(self, path: str) -> dict:
-        # fetch() runs inside the page → real browser, same origin, with cookies.
-        res = self._page.evaluate(
+    def _goto_home(self) -> None:
+        self._page.goto(f"{BASE}/", wait_until="domcontentloaded", timeout=60000)
+        time.sleep(5)
+
+    def _fetch(self, path: str) -> dict:
+        return self._page.evaluate(
             "async (u) => { const r = await fetch(u, {headers:{Accept:'application/json'}});"
             " return { s: r.status, t: await r.text() }; }",
             f"{API}{path}",
         )
-        if res["s"] != 200:
+
+    def get_json(self, path: str) -> dict:
+        for attempt in range(5):
+            res = self._fetch(path)
+            if res["s"] == 200:
+                return json.loads(res["t"])
+            if res["s"] in (403, 429, 503):
+                print(
+                    f"  challenge not cleared (try {attempt + 1}/5); waiting…",
+                    file=sys.stderr,
+                )
+                time.sleep(4)
+                if attempt == 2:
+                    self._goto_home()  # reload once midway
+                continue
             raise RuntimeError(f"{res['s']} fetching {path}: {res['t'][:160]}")
-        return json.loads(res["t"])
+        raise RuntimeError(
+            f"still blocked on {path} after retries. The challenge isn't clearing "
+            "in automated Chrome — we'll connect to your own Chrome instead."
+        )
 
     def close(self) -> None:
         try:
