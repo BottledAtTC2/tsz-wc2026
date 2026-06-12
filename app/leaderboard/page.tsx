@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { teams } from "../data/teams";
-import { teamPointsMap } from "../lib/scores";
+import { teamPointsMap, teamBreakdown, loadScores } from "../lib/scores";
 import PoolTabs, { resolvePool } from "../components/PoolTabs";
 
 export const metadata: Metadata = { title: "Leaderboard — TSZ WC 2026" };
@@ -11,46 +11,63 @@ export default async function LeaderboardPage(
 ) {
   const { pool } = await props.searchParams;
   const poolId = resolvePool(pool);
-  const points = teamPointsMap();
+  const store = loadScores();
+  const points = teamPointsMap(store);
 
-  const filteredTeams = teams
+  const rows = teams
     .filter((team) => team.poolId === poolId)
-    .map((team) => ({ team, pts: points.get(team.id) ?? 0 }))
-    .sort((a, b) => b.pts - a.pts);
+    .map((team) => {
+      const last = teamBreakdown(team.id, store)[0];
+      const lastPts = last
+        ? last.contributions.reduce((s, c) => s + c.total, 0)
+        : 0;
+      return { team, total: points.get(team.id) ?? 0, lastPts };
+    })
+    .sort((a, b) => b.total - a.total);
 
   return (
     <main>
-      <h1 className="mb-6 text-3xl font-bold">Leaderboard</h1>
+      <h1 className="mb-1 text-3xl font-extrabold tracking-tight">Leaderboard</h1>
+      <p className="mb-5 text-sm text-muted">Ranked on total fantasy points.</p>
 
       <PoolTabs basePath="/leaderboard" active={poolId} />
 
-      {filteredTeams.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-zinc-700 bg-zinc-900/30 p-6 text-center text-zinc-400">
+      {rows.length === 0 ? (
+        <div className="rounded-xl border border-dashed border-edge bg-panel/40 p-6 text-center text-muted">
           No teams in this pool yet.
         </div>
       ) : (
-        <div className="overflow-hidden rounded-xl border border-zinc-800">
-          {filteredTeams.map(({ team, pts }, index) => (
+        <div className="overflow-hidden rounded-xl border border-edge">
+          <div className="grid grid-cols-[3rem_1fr_4rem_4.5rem] items-center gap-2 bg-panel2 px-4 py-2.5 text-xs font-semibold uppercase tracking-wide text-muted">
+            <span>Rank</span>
+            <span>Team</span>
+            <span className="text-right">Last</span>
+            <span className="text-right">Total</span>
+          </div>
+          {rows.map(({ team, total, lastPts }, i) => (
             <Link
               key={team.id}
               href={`/team/${team.id}`}
-              className="flex items-center justify-between border-b border-zinc-800 bg-zinc-900/30 px-4 py-3 last:border-b-0 transition-colors hover:bg-zinc-900"
+              className="grid grid-cols-[3rem_1fr_4rem_4.5rem] items-center gap-2 border-t border-edge bg-panel/40 px-4 py-3 transition-colors hover:bg-panel"
             >
-              <span className="flex items-center gap-3">
-                <span
-                  className={`w-6 text-center text-sm font-bold ${
-                    index === 0
-                      ? "text-emerald-400"
-                      : index < 3
-                        ? "text-zinc-300"
-                        : "text-zinc-600"
-                  }`}
-                >
-                  {index + 1}
-                </span>
-                <span className="font-medium">{team.name}</span>
+              <span
+                className={`flex h-7 w-7 items-center justify-center rounded-full text-sm font-bold ${
+                  i === 0
+                    ? "bg-accent text-navy"
+                    : i < 3
+                      ? "bg-brand/20 text-brand"
+                      : "text-muted"
+                }`}
+              >
+                {i + 1}
               </span>
-              <span className="font-semibold tabular-nums">{pts}</span>
+              <span className="truncate font-semibold">{team.name}</span>
+              <span className="text-right tabular-nums text-muted">
+                {lastPts ? `+${lastPts}` : "—"}
+              </span>
+              <span className="text-right text-lg font-bold tabular-nums">
+                {total}
+              </span>
             </Link>
           ))}
         </div>

@@ -18,10 +18,10 @@ export default function PoolTabs({
         <Link
           key={pool.id}
           href={`${basePath}?pool=${pool.id}`}
-          className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+          className={`rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
             active === pool.id
-              ? "bg-emerald-500 text-black"
-              : "bg-zinc-800 text-zinc-300 hover:bg-zinc-700"
+              ? "bg-brand text-navy"
+              : "bg-panel2 text-muted hover:text-ink"
           }`}
         >
           {pool.name}

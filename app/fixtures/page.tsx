@@ -31,16 +31,16 @@ export default function FixturesPage() {
       <h1 className="mb-6 text-3xl font-bold">Fixtures</h1>
 
       {fixtures.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-zinc-700 bg-zinc-900/30 p-6 text-center text-zinc-400">
+        <div className="rounded-xl border border-dashed border-edge bg-panel/40 p-6 text-center text-muted">
           No fixtures loaded yet. The World Cup 2026 schedule will appear here.
         </div>
       ) : (
         stages.map((stage) => (
           <section key={stage} className="mb-6">
-            <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-zinc-500">
+            <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-muted">
               {stage}
             </h2>
-            <ul className="divide-y divide-zinc-800 overflow-hidden rounded-xl border border-zinc-800">
+            <ul className="divide-y divide-edge overflow-hidden rounded-xl border border-edge">
               {fixtures
                 .filter((f) => f.stage === stage)
                 .map((f) => {
@@ -48,14 +48,14 @@ export default function FixturesPage() {
                   return (
                     <li
                       key={f.id}
-                      className="flex items-center justify-between gap-4 bg-zinc-900/30 px-4 py-3"
+                      className="flex items-center justify-between gap-4 bg-panel/40 px-4 py-3"
                     >
                       <div className="flex-1">
                         <div className="font-medium">
                           {f.home}{" "}
-                          <span className="text-zinc-600">vs</span> {f.away}
+                          <span className="text-muted">vs</span> {f.away}
                         </div>
-                        <div className="text-xs text-zinc-500">
+                        <div className="text-xs text-muted">
                           {formatKickoff(f.kickoff)}
                           {f.venue && ` · ${f.venue}`}
                         </div>

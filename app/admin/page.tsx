@@ -47,14 +47,14 @@ export default function AdminPage() {
   return (
     <main>
       <h1 className="mb-1 text-3xl font-bold">Ingest a match</h1>
-      <p className="mb-6 text-sm text-zinc-400">
+      <p className="mb-6 text-sm text-muted">
         Paste a match&apos;s data (or upload the downloaded{" "}
-        <code className="text-zinc-300">match-&lt;id&gt;.json</code>) and click
+        <code className="text-ink">match-&lt;id&gt;.json</code>) and click
         Ingest. Points update across the site immediately.
       </p>
 
       <div className="mb-3 flex items-center gap-3">
-        <label className="cursor-pointer rounded-lg bg-zinc-800 px-3 py-2 text-sm hover:bg-zinc-700">
+        <label className="cursor-pointer rounded-lg bg-panel2 px-3 py-2 text-sm hover:bg-edge">
           Choose file…
           <input
             type="file"
@@ -63,7 +63,7 @@ export default function AdminPage() {
             className="hidden"
           />
         </label>
-        <span className="text-xs text-zinc-500">or paste below</span>
+        <span className="text-xs text-muted">or paste below</span>
       </div>
 
       <textarea
@@ -71,13 +71,13 @@ export default function AdminPage() {
         onChange={(e) => setText(e.target.value)}
         placeholder='{"event": …, "lineups": …, "incidents": …}'
         spellCheck={false}
-        className="h-48 w-full rounded-xl border border-zinc-800 bg-zinc-950 p-3 font-mono text-xs text-zinc-300 outline-none focus:border-emerald-500/50"
+        className="h-48 w-full rounded-xl border border-edge bg-navy p-3 font-mono text-xs text-ink outline-none focus:border-brand/60"
       />
 
       <button
         onClick={ingest}
         disabled={busy || text.trim().length === 0}
-        className="mt-3 rounded-lg bg-emerald-500 px-5 py-2 font-medium text-black disabled:opacity-40"
+        className="mt-3 rounded-lg bg-brand px-5 py-2 font-semibold text-navy disabled:opacity-40"
       >
         {busy ? "Ingesting…" : "Ingest"}
       </button>
@@ -90,24 +90,24 @@ export default function AdminPage() {
 
       {res && (
         <div className="mt-5 space-y-4">
-          <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-4">
+          <div className="rounded-xl border border-brand/30 bg-brand/10 p-4">
             <div className="font-semibold">{res.match}</div>
-            <div className="text-sm text-zinc-400">
+            <div className="text-sm text-muted">
               Scored {res.scoredPlayers} players · learned {res.learnedIds} new
               Sofascore ids · {res.saved ? "saved" : "not saved"}
             </div>
           </div>
 
           {res.players && res.players.length > 0 && (
-            <ul className="divide-y divide-zinc-800 overflow-hidden rounded-xl border border-zinc-800 text-sm">
+            <ul className="divide-y divide-edge overflow-hidden rounded-xl border border-edge text-sm">
               {res.players.map((p) => (
                 <li
                   key={p.player}
-                  className="flex justify-between bg-zinc-900/30 px-4 py-2"
+                  className="flex justify-between bg-panel/40 px-4 py-2"
                 >
                   <span>
                     {p.player}{" "}
-                    <span className="text-zinc-500">
+                    <span className="text-muted">
                       · {p.team}
                       {p.role !== "none" && ` · ${p.role}`}
                     </span>
@@ -123,15 +123,15 @@ export default function AdminPage() {
               <div className="mb-1 font-medium text-amber-300">
                 Drafted players from these nations weren&apos;t scored
               </div>
-              <div className="mb-2 text-xs text-zinc-400">
+              <div className="mb-2 text-xs text-muted">
                 Benched/injured is fine. If one actually played, their name in
                 players.ts doesn&apos;t match Sofascore — fix and re-ingest.
               </div>
-              <ul className="text-zinc-300">
+              <ul className="text-ink">
                 {res.unmatchedDrafted.map((u) => (
                   <li key={u.name}>
                     {u.name}{" "}
-                    <span className="text-zinc-500">
+                    <span className="text-muted">
                       ({u.country}, {u.teamId})
                     </span>
                   </li>

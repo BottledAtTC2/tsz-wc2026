@@ -59,25 +59,25 @@ const penalties: Row[] = [
 
 function Section({ title, rows }: { title: string; rows: Row[] }) {
   return (
-    <section className="mb-6 overflow-hidden rounded-xl border border-zinc-800">
-      <h2 className="border-b border-zinc-800 bg-zinc-900 px-4 py-3 font-semibold">
+    <section className="mb-6 overflow-hidden rounded-xl border border-edge">
+      <h2 className="border-b border-edge bg-panel px-4 py-3 font-semibold">
         {title}
       </h2>
-      <ul className="divide-y divide-zinc-800">
+      <ul className="divide-y divide-edge">
         {rows.map((r) => (
           <li
             key={r.label}
-            className="flex items-center justify-between gap-4 bg-zinc-900/30 px-4 py-3"
+            className="flex items-center justify-between gap-4 bg-panel/40 px-4 py-3"
           >
             <div>
               <div className="text-sm">{r.label}</div>
-              {r.sub && <div className="text-xs text-zinc-500">{r.sub}</div>}
+              {r.sub && <div className="text-xs text-muted">{r.sub}</div>}
             </div>
             <span
               className={`shrink-0 rounded-md px-2.5 py-1 text-sm font-semibold ${
                 r.negative
                   ? "bg-red-500/15 text-red-300"
-                  : "bg-emerald-500/15 text-emerald-300"
+                  : "bg-brand/20 text-brand"
               }`}
             >
               {r.value}
@@ -93,7 +93,7 @@ export default function RulesPage() {
   return (
     <main>
       <h1 className="mb-2 text-3xl font-bold">Fantasy Points System</h1>
-      <p className="mb-6 text-zinc-400">
+      <p className="mb-6 text-muted">
         Football scoring. A captain&apos;s points are doubled; a
         vice-captain&apos;s are multiplied by {SCORING.viceCaptainMultiplier}.
       </p>
@@ -103,7 +103,7 @@ export default function RulesPage() {
       <Section title="Other Points" rows={other} />
       <Section title="Cards & Other Penalties" rows={penalties} />
 
-      <p className="text-xs text-zinc-500">
+      <p className="text-xs text-muted">
         Goals conceded count for players on the field when the goal is scored,
         regardless of total minutes. A clean sheet requires more than{" "}
         {SCORING.cleanSheetMinMinutes} minutes on the field without conceding.

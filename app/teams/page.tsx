@@ -15,12 +15,13 @@ export default async function TeamsPage(props: PageProps<"/teams">) {
 
   return (
     <main>
-      <h1 className="mb-6 text-3xl font-bold">Teams</h1>
+      <h1 className="mb-1 text-3xl font-extrabold tracking-tight">Teams</h1>
+      <p className="mb-5 text-sm text-muted">Tap a team to see its squad.</p>
 
       <PoolTabs basePath="/teams" active={poolId} />
 
       {poolTeams.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-zinc-700 bg-zinc-900/30 p-6 text-center text-zinc-400">
+        <div className="rounded-xl border border-dashed border-edge bg-panel/40 p-6 text-center text-muted">
           No teams in this pool yet.
         </div>
       ) : (
@@ -33,15 +34,15 @@ export default async function TeamsPage(props: PageProps<"/teams">) {
               <Link
                 key={team.id}
                 href={`/team/${team.id}`}
-                className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 transition-colors hover:border-emerald-500/50 hover:bg-zinc-900"
+                className="rounded-xl border border-edge bg-panel/50 p-4 transition-colors hover:border-brand/60 hover:bg-panel"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-semibold">{team.name}</span>
-                  <span className="text-sm text-zinc-400">
-                    {points.get(team.id) ?? 0} pts
+                  <span className="text-sm font-bold tabular-nums text-brand">
+                    {points.get(team.id) ?? 0}
                   </span>
                 </div>
-                <div className="mt-2 text-xs text-zinc-500">
+                <div className="mt-2 text-xs text-muted">
                   {team.squad.length > 0
                     ? `${team.squad.length} players`
                     : "Squad not drafted yet"}
