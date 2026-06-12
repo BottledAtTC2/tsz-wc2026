@@ -1,0 +1,216 @@
+#!/usr/bin/env python3
+"""Fetch World Cup 2026 match data from Sofascore and feed it to the app.
+
+Sofascore fingerprints TLS, so a plain request gets 403'd. This uses
+curl_cffi's Chrome impersonation (same trick as tunjayoff/sofascore_scraper)
+to get through.
+
+Setup (once):
+    cd scripts
+    python3 -m venv venv && source venv/bin/activate
+    pip install -r requirements.txt
+
+Usage:
+    # 1) See the World Cup matches and their event ids:
+    python scrape.py list
+
+    # 2) Ingest finished matches into your running app (npm run dev):
+    python scrape.py ingest 12345678 12345679
+
+    # ...or ingest every finished match found so far:
+    python scrape.py ingest --all
+
+    # Just save the raw bundles to data/matches/ (e.g. to inspect/commit):
+    python scrape.py save 12345678
+
+Config via env vars:
+    APP_URL            default http://localhost:3000  (your running app)
+    WC_TOURNAMENT_ID   default 16  (FIFA World Cup on Sofascore)
+    WC_SEASON_ID       override the auto-detected 2026 season id
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
+import time
+import urllib.request
+from pathlib import Path
+
+try:
+    from curl_cffi import requests as creq
+except ImportError:
+    sys.exit("Missing dependency. Run:  pip install -r scripts/requirements.txt")
+
+API = "https://www.sofascore.com/api/v1"
+APP_URL = os.environ.get("APP_URL", "http://localhost:3000").rstrip("/")
+TOURNAMENT_ID = os.environ.get("WC_TOURNAMENT_ID", "16")
+HEADERS = {
+    "Accept": "*/*",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Referer": "https://www.sofascore.com/",
+}
+
+_session = creq.Session(impersonate="chrome", headers=HEADERS, timeout=30)
+
+
+def get(path: str) -> dict:
+    """GET an API path with retry/backoff on rate limits."""
+    url = f"{API}{path}"
+    for attempt in range(4):
+        r = _session.get(url)
+        if r.status_code == 200:
+            return r.json()
+        if r.status_code in (403, 429, 503):
+            wait = 3 * (2**attempt)
+            print(f"  {r.status_code} on {path}; retrying in {wait}s", file=sys.stderr)
+            time.sleep(wait)
+            continue
+        raise RuntimeError(f"{r.status_code} fetching {path}")
+    raise RuntimeError(f"giving up on {path}")
+
+
+def resolve_season() -> str:
+    """Find the 2026 World Cup season id (or use WC_SEASON_ID override)."""
+    override = os.environ.get("WC_SEASON_ID")
+    if override:
+        return override
+    data = get(f"/unique-tournament/{TOURNAMENT_ID}/seasons")
+    for s in data.get("seasons", []):
+        if "2026" in str(s.get("year", "")) or "2026" in str(s.get("name", "")):
+            return str(s["id"])
+    raise SystemExit(
+        "Could not auto-find the 2026 season. Set WC_SEASON_ID — the available "
+        f"seasons are: {[ (s.get('year'), s.get('id')) for s in data.get('seasons', []) ]}"
+    )
+
+
+def all_events(season_id: str) -> list[dict]:
+    """All events for the season (finished 'last' + upcoming 'next'), paginated."""
+    out: list[dict] = []
+    for kind in ("last", "next"):
+        page = 0
+        while True:
+            data = get(
+                f"/unique-tournament/{TOURNAMENT_ID}/season/{season_id}/events/{kind}/{page}"
+            )
+            out.extend(data.get("events", []))
+            if not data.get("hasNextPage"):
+                break
+            page += 1
+    return out
+
+
+def is_finished(ev: dict) -> bool:
+    return ev.get("status", {}).get("type") == "finished"
+
+
+def fetch_bundle(event_id: int) -> dict:
+    """Fetch the three endpoints and assemble the bundle the app expects."""
+    event = get(f"/event/{event_id}")["event"]
+    lineups = get(f"/event/{event_id}/lineups")
+    incidents = get(f"/event/{event_id}/incidents")
+    return {"event": event, "lineups": lineups, "incidents": incidents}
+
+
+def post_ingest(bundle: dict) -> dict:
+    """POST a bundle to the app's /api/ingest (localhost — no impersonation)."""
+    body = json.dumps(bundle).encode()
+    req = urllib.request.Request(
+        f"{APP_URL}/api/ingest",
+        data=body,
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return json.loads(resp.read())
+
+
+def cmd_list(_args) -> None:
+    season = resolve_season()
+    print(f"World Cup season id: {season}\n")
+    events = all_events(season)
+    events.sort(key=lambda e: e.get("startTimestamp", 0))
+    for ev in events:
+        status = ev.get("status", {}).get("type", "?")
+        h = ev.get("homeTeam", {}).get("name", "?")
+        a = ev.get("awayTeam", {}).get("name", "?")
+        hs = ev.get("homeScore", {}).get("current", "")
+        as_ = ev.get("awayScore", {}).get("current", "")
+        score = f"{hs}-{as_}" if status == "finished" else ""
+        mark = "✓" if status == "finished" else " "
+        print(f"  {mark} {ev['id']:>10}  [{status:<9}] {h} {score} {a}")
+    print(f"\n{sum(is_finished(e) for e in events)} finished. "
+          "Ingest with:  python scrape.py ingest <id> <id> ...")
+
+
+def cmd_ingest(args) -> None:
+    ids = collect_ids(args)
+    for eid in ids:
+        print(f"Ingesting {eid} …")
+        try:
+            bundle = fetch_bundle(eid)
+            res = post_ingest(bundle)
+        except Exception as e:  # noqa: BLE001
+            print(f"  ! {e}")
+            continue
+        print(f"  {res.get('match')}  → scored {res.get('scoredPlayers')} players, "
+              f"learned {res.get('learnedIds')} ids")
+        um = res.get("unmatchedDrafted") or []
+        if um:
+            print("  ⚠ drafted players from these nations not scored "
+                  "(benched, or a name to fix in players.ts):")
+            for u in um:
+                print(f"      - {u['name']} ({u['country']}, {u['teamId']})")
+        time.sleep(1)
+
+
+def cmd_save(args) -> None:
+    ids = collect_ids(args)
+    out_dir = Path(args.out)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for eid in ids:
+        print(f"Saving {eid} …")
+        bundle = fetch_bundle(eid)
+        path = out_dir / f"{eid}.json"
+        path.write_text(json.dumps(bundle, indent=2))
+        print(f"  wrote {path}")
+        time.sleep(1)
+
+
+def collect_ids(args) -> list[int]:
+    if getattr(args, "all", False):
+        season = resolve_season()
+        return [e["id"] for e in all_events(season) if is_finished(e)]
+    if not args.ids:
+        sys.exit("Pass event ids, or --all. See:  python scrape.py list")
+    return [int(x) for x in args.ids]
+
+
+def main() -> None:
+    p = argparse.ArgumentParser(description="Sofascore → app ingest for WC2026")
+    sub = p.add_subparsers(dest="cmd", required=True)
+
+    sub.add_parser("list", help="list WC matches and their event ids").set_defaults(
+        func=cmd_list
+    )
+
+    pi = sub.add_parser("ingest", help="fetch + POST matches to the app")
+    pi.add_argument("ids", nargs="*", help="Sofascore event ids")
+    pi.add_argument("--all", action="store_true", help="every finished match")
+    pi.set_defaults(func=cmd_ingest)
+
+    ps = sub.add_parser("save", help="fetch + write bundle JSON files")
+    ps.add_argument("ids", nargs="*", help="Sofascore event ids")
+    ps.add_argument("--all", action="store_true", help="every finished match")
+    ps.add_argument("--out", default="data/matches", help="output directory")
+    ps.set_defaults(func=cmd_save)
+
+    args = p.parse_args()
+    args.func(args)
+
+
+if __name__ == "__main__":
+    main()
