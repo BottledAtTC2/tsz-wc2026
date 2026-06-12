@@ -18,11 +18,31 @@
       prompt("Sofascore event id (the number in the match URL after #id:)?");
     if (!id) return;
 
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
     const base = "/api/v1/event/" + id;
+    // Sofascore challenges repeat fetches, but the page already downloaded
+    // this data — so read it from the browser cache first, then fall back to
+    // a few live retries for anything not cached.
     const j = async (p) => {
-      const r = await fetch(p, { headers: { Accept: "application/json" } });
-      if (!r.ok) throw new Error(r.status + " on " + p);
-      return r.json();
+      try {
+        const r = await fetch(p, {
+          credentials: "include",
+          cache: "force-cache",
+          headers: { Accept: "application/json" },
+        });
+        if (r.ok) return r.json();
+      } catch (_) {}
+      for (let i = 0; i < 4; i++) {
+        try {
+          const r = await fetch(p, {
+            credentials: "include",
+            headers: { Accept: "application/json" },
+          });
+          if (r.ok) return r.json();
+        } catch (_) {}
+        await sleep(1500 * (i + 1));
+      }
+      throw new Error("blocked on " + p + " (try reloading the match page)");
     };
 
     const bundle = {
@@ -55,4 +75,4 @@
 })();
 
 // --- Bookmarklet version (everything on one line; use as the bookmark URL) ---
-// javascript:(async()=>{try{const m=location.href.match(/id:(\d+)/)||location.href.match(/(\d{6,})/);const id=(m&&m[1])||prompt("Sofascore event id?");if(!id)return;const b="/api/v1/event/"+id;const j=async p=>{const r=await fetch(p,{headers:{Accept:"application/json"}});if(!r.ok)throw new Error(r.status+" "+p);return r.json()};const o={event:(await j(b)).event,lineups:await j(b+"/lineups"),incidents:await j(b+"/incidents")};const t=JSON.stringify(o);const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([t],{type:"application/json"}));a.download="match-"+id+".json";a.click();try{await navigator.clipboard.writeText(t)}catch(_){}alert("Downloaded match-"+id+".json. Open your app /admin and upload it.")}catch(e){alert("Failed: "+e.message)}})();
+// javascript:(async()=>{try{const m=location.href.match(/id:(\d+)/)||location.href.match(/(\d{6,})/);const id=(m&&m[1])||prompt("Sofascore event id?");if(!id)return;const s=ms=>new Promise(r=>setTimeout(r,ms));const b="/api/v1/event/"+id;const j=async p=>{try{const r=await fetch(p,{credentials:"include",cache:"force-cache",headers:{Accept:"application/json"}});if(r.ok)return r.json()}catch(_){}for(let i=0;i<4;i++){try{const r=await fetch(p,{credentials:"include",headers:{Accept:"application/json"}});if(r.ok)return r.json()}catch(_){}await s(1500*(i+1))}throw new Error("blocked "+p)};const o={event:(await j(b)).event,lineups:await j(b+"/lineups"),incidents:await j(b+"/incidents")};const t=JSON.stringify(o);const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([t],{type:"application/json"}));a.download="match-"+id+".json";a.click();try{await navigator.clipboard.writeText(t)}catch(_){}alert("Downloaded match-"+id+".json. Open your app /admin and upload it.")}catch(e){alert("Failed: "+e.message)}})();
