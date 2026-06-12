@@ -1,1 +1,3 @@
 curl_cffi>=0.7
+# For --browser mode (recommended — beats Sofascore's JS challenge via real Chrome):
+playwright>=1.40

@@ -44,32 +44,113 @@ try:
 except ImportError:
     sys.exit("Missing dependency. Run:  pip install -r scripts/requirements.txt")
 
-API = "https://www.sofascore.com/api/v1"
+BASE = os.environ.get("SOFA_BASE", "https://www.sofascore.com").rstrip("/")
+API = f"{BASE}/api/v1"
 APP_URL = os.environ.get("APP_URL", "http://localhost:3000").rstrip("/")
 TOURNAMENT_ID = os.environ.get("WC_TOURNAMENT_ID", "16")
+IMPERSONATE = os.environ.get("IMPERSONATE", "chrome120")
+USE_BROWSER = bool(os.environ.get("SOFA_BROWSER"))
 HEADERS = {
     "Accept": "*/*",
     "Accept-Language": "en-US,en;q=0.9",
-    "Referer": "https://www.sofascore.com/",
+    "Referer": f"{BASE}/",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
 }
 
-_session = creq.Session(impersonate="chrome", headers=HEADERS, timeout=30)
+_session = creq.Session(impersonate=IMPERSONATE, headers=HEADERS, timeout=30)
+_warmed = False
 
 
-def get(path: str) -> dict:
-    """GET an API path with retry/backoff on rate limits."""
+def _warm_up() -> None:
+    """Hit the homepage once so Cloudflare can set clearance cookies."""
+    global _warmed
+    if _warmed:
+        return
+    _warmed = True
+    try:
+        _session.get(f"{BASE}/", timeout=30)
+        time.sleep(1)
+    except Exception as e:  # noqa: BLE001
+        print(f"  (warm-up failed: {e})", file=sys.stderr)
+
+
+def _http_get(path: str) -> dict:
+    """GET an API path with warm-up + retry/backoff (curl_cffi backend)."""
+    _warm_up()
     url = f"{API}{path}"
     for attempt in range(4):
         r = _session.get(url)
         if r.status_code == 200:
             return r.json()
         if r.status_code in (403, 429, 503):
+            if attempt == 0:
+                snippet = r.text[:200].replace("\n", " ")
+                print(f"  {r.status_code} body: {snippet!r}", file=sys.stderr)
             wait = 3 * (2**attempt)
             print(f"  {r.status_code} on {path}; retrying in {wait}s", file=sys.stderr)
             time.sleep(wait)
             continue
         raise RuntimeError(f"{r.status_code} fetching {path}")
-    raise RuntimeError(f"giving up on {path}")
+    raise RuntimeError(
+        f"giving up on {path} ({r.status_code}). Sofascore is blocking this "
+        "request — try the browser method:  python scrape.py list --browser"
+    )
+
+
+class _Browser:
+    """Real-Chrome backend (Playwright) that solves the JS challenge."""
+
+    def __init__(self) -> None:
+        try:
+            from playwright.sync_api import sync_playwright
+        except ImportError:
+            sys.exit(
+                "Browser mode needs Playwright. Run:\n"
+                "    pip install playwright"
+            )
+        self._pw = sync_playwright().start()
+        try:
+            # Use the real Chrome you already have installed.
+            self._browser = self._pw.chromium.launch(channel="chrome", headless=False)
+        except Exception:
+            self._browser = self._pw.chromium.launch(headless=False)
+        self._page = self._browser.new_context().new_page()
+        print("Opening Sofascore in Chrome to clear the challenge…")
+        self._page.goto(f"{BASE}/", wait_until="domcontentloaded", timeout=60000)
+        time.sleep(6)  # let the challenge auto-solve
+
+    def get_json(self, path: str) -> dict:
+        # fetch() runs inside the page → real browser, same origin, with cookies.
+        res = self._page.evaluate(
+            "async (u) => { const r = await fetch(u, {headers:{Accept:'application/json'}});"
+            " return { s: r.status, t: await r.text() }; }",
+            f"{API}{path}",
+        )
+        if res["s"] != 200:
+            raise RuntimeError(f"{res['s']} fetching {path}: {res['t'][:160]}")
+        return json.loads(res["t"])
+
+    def close(self) -> None:
+        try:
+            self._browser.close()
+            self._pw.stop()
+        except Exception:  # noqa: BLE001
+            pass
+
+
+_browser: _Browser | None = None
+
+
+def get(path: str) -> dict:
+    """Dispatch to the browser or curl_cffi backend."""
+    global _browser
+    if USE_BROWSER:
+        if _browser is None:
+            _browser = _Browser()
+        return _browser.get_json(path)
+    return _http_get(path)
 
 
 def resolve_season() -> str:
@@ -193,23 +274,37 @@ def main() -> None:
     p = argparse.ArgumentParser(description="Sofascore → app ingest for WC2026")
     sub = p.add_subparsers(dest="cmd", required=True)
 
-    sub.add_parser("list", help="list WC matches and their event ids").set_defaults(
-        func=cmd_list
+    # Shared flag: --browser uses real Chrome (Playwright) to beat the challenge.
+    common = argparse.ArgumentParser(add_help=False)
+    common.add_argument(
+        "--browser",
+        action="store_true",
+        help="use real Chrome (Playwright) to bypass the JS challenge",
     )
 
-    pi = sub.add_parser("ingest", help="fetch + POST matches to the app")
+    sub.add_parser(
+        "list", parents=[common], help="list WC matches and their event ids"
+    ).set_defaults(func=cmd_list)
+
+    pi = sub.add_parser("ingest", parents=[common], help="fetch + POST matches")
     pi.add_argument("ids", nargs="*", help="Sofascore event ids")
     pi.add_argument("--all", action="store_true", help="every finished match")
     pi.set_defaults(func=cmd_ingest)
 
-    ps = sub.add_parser("save", help="fetch + write bundle JSON files")
+    ps = sub.add_parser("save", parents=[common], help="fetch + write bundle JSON")
     ps.add_argument("ids", nargs="*", help="Sofascore event ids")
     ps.add_argument("--all", action="store_true", help="every finished match")
     ps.add_argument("--out", default="data/matches", help="output directory")
     ps.set_defaults(func=cmd_save)
 
     args = p.parse_args()
-    args.func(args)
+    global USE_BROWSER
+    USE_BROWSER = USE_BROWSER or getattr(args, "browser", False)
+    try:
+        args.func(args)
+    finally:
+        if _browser is not None:
+            _browser.close()
 
 
 if __name__ == "__main__":
