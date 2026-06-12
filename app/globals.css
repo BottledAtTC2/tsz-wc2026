@@ -12,7 +12,9 @@
   --color-ink: #eef3fa;
   --color-muted: #8696b0;
 
-  --font-sans: var(--font-archivo);
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: var(--font-archivo), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
@@ -20,5 +22,11 @@ html,
 body {
   background: var(--color-navy);
   color: var(--color-ink);
-  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Pair Helvetica body with Archivo for headings. */
+h1,
+h2 {
+  font-family: var(--font-display);
 }
