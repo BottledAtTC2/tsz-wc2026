@@ -12,7 +12,7 @@
   --color-ink: #eef3fa;
   --color-muted: #8696b0;
 
-  --font-sans: var(--font-montserrat);
+  --font-sans: var(--font-archivo);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -20,6 +20,5 @@ html,
 body {
   background: var(--color-navy);
   color: var(--color-ink);
-  font-family: var(--font-montserrat), system-ui, sans-serif;
-  font-weight: 800;
+  font-family: var(--font-archivo), system-ui, sans-serif;
 }
