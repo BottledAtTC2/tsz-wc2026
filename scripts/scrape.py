@@ -50,6 +50,8 @@ APP_URL = os.environ.get("APP_URL", "http://localhost:3000").rstrip("/")
 TOURNAMENT_ID = os.environ.get("WC_TOURNAMENT_ID", "16")
 IMPERSONATE = os.environ.get("IMPERSONATE", "chrome120")
 USE_BROWSER = bool(os.environ.get("SOFA_BROWSER"))
+CDP_URL = os.environ.get("SOFA_CDP", "http://localhost:9222")
+USE_CONNECT = False
 HEADERS = {
     "Accept": "*/*",
     "Accept-Language": "en-US,en;q=0.9",
@@ -129,6 +131,20 @@ class _Browser:
         except ImportError:
             sys.exit("Browser mode needs Playwright. Run:\n    pip install playwright")
         self._pw = sync_playwright().start()
+
+        if USE_CONNECT:
+            # Attach to a Chrome you launched yourself (you solve the challenge).
+            print(f"Connecting to your Chrome at {CDP_URL} …")
+            self._browser = self._pw.chromium.connect_over_cdp(CDP_URL)
+            ctx = (
+                self._browser.contexts[0]
+                if self._browser.contexts
+                else self._browser.new_context()
+            )
+            self._page = ctx.new_page()
+            self._goto_home()
+            return
+
         try:
             # Use the real Chrome you already have installed.
             self._browser = self._pw.chromium.launch(channel="chrome", headless=False)
@@ -175,7 +191,10 @@ class _Browser:
 
     def close(self) -> None:
         try:
-            self._browser.close()
+            if USE_CONNECT:
+                self._page.close()  # leave your Chrome running
+            else:
+                self._browser.close()
             self._pw.stop()
         except Exception:  # noqa: BLE001
             pass
@@ -322,6 +341,11 @@ def main() -> None:
         action="store_true",
         help="use real Chrome (Playwright) to bypass the JS challenge",
     )
+    common.add_argument(
+        "--connect",
+        action="store_true",
+        help="attach to your own Chrome started with --remote-debugging-port=9222",
+    )
 
     sub.add_parser(
         "list", parents=[common], help="list WC matches and their event ids"
@@ -339,8 +363,9 @@ def main() -> None:
     ps.set_defaults(func=cmd_save)
 
     args = p.parse_args()
-    global USE_BROWSER
-    USE_BROWSER = USE_BROWSER or getattr(args, "browser", False)
+    global USE_BROWSER, USE_CONNECT
+    USE_CONNECT = getattr(args, "connect", False) or USE_CONNECT
+    USE_BROWSER = USE_BROWSER or getattr(args, "browser", False) or USE_CONNECT
     try:
         args.func(args)
     finally:
