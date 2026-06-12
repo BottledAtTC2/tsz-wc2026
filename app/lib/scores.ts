@@ -5,7 +5,11 @@
 
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import path from "node:path";
+import { teams } from "../data/teams";
 import type { MatchResult } from "./sofascore/ingest";
+
+/** Each fantasy team scores only its best COUNTING_PLAYERS of 11. */
+export const COUNTING_PLAYERS = 10;
 
 export interface ScoresStore {
   matches: Record<string, MatchResult>;
@@ -34,13 +38,23 @@ export function allMatches(store = loadScores()): MatchResult[] {
   return Object.values(store.matches).sort((a, b) => b.eventId - a.eventId);
 }
 
-/** Season points per fantasy team id. */
+/**
+ * Season points per fantasy team — counting only each team's best
+ * COUNTING_PLAYERS players (top 10 of 11), so the lowest-scoring player is
+ * dropped from the team total.
+ */
 export function teamPointsMap(store = loadScores()): Map<string, number> {
+  const pp = playerPointsMap(store);
   const map = new Map<string, number>();
-  for (const match of Object.values(store.matches)) {
-    for (const p of match.players) {
-      map.set(p.teamId, (map.get(p.teamId) ?? 0) + p.total);
-    }
+  for (const team of teams) {
+    const totals = team.squad
+      .map((pid) => pp.get(pid) ?? 0)
+      .sort((a, b) => b - a)
+      .slice(0, COUNTING_PLAYERS);
+    map.set(
+      team.id,
+      totals.reduce((s, x) => s + x, 0),
+    );
   }
   return map;
 }

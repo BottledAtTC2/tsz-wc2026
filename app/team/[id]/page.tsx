@@ -33,6 +33,15 @@ export default async function TeamPage(props: PageProps<"/team/[id]">) {
   const playerPts = playerPointsMap();
   const breakdown = teamBreakdown(team.id);
 
+  // Only a team's best 10 of 11 players count — flag which ones are counted.
+  const counted = new Set(
+    squad
+      .map((p) => ({ id: p.id, pts: playerPts.get(p.id) ?? 0 }))
+      .sort((a, b) => b.pts - a.pts)
+      .slice(0, 10)
+      .map((x) => x.id),
+  );
+
   return (
     <main>
       <Link href="/teams" className="text-sm text-muted hover:text-ink">
@@ -77,7 +86,9 @@ export default async function TeamPage(props: PageProps<"/team/[id]">) {
                   return (
                     <li
                       key={p.id}
-                      className="flex items-center justify-between bg-panel/40 px-4 py-3"
+                      className={`flex items-center justify-between bg-panel/40 px-4 py-3 ${
+                        counted.has(p.id) ? "" : "opacity-45"
+                      }`}
                     >
                       <div>
                         <span className="font-medium">{p.name}</span>
@@ -96,9 +107,16 @@ export default async function TeamPage(props: PageProps<"/team/[id]">) {
                           {p.club && ` · ${p.club}`}
                         </div>
                       </div>
-                      <span className="text-lg font-bold tabular-nums">
-                        {playerPts.get(p.id) ?? 0}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        {!counted.has(p.id) && (
+                          <span className="text-[10px] uppercase tracking-wide text-muted">
+                            dropped
+                          </span>
+                        )}
+                        <span className="text-lg font-bold tabular-nums">
+                          {playerPts.get(p.id) ?? 0}
+                        </span>
+                      </div>
                     </li>
                   );
                 })}

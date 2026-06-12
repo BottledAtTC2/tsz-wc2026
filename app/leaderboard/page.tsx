@@ -28,7 +28,9 @@ export default async function LeaderboardPage(
   return (
     <main>
       <h1 className="mb-1 text-3xl font-extrabold tracking-tight">Leaderboard</h1>
-      <p className="mb-5 text-sm text-muted">Ranked on total fantasy points.</p>
+      <p className="mb-5 text-sm text-muted">
+        Each team&apos;s best 10 of 11 players count.
+      </p>
 
       <PoolTabs basePath="/leaderboard" active={poolId} />
 

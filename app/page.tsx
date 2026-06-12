@@ -1,8 +1,4 @@
 import Link from "next/link";
-import { teams } from "./data/teams";
-import { pools } from "./data/pools";
-import { players } from "./data/players";
-import { fixtures } from "./data/fixtures";
 
 const cards = [
   {
@@ -17,13 +13,6 @@ const cards = [
 ];
 
 export default function Home() {
-  const stats = [
-    { label: "Teams", value: teams.length },
-    { label: "Pools", value: pools.length },
-    { label: "Players", value: players.length },
-    { label: "Fixtures", value: fixtures.length },
-  ];
-
   return (
     <main>
       <section className="mb-8 overflow-hidden rounded-2xl border border-edge bg-gradient-to-br from-panel2 to-panel p-8">
@@ -34,18 +23,6 @@ export default function Home() {
         <p className="mt-2 text-muted">
           The Sledge Zone fantasy league for the 2026 FIFA World Cup.
         </p>
-      </section>
-
-      <section className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {stats.map((s) => (
-          <div
-            key={s.label}
-            className="rounded-xl border border-edge bg-panel/50 p-4"
-          >
-            <div className="text-2xl font-bold text-brand">{s.value}</div>
-            <div className="text-sm text-muted">{s.label}</div>
-          </div>
-        ))}
       </section>
 
       <section className="grid gap-3 sm:grid-cols-2">
