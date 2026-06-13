@@ -13,14 +13,14 @@ export default function PoolTabs({
   active: string;
 }) {
   return (
-    <div className="mb-6 flex flex-wrap gap-2">
+    <div className="mb-6 flex flex-wrap gap-3 font-sans">
       {pools.map((pool) => (
         <Link
           key={pool.id}
           href={`${basePath}?pool=${pool.id}`}
-          className={`rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
+          className={`rounded-full px-5 py-2 text-sm font-black uppercase tracking-wide transition-all duration-200 ${
             active === pool.id
-              ? "bg-brand text-navy"
+              ? "bg-brand text-navy shadow-sm" 
               : "bg-panel2 text-muted hover:text-ink"
           }`}
         >

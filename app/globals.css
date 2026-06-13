@@ -2,18 +2,14 @@
 
 /* The Sledge Zone brand palette — dark navy with electric blue + orange. */
 @theme {
-  --color-navy: #0a111f;
-  --color-panel: #131d30;
-  --color-panel2: #1a2740;
-  --color-edge: #263651;
-  --color-brand: #2ea6ff;
-  --color-brand-strong: #1b8ae0;
-  --color-accent: #ff7a1a;
-  --color-ink: #eef3fa;
-  --color-muted: #8696b0;
-
-  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-mono: var(--font-geist-mono);
+  --color-navy: #1A1A1A;     /* Darker charcoal for the main page background */
+  --color-panel: #2B2B2B;    /* Slightly lighter charcoal for cards and rows */
+  --color-panel2: #3A3A3A;   /* Lighter still for headers and hover states */
+  --color-edge: #000000;     /* Harsh black borders for sharp contrast */
+  --color-brand: #E3FF00;    /* High-contrast neon lime for active/primary elements */
+  --color-accent: #00A650;   /* Secondary green (matches the sponsor/button greens) */
+  --color-ink: #FFFFFF;      /* Main text (white on dark panels) */
+  --color-muted: #9CA3AF;    /* Secondary text (gray-400) */
 }
 
 html,

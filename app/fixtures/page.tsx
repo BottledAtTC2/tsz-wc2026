@@ -39,24 +39,29 @@ export default function FixturesPage() {
   }
 
   return (
-    <main>
-      <h1 className="mb-1 text-3xl font-extrabold tracking-tight">Fixtures</h1>
-      <p className="mb-5 text-sm text-muted">
+    <main className="font-sans">
+      <h1 className="mb-2 text-4xl font-black uppercase tracking-tighter text-ink md:text-5xl">
+        Fixtures
+      </h1>
+      <p className="mb-8 text-[15px] font-bold uppercase tracking-widest text-muted">
         {fixtures.length > 0 ? `${fixtures.length} matches` : "World Cup 2026"}
       </p>
 
       {fixtures.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-edge bg-panel/40 p-6 text-center text-muted">
+        <div className="rounded-xl border-2 border-dashed border-edge bg-panel p-8 text-center font-bold uppercase tracking-wide text-muted">
           No fixtures loaded yet. Grab them from Sofascore and upload on{" "}
           <span className="text-ink">/admin</span>.
         </div>
       ) : (
         days.map((day) => (
-          <section key={day} className="mb-6">
-            <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-muted">
+          <section key={day} className="mb-8">
+            {/* Date Header: Exactly matching the screenshot */}
+            <h2 className="mb-3 pl-1 text-[13px] font-black uppercase tracking-widest text-muted">
               {day}
             </h2>
-            <ul className="divide-y divide-edge overflow-hidden rounded-xl border border-edge">
+            
+            {/* Fixture Container Block */}
+            <ul className="divide-y divide-edge overflow-hidden rounded-xl border border-edge bg-panel shadow-lg">
               {fixtures
                 .filter((f) => dayKey(f.kickoff) === day)
                 .map((f) => {
@@ -64,26 +69,31 @@ export default function FixturesPage() {
                   return (
                     <li
                       key={f.id}
-                      className="flex items-center gap-3 bg-panel/40 px-4 py-3"
+                      className="group flex items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-panel2"
                     >
-                      <span className="w-12 shrink-0 text-xs text-muted tabular-nums">
+                      {/* Left: Time or Live Tag */}
+                      <span className="w-14 shrink-0 text-[13px] font-bold text-muted tabular-nums">
                         {f.status === "live" ? (
-                          <span className="rounded bg-red-500/15 px-1.5 py-0.5 text-red-300">
+                          <span className="rounded-sm bg-red-600 px-2 py-0.5 text-xs font-black text-white shadow-sm animate-pulse">
                             LIVE
                           </span>
                         ) : (
                           kickoffTime(f.kickoff)
                         )}
                       </span>
-                      <span className="flex-1 truncate font-medium">
-                        {f.home} <span className="text-muted">v</span> {f.away}
+                      
+                      {/* Center: Matchup */}
+                      <span className="flex-1 truncate text-[15px] font-bold text-ink transition-colors group-hover:text-brand md:text-[17px]">
+                        {f.home} <span className="mx-1 text-[13px] font-normal text-muted">v</span> {f.away}
                       </span>
+                      
+                      {/* Right: Score or Stage */}
                       {score ? (
-                        <span className="shrink-0 font-bold tabular-nums">
+                        <span className="shrink-0 text-xl font-black tabular-nums text-ink md:text-2xl">
                           {score}
                         </span>
                       ) : (
-                        <span className="shrink-0 text-xs text-muted">
+                        <span className="shrink-0 text-[12px] font-bold text-muted md:text-[13px]">
                           {f.stage}
                         </span>
                       )}

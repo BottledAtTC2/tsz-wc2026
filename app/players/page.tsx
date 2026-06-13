@@ -17,26 +17,29 @@ const POSITION_LABEL: Record<Position, string> = {
   MID: "Midfielders",
   FWD: "Forwards",
 };
+
+// Upgraded to high-contrast solid colors for immediate visual scanning
 const POSITION_COLOR: Record<Position, string> = {
-  GK: "bg-accent/20 text-accent",
-  DEF: "bg-brand/20 text-brand",
-  MID: "bg-sky-400/20 text-sky-300",
-  FWD: "bg-orange-400/20 text-orange-300",
+  GK: "bg-accent text-ink",        // Solid green, white text
+  DEF: "bg-brand text-black",      // Solid neon lime, black text
+  MID: "bg-blue-600 text-white",   // Standard blue, white text
+  FWD: "bg-orange-500 text-white", // Standard orange, white text
 };
 
 export default function PlayersPage() {
   const points = playerPointsMap();
 
   return (
-    <main>
-      <h1 className="mb-1 text-3xl font-extrabold tracking-tight">Players</h1>
-      <p className="mb-5 text-sm text-muted">
-        Every drafted player and their fantasy points. Each player belongs to
-        one team.
+    <main className="font-sans">
+      <h1 className="mb-2 text-4xl font-black uppercase tracking-tighter text-ink md:text-5xl">
+        Players
+      </h1>
+      <p className="mb-8 max-w-2xl text-[15px] font-bold uppercase tracking-widest text-muted">
+        Every drafted player and their fantasy points. Each player belongs to one team.
       </p>
 
       {players.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-edge bg-panel/40 p-6 text-center text-muted">
+        <div className="rounded-xl border-2 border-dashed border-edge bg-panel p-8 text-center font-bold text-muted uppercase">
           No players loaded yet.
         </div>
       ) : (
@@ -50,47 +53,63 @@ export default function PlayersPage() {
             );
           if (group.length === 0) return null;
           return (
-            <section key={pos} className="mb-6">
-              <div className="mb-2 flex items-center gap-2">
+            <section key={pos} className="mb-10">
+              {/* High-impact positional section header */}
+              <div className="mb-3 flex items-center gap-3 border-b-2 border-edge pb-2">
                 <span
-                  className={`rounded px-2 py-0.5 text-xs font-bold ${POSITION_COLOR[pos]}`}
+                  className={`flex h-8 items-center justify-center rounded-sm px-3 text-[13px] font-black uppercase tracking-wider shadow-sm ${POSITION_COLOR[pos]}`}
                 >
                   {pos}
                 </span>
-                <h2 className="text-sm font-semibold uppercase tracking-wide text-muted">
+                <h2 className="text-xl font-black uppercase tracking-wide text-ink">
                   {POSITION_LABEL[pos]}
                 </h2>
               </div>
-              <div className="overflow-hidden rounded-xl border border-edge">
+              
+              {/* Player List Container */}
+              <div className="overflow-hidden rounded-xl bg-panel shadow-lg">
                 {group.map((p, i) => {
                   const owners = teamsForPlayer(p.id);
                   return (
                     <div
                       key={p.id}
-                      className={`flex items-center justify-between gap-3 bg-panel/40 px-4 py-3 ${
+                      className={`group flex items-center justify-between gap-3 px-4 py-3.5 transition-colors hover:bg-panel2 ${
                         i > 0 ? "border-t border-edge" : ""
                       }`}
                     >
-                      <div className="min-w-0">
-                        <div className="truncate font-semibold">{p.name}</div>
-                        <div className="truncate text-xs text-muted">
+                      <div className="min-w-0 flex-1">
+                        <div className="truncate text-[16px] font-black uppercase text-ink transition-colors group-hover:text-brand">
+                          {p.name}
+                        </div>
+                        <div className="truncate text-[11px] font-bold uppercase tracking-widest text-muted mt-0.5">
                           {p.country}
-                          {p.club && ` · ${p.club}`}
+                          {p.club && <span className="opacity-50"> // {p.club}</span>}
                         </div>
                       </div>
-                      <div className="flex shrink-0 items-center gap-2">
-                        {owners.map((owner) => (
-                          <Link
-                            key={owner.id}
-                            href={`/team/${owner.id}`}
-                            className="hidden rounded-full bg-panel2 px-2.5 py-1 text-xs text-muted hover:text-ink sm:inline"
-                          >
-                            {owner.name}
-                          </Link>
-                        ))}
-                        <span className="w-12 text-right text-lg font-bold tabular-nums">
-                          {points.get(p.id) ?? 0}
-                        </span>
+                      
+                      <div className="flex shrink-0 items-center gap-3 md:gap-6">
+                        {/* Team Owner Badge(s) */}
+                        <div className="flex gap-1">
+                          {owners.map((owner) => (
+                            <Link
+                              key={owner.id}
+                              href={`/team/${owner.id}`}
+                              className="hidden rounded-sm bg-panel2 border border-edge px-2 py-1 text-[10px] font-black uppercase tracking-widest text-muted transition-colors hover:border-brand hover:text-brand sm:inline-block"
+                            >
+                              {owner.name}
+                            </Link>
+                          ))}
+                        </div>
+                        
+                        {/* Points Display */}
+                        <div className="flex w-16 flex-col items-end">
+                          <span className="text-[9px] font-black uppercase tracking-widest text-muted md:hidden">
+                            Pts
+                          </span>
+                          <span className="text-xl font-black tabular-nums text-ink md:text-2xl">
+                            {points.get(p.id) ?? 0}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   );

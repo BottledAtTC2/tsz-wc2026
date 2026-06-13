@@ -14,18 +14,23 @@ export default async function TeamsPage(props: PageProps<"/teams">) {
   const poolTeams = teams.filter((t) => t.poolId === poolId);
 
   return (
-    <main>
-      <h1 className="mb-1 text-3xl font-extrabold tracking-tight">Teams</h1>
-      <p className="mb-5 text-sm text-muted">Tap a team to see its squad.</p>
+    <main className="font-sans">
+      {/* Heavy sports-style typography for headers */}
+      <h1 className="mb-2 text-4xl font-black uppercase tracking-tighter text-ink">
+        Teams
+      </h1>
+      <p className="mb-6 text-[15px] font-bold uppercase tracking-wider text-muted">
+        Tap a team to see its squad.
+      </p>
 
       <PoolTabs basePath="/teams" active={poolId} />
 
       {poolTeams.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-edge bg-panel/40 p-6 text-center text-muted">
-          No teams in this pool yet.
+        <div className="rounded-xl border-2 border-dashed border-edge bg-panel p-8 text-center font-bold text-muted">
+          NO TEAMS IN THIS POOL YET.
         </div>
       ) : (
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {poolTeams.map((team) => {
             const captain = team.captainId
               ? playerById.get(team.captainId)
@@ -34,19 +39,36 @@ export default async function TeamsPage(props: PageProps<"/teams">) {
               <Link
                 key={team.id}
                 href={`/team/${team.id}`}
-                className="rounded-xl border border-edge bg-panel/50 p-4 transition-colors hover:border-brand/60 hover:bg-panel"
+                className="group relative flex flex-col justify-between overflow-hidden rounded-xl bg-panel p-5 shadow-lg transition-all hover:-translate-y-1 hover:bg-panel2"
               >
-                <div className="flex items-center justify-between">
-                  <span className="font-semibold">{team.name}</span>
-                  <span className="text-sm font-bold tabular-nums text-brand">
-                    {points.get(team.id) ?? 0}
+                {/* Top Section: Team Name & Points */}
+                <div className="flex items-start justify-between border-b border-edge pb-4">
+                  <span className="pr-2 text-[17px] font-black uppercase leading-tight tracking-tight text-ink transition-colors group-hover:text-brand">
+                    {team.name}
                   </span>
+                  <div className="flex flex-col items-end shrink-0">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-muted">
+                      Total Pts
+                    </span>
+                    <span className="text-2xl font-black tabular-nums text-ink">
+                      {points.get(team.id) ?? 0}
+                    </span>
+                  </div>
                 </div>
-                <div className="mt-2 text-xs text-muted">
-                  {team.squad.length > 0
-                    ? `${team.squad.length} players`
-                    : "Squad not drafted yet"}
-                  {captain && ` · C: ${captain.name}`}
+
+                {/* Bottom Section: Squad Meta Data */}
+                <div className="mt-4 flex items-center justify-between text-[12px] font-bold uppercase tracking-wide text-muted">
+                  <span>
+                    {team.squad.length > 0
+                      ? `${team.squad.length} Players`
+                      : "Squad not drafted"}
+                  </span>
+                  {captain && (
+                    <span className="flex items-center gap-1 rounded-sm bg-panel2 px-2 py-1 transition-colors group-hover:bg-panel">
+                      <span className="text-muted">C:</span>
+                      <span className="text-brand">{captain.name}</span>
+                    </span>
+                  )}
                 </div>
               </Link>
             );
