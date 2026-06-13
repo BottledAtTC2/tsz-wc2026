@@ -1,6 +1,8 @@
 import type { Pool } from "./types";
 
 export const pools: Pool[] = [
-  { id: "pool1", name: "Pool 1" },
-  { id: "pool2", name: "Pool 2" },
+  // Best 10 of 11 players count.
+  { id: "tsz", name: "TSZ Pool", countTop: 10 },
+  // All 11 players count.
+  { id: "cco", name: "CCO Pool" },
 ];

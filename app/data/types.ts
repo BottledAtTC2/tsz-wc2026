@@ -39,6 +39,11 @@ export interface FantasyTeam {
 export interface Pool {
   id: string;
   name: string;
+  /**
+   * How many of a team's 11 players count toward its total. Undefined means
+   * all players count; e.g. 10 means the best 10 of 11 (lowest dropped).
+   */
+  countTop?: number;
 }
 
 export type FixtureStatus = "scheduled" | "live" | "finished";

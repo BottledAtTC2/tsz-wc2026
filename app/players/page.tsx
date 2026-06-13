@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { players } from "../data/players";
-import { teamForPlayer } from "../lib/lookups";
+import { teamsForPlayer } from "../lib/lookups";
 import { playerPointsMap } from "../lib/scores";
 import type { Position } from "../data/types";
 
@@ -63,7 +63,7 @@ export default function PlayersPage() {
               </div>
               <div className="overflow-hidden rounded-xl border border-edge">
                 {group.map((p, i) => {
-                  const owner = teamForPlayer(p.id);
+                  const owners = teamsForPlayer(p.id);
                   return (
                     <div
                       key={p.id}
@@ -78,15 +78,16 @@ export default function PlayersPage() {
                           {p.club && ` · ${p.club}`}
                         </div>
                       </div>
-                      <div className="flex shrink-0 items-center gap-3">
-                        {owner && (
+                      <div className="flex shrink-0 items-center gap-2">
+                        {owners.map((owner) => (
                           <Link
+                            key={owner.id}
                             href={`/team/${owner.id}`}
-                            className="rounded-full bg-panel2 px-2.5 py-1 text-xs text-muted hover:text-ink"
+                            className="hidden rounded-full bg-panel2 px-2.5 py-1 text-xs text-muted hover:text-ink sm:inline"
                           >
                             {owner.name}
                           </Link>
-                        )}
+                        ))}
                         <span className="w-12 text-right text-lg font-bold tabular-nums">
                           {points.get(p.id) ?? 0}
                         </span>

@@ -5,7 +5,7 @@ export const teams: FantasyTeam[] = [
   {
     id: "shivadip",
     name: "Team ShivaDip",
-    poolId: "pool1",
+    poolId: "tsz",
     squad: [
       "courtois", "guehi", "hakimi", "van-de-ven", "de-bruyne", "arda-guler",
       "odegaard", "vitinha", "dembele", "depay", "trossard",
@@ -17,7 +17,7 @@ export const teams: FantasyTeam[] = [
   {
     id: "yash",
     name: "Team Yash",
-    poolId: "pool1",
+    poolId: "tsz",
     squad: [
       "maignan", "reece-james", "cristian-romero", "david-raum", "pavlovic",
       "reijnders", "paredes", "vinicius", "lautaro", "oyarzabal", "saka",
@@ -29,7 +29,7 @@ export const teams: FantasyTeam[] = [
   {
     id: "aggarwal-sweets",
     name: "Team Aggarwal Sweets",
-    poolId: "pool1",
+    poolId: "tsz",
     squad: [
       "pickford", "inacio", "cucurella", "ryerson", "joao-neves", "wirtz",
       "paqueta", "kimmich", "mbappe", "rashford", "endrick",
@@ -41,7 +41,7 @@ export const teams: FantasyTeam[] = [
   {
     id: "aman",
     name: "Team Aman",
-    poolId: "pool1",
+    poolId: "tsz",
     squad: [
       "diogo-costa", "upamecano", "van-dijk", "pacho", "bruno-fernandes",
       "de-jong", "elliot-anderson", "julian-alvarez", "luis-suarez",
@@ -54,7 +54,7 @@ export const teams: FantasyTeam[] = [
   {
     id: "tanmay",
     name: "Team Tanmay",
-    poolId: "pool1",
+    poolId: "tsz",
     squad: [
       "bounou", "ruben-dias", "oreilly", "van-hecke", "yildiz", "tchouameni",
       "modric", "yamal", "matheus-cunha", "luis-diaz", "brahim-diaz",
@@ -66,7 +66,7 @@ export const teams: FantasyTeam[] = [
   {
     id: "udkohli",
     name: "Team UDKohli",
-    poolId: "pool1",
+    poolId: "tsz",
     squad: [
       "unai-simon", "nuno-mendes", "schlotterbeck", "dumfries", "casemiro",
       "bruno-guimaraes", "valverde", "morgan-rogers", "kane", "ronaldo", "salah",
@@ -78,7 +78,7 @@ export const teams: FantasyTeam[] = [
   {
     id: "zeeshan",
     name: "Team Zeeshan",
-    poolId: "pool1",
+    poolId: "tsz",
     squad: [
       "messi", "musiala", "enzo-fernandez", "pedri", "cubarsi", "konsa",
       "molina", "ferran-torres", "embolo", "raul-jimenez", "neuer",
@@ -90,7 +90,7 @@ export const teams: FantasyTeam[] = [
   {
     id: "abhishek",
     name: "Team Abhishek",
-    poolId: "pool1",
+    poolId: "tsz",
     squad: [
       "olise", "nico-williams", "marcos-llorente", "mac-allister",
       "giovanni-simeone", "raphinha", "alex-sandro", "tah", "baumann",
@@ -103,7 +103,7 @@ export const teams: FantasyTeam[] = [
   {
     id: "mfk",
     name: "Team MFK",
-    poolId: "pool1",
+    poolId: "tsz",
     squad: [
       "theo-hernandez", "bernardo-silva", "cancelo", "rodri", "declan-rice",
       "marquinhos", "alisson", "haaland", "kai-havertz", "doku", "sorloth",
@@ -115,7 +115,7 @@ export const teams: FantasyTeam[] = [
   {
     id: "jemin",
     name: "Team Jemin",
-    poolId: "pool1",
+    poolId: "tsz",
     squad: [
       "saliba", "cherki", "doue", "kounde", "fabian-ruiz", "dani-olmo",
       "emi-martinez", "bellingham", "neymar", "gabriel", "gakpo",
@@ -124,7 +124,154 @@ export const teams: FantasyTeam[] = [
     viceCaptainId: "doue",
     points: 0,
   },
-  // Pool 2 teams (up to 10) will be added once that draft is provided.
+
+  // ===== CCO Pool =====
+  {
+    id: "night-merchants",
+    name: "Night Merchants",
+    poolId: "cco",
+    squad: [
+      "kobel", "reece-james", "saliba", "van-de-ven", "joao-neves",
+      "bruno-guimaraes", "tielemans", "olise", "doue", "raul-jimenez", "embolo",
+    ],
+    captainId: "olise",
+    viceCaptainId: "joao-neves",
+    points: 0,
+  },
+  {
+    id: "le-fifa",
+    name: "Le FIFA",
+    poolId: "cco",
+    squad: [
+      "declan-rice", "cancelo", "diogo-costa", "bernardo-silva", "vinicius",
+      "casemiro", "odegaard", "van-dijk", "gakpo", "pavlovic", "ryerson",
+    ],
+    captainId: "vinicius",
+    viceCaptainId: "bernardo-silva",
+    points: 0,
+  },
+  {
+    id: "jokic",
+    name: "Jokic",
+    poolId: "cco",
+    squad: [
+      "pickford", "oreilly", "hakimi", "marquinhos", "dumfries", "brahim-diaz",
+      "de-paul", "rabiot", "kane", "trossard", "malen",
+    ],
+    captainId: "kane",
+    viceCaptainId: "oreilly",
+    points: 0,
+  },
+  {
+    id: "sidmay",
+    name: "Sidmay",
+    poolId: "cco",
+    squad: [
+      "maignan", "konsa", "timber", "hincapie", "enzo-fernandez", "modric",
+      "caicedo", "dembele", "haaland", "lautaro", "ferran-torres",
+    ],
+    captainId: "dembele",
+    viceCaptainId: "haaland",
+    points: 0,
+  },
+  {
+    id: "bangalore-vibrators",
+    name: "Bangalore Vibrators",
+    poolId: "cco",
+    squad: [
+      "yamal", "ronaldo", "vitinha", "cristian-romero", "theo-hernandez",
+      "schlotterbeck", "salah", "mctominay", "edouard-mendy", "mane",
+      "reijnders",
+    ],
+    captainId: "yamal",
+    viceCaptainId: "vitinha",
+    points: 0,
+  },
+  {
+    id: "cco-zeeshan",
+    name: "Zeeshan",
+    poolId: "cco",
+    squad: [
+      "julian-alvarez", "messi", "bellingham", "rodri", "lucas-hernandez",
+      "kimmich", "neuer", "molina", "alaba", "patrik-schick", "sabitzer",
+    ],
+    captainId: "messi",
+    viceCaptainId: "julian-alvarez",
+    points: 0,
+  },
+  {
+    id: "saishith",
+    name: "Saishith",
+    poolId: "cco",
+    squad: [
+      "nico-williams", "raphinha", "cubarsi", "tchouameni", "giovanni-simeone",
+      "musiala", "doku", "de-jong", "verbruggen", "gvardiol", "koulibaly",
+    ],
+    captainId: "nico-williams",
+    viceCaptainId: "raphinha",
+    points: 0,
+  },
+  {
+    id: "diptham",
+    name: "Diptham",
+    poolId: "cco",
+    squad: [
+      "courtois", "guehi", "marcos-llorente", "davies", "fabian-ruiz",
+      "morgan-rogers", "wirtz", "valverde", "matheus-cunha", "de-ketelaere",
+      "yildiz",
+    ],
+    captainId: "wirtz",
+    viceCaptainId: "matheus-cunha",
+    points: 0,
+  },
+  {
+    id: "nishank",
+    name: "Nishank",
+    poolId: "cco",
+    squad: [
+      "alisson", "oyarzabal", "depay", "gordon", "kai-havertz", "pedri",
+      "cherki", "arda-guler", "tah", "laimer", "eric-garcia",
+    ],
+    captainId: "oyarzabal",
+    viceCaptainId: "pedri",
+    points: 0,
+  },
+  {
+    id: "mradul-mavericks",
+    name: "Mradul Mavericks",
+    poolId: "cco",
+    squad: [
+      "tagliafico", "saka", "unai-simon", "mbappe", "kante", "konate",
+      "inacio", "neymar", "rieder", "ounahi", "lukaku",
+    ],
+    captainId: "mbappe",
+    viceCaptainId: "rieder",
+    points: 0,
+  },
+  {
+    id: "kanha",
+    name: "Kanha",
+    poolId: "cco",
+    squad: [
+      "emi-martinez", "upamecano", "pacho", "stanisic", "bruno-fernandes",
+      "de-bruyne", "dani-olmo", "rashford", "luis-diaz", "son", "pulisic",
+    ],
+    captainId: "bruno-fernandes",
+    viceCaptainId: "de-bruyne",
+    points: 0,
+  },
+  {
+    id: "maclone",
+    name: "Maclone",
+    poolId: "cco",
+    squad: [
+      "mac-allister", "elliot-anderson", "cucurella", "nuno-mendes", "leao",
+      "ruben-dias", "paqueta", "gabriel", "undav", "bounou", "luis-suarez",
+    ],
+    captainId: "nuno-mendes",
+    viceCaptainId: "elliot-anderson",
+    points: 0,
+  },
 ];
 
 export const teamById = new Map(teams.map((t) => [t.id, t]));

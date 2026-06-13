@@ -26,12 +26,17 @@ interface Ownership {
   role: CaptainRole;
 }
 
-const ownership = new Map<string, Ownership>();
+// A real player can be drafted by several fantasy teams (e.g. one per pool),
+// each with its own captain/vice designation — so each player maps to a LIST
+// of owners.
+const ownership = new Map<string, Ownership[]>();
 for (const t of teams) {
   for (const pid of t.squad) {
     const role: CaptainRole =
       pid === t.captainId ? "captain" : pid === t.viceCaptainId ? "vice" : "none";
-    ownership.set(pid, { teamId: t.id, role });
+    const owners = ownership.get(pid) ?? [];
+    owners.push({ teamId: t.id, role });
+    ownership.set(pid, owners);
   }
 }
 
@@ -209,25 +214,28 @@ export function scoreEvent(
         if (featured) unresolved.push(entry.player.name);
         continue;
       }
-      const own = ownership.get(player.id);
-      if (!own) continue; // resolved but not drafted — expected, ignore
+      const owners = ownership.get(player.id);
+      if (!owners) continue; // resolved but not drafted — expected, ignore
       const stats = statLine(entry, player.position);
       if (stats.minutes <= 0) continue; // didn't feature
       applyContext(stats, sofaId, side, incs);
 
-      const score = computePlayerScore(stats, own.role);
-      results.push({
-        playerId: player.id,
-        sofascoreId: sofaId,
-        name: player.name,
-        teamId: own.teamId,
-        role: own.role,
-        stats,
-        base: score.base,
-        multiplier: score.multiplier,
-        total: score.total,
-        lines: score.lines,
-      });
+      // One result per owning team, each with that team's captain multiplier.
+      for (const own of owners) {
+        const score = computePlayerScore(stats, own.role);
+        results.push({
+          playerId: player.id,
+          sofascoreId: sofaId,
+          name: player.name,
+          teamId: own.teamId,
+          role: own.role,
+          stats,
+          base: score.base,
+          multiplier: score.multiplier,
+          total: score.total,
+          lines: score.lines,
+        });
+      }
     }
   }
 
@@ -258,11 +266,16 @@ function unmatchedDrafted(
   if (nations.size === 0) return [];
 
   const out: UnmatchedDrafted[] = [];
-  for (const [playerId, own] of ownership) {
+  for (const [playerId, owners] of ownership) {
     if (scoredIds.has(playerId)) continue;
     const p = playerById.get(playerId);
     if (p && nations.has(normalizeCountry(p.country))) {
-      out.push({ playerId, name: p.name, country: p.country, teamId: own.teamId });
+      out.push({
+        playerId,
+        name: p.name,
+        country: p.country,
+        teamId: owners.map((o) => o.teamId).join(", "),
+      });
     }
   }
   return out;

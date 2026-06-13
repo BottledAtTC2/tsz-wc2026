@@ -6,7 +6,7 @@ export function poolName(poolId: string): string {
   return pools.find((p) => p.id === poolId)?.name ?? poolId;
 }
 
-/** Which fantasy team (if any) drafted a given player. */
-export function teamForPlayer(playerId: string) {
-  return teams.find((t) => t.squad.includes(playerId));
+/** Every fantasy team that drafted a given player (one per pool, possibly). */
+export function teamsForPlayer(playerId: string) {
+  return teams.filter((t) => t.squad.includes(playerId));
 }

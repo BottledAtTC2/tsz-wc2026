@@ -3,7 +3,12 @@ import Link from "next/link";
 import { teamById } from "../../data/teams";
 import { playerById } from "../../data/players";
 import { poolName } from "../../lib/lookups";
-import { teamPointsMap, playerPointsMap, teamBreakdown } from "../../lib/scores";
+import {
+  teamPointsMap,
+  teamPlayerTotals,
+  countedPlayerIds,
+  teamBreakdown,
+} from "../../lib/scores";
 import type { Position } from "../../data/types";
 
 const POSITION_ORDER: Position[] = ["GK", "DEF", "MID", "FWD"];
@@ -30,17 +35,10 @@ export default async function TeamPage(props: PageProps<"/team/[id]">) {
     .filter((p) => p !== undefined);
 
   const teamPts = teamPointsMap().get(team.id) ?? 0;
-  const playerPts = playerPointsMap();
+  const playerPts = teamPlayerTotals(team.id);
   const breakdown = teamBreakdown(team.id);
-
-  // Only a team's best 10 of 11 players count — flag which ones are counted.
-  const counted = new Set(
-    squad
-      .map((p) => ({ id: p.id, pts: playerPts.get(p.id) ?? 0 }))
-      .sort((a, b) => b.pts - a.pts)
-      .slice(0, 10)
-      .map((x) => x.id),
-  );
+  // Which players count toward the team total (per the pool's rule).
+  const counted = countedPlayerIds(team.id);
 
   return (
     <main>

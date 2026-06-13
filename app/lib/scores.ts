@@ -5,11 +5,9 @@
 
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import path from "node:path";
-import { teams } from "../data/teams";
+import { teams, teamById } from "../data/teams";
+import { pools } from "../data/pools";
 import type { MatchResult } from "./sofascore/ingest";
-
-/** Each fantasy team scores only its best COUNTING_PLAYERS of 11. */
-export const COUNTING_PLAYERS = 10;
 
 export interface ScoresStore {
   matches: Record<string, MatchResult>;
@@ -39,35 +37,78 @@ export function allMatches(store = loadScores()): MatchResult[] {
 }
 
 /**
- * Season points per fantasy team — counting only each team's best
- * COUNTING_PLAYERS players (top 10 of 11), so the lowest-scoring player is
- * dropped from the team total.
+ * Per-team, per-player season totals (with that team's captain multiplier
+ * applied). A player drafted by several teams contributes separately to each.
+ */
+export function teamPlayerTotals(
+  teamId: string,
+  store = loadScores(),
+): Map<string, number> {
+  const map = new Map<string, number>();
+  for (const match of Object.values(store.matches)) {
+    for (const p of match.players) {
+      if (p.teamId !== teamId) continue;
+      map.set(p.playerId, (map.get(p.playerId) ?? 0) + p.total);
+    }
+  }
+  return map;
+}
+
+/**
+ * Season points per fantasy team. Each pool decides how many of the 11 players
+ * count (`countTop`): the TSZ Pool counts the best 10; the CCO Pool counts all.
  */
 export function teamPointsMap(store = loadScores()): Map<string, number> {
-  const pp = playerPointsMap(store);
   const map = new Map<string, number>();
   for (const team of teams) {
-    const totals = team.squad
-      .map((pid) => pp.get(pid) ?? 0)
-      .sort((a, b) => b - a)
-      .slice(0, COUNTING_PLAYERS);
+    const totals = teamPlayerTotals(team.id, store);
+    const countTop = pools.find((p) => p.id === team.poolId)?.countTop;
+    const sorted = team.squad
+      .map((pid) => totals.get(pid) ?? 0)
+      .sort((a, b) => b - a);
+    const counted = countTop ? sorted.slice(0, countTop) : sorted;
     map.set(
       team.id,
-      totals.reduce((s, x) => s + x, 0),
+      counted.reduce((s, x) => s + x, 0),
     );
   }
   return map;
 }
 
-/** Season points per real player id. */
+/**
+ * Season points per real player id — the player's own (base) points, without
+ * any captain multiplier, counted once per match even if owned by many teams.
+ */
 export function playerPointsMap(store = loadScores()): Map<string, number> {
   const map = new Map<string, number>();
   for (const match of Object.values(store.matches)) {
+    const seen = new Set<string>();
     for (const p of match.players) {
-      map.set(p.playerId, (map.get(p.playerId) ?? 0) + p.total);
+      if (seen.has(p.playerId)) continue;
+      seen.add(p.playerId);
+      map.set(p.playerId, (map.get(p.playerId) ?? 0) + p.base);
     }
   }
   return map;
+}
+
+/** Which players count toward a team's total (best N by that team's totals). */
+export function countedPlayerIds(
+  teamId: string,
+  store = loadScores(),
+): Set<string> {
+  const team = teamById.get(teamId);
+  if (!team) return new Set();
+  const countTop = pools.find((p) => p.id === team.poolId)?.countTop;
+  if (!countTop) return new Set(team.squad);
+  const totals = teamPlayerTotals(teamId, store);
+  return new Set(
+    team.squad
+      .map((pid) => ({ pid, pts: totals.get(pid) ?? 0 }))
+      .sort((a, b) => b.pts - a.pts)
+      .slice(0, countTop)
+      .map((x) => x.pid),
+  );
 }
 
 /** All per-match contributions for one fantasy team, newest first. */
