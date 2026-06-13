@@ -11,71 +11,36 @@ import {
 
 export const metadata: Metadata = { title: "Team Squad — TSZ WC 2026" };
 
-// The 48-Team Color Map (Used for Card Headers now instead of jerseys)
+// Colour map for the nations our drafted players actually belong to.
 const COUNTRY_COLORS: Record<string, { bg: string; text: string }> = {
-  // Hosts
-  England: { bg: "bg-[#FAFAFA]", text: "text-[#00145A]" },
-  USA: { bg: "bg-[#002868]", text: "text-white" },
-  Mexico: { bg: "bg-[#006847]", text: "text-white" },
-  Canada: { bg: "bg-[#FF0000]", text: "text-white" },
-
-  // South America
   Argentina: { bg: "bg-[#43A1D5]", text: "text-black" },
-  Brazil: { bg: "bg-[#FFFE00]", text: "text-[#002776]" },
-  Uruguay: { bg: "bg-[#7BCAE6]", text: "text-black" },
-  Colombia: { bg: "bg-[#FCD116]", text: "text-[#003893]" },
-  Chile: { bg: "bg-[#D52B1E]", text: "text-white" },
-  Ecuador: { bg: "bg-[#FFD100]", text: "text-[#001489]" },
-  Peru: { bg: "bg-[#D91023]", text: "text-white" },
-
-  // Europe
-  France: { bg: "bg-[#002395]", text: "text-white" },
-  Spain: { bg: "bg-[#AA151B]", text: "text-[#F1BF00]" },
-  Germany: { bg: "bg-white", text: "text-black" },
-  Portugal: { bg: "bg-[#E42518]", text: "text-[#F1BF00]" },
-  Italy: { bg: "bg-[#0066B2]", text: "text-white" },
-  Netherlands: { bg: "bg-[#F36C21]", text: "text-black" },
-  Belgium: { bg: "bg-[#E30613]", text: "text-[#FDDA24]" },
-  Croatia: { bg: "bg-[#ED1C24]", text: "text-white" },
-  Switzerland: { bg: "bg-[#FF0000]", text: "text-white" },
-  Denmark: { bg: "bg-[#C60C30]", text: "text-white" },
-  Sweden: { bg: "bg-[#FECC00]", text: "text-[#006AA7]" },
-  Poland: { bg: "bg-[#DC143C]", text: "text-white" },
-  Serbia: { bg: "bg-[#C6363C]", text: "text-white" },
   Austria: { bg: "bg-[#ED2939]", text: "text-white" },
-  Ukraine: { bg: "bg-[#FFD700]", text: "text-[#0057B7]" },
-
-  // Africa
-  Morocco: { bg: "bg-[#C1272D]", text: "text-white" },
-  Senegal: { bg: "bg-[#00853F]", text: "text-white" },
-  Nigeria: { bg: "bg-[#008751]", text: "text-white" },
+  Belgium: { bg: "bg-[#E30613]", text: "text-[#FDDA24]" },
+  Brazil: { bg: "bg-[#FFFE00]", text: "text-[#002776]" },
+  Canada: { bg: "bg-[#FF0000]", text: "text-white" },
+  Colombia: { bg: "bg-[#FCD116]", text: "text-[#003893]" },
+  Croatia: { bg: "bg-[#ED1C24]", text: "text-white" },
+  Czechia: { bg: "bg-[#11457E]", text: "text-white" },
+  Ecuador: { bg: "bg-[#FFD100]", text: "text-[#001489]" },
   Egypt: { bg: "bg-[#CE1126]", text: "text-white" },
-  Ghana: { bg: "bg-white", text: "text-black" },
-  Cameroon: { bg: "bg-[#007A5E]", text: "text-[#FCD116]" },
-  "Ivory Coast": { bg: "bg-[#F77F00]", text: "text-white" },
-  Algeria: { bg: "bg-[#006233]", text: "text-white" },
-  Tunisia: { bg: "bg-[#E70013]", text: "text-white" },
-
-  // Asia & Australia
-  Japan: { bg: "bg-[#000555]", text: "text-white" },
+  England: { bg: "bg-[#FAFAFA]", text: "text-[#00145A]" },
+  France: { bg: "bg-[#002395]", text: "text-white" },
+  Germany: { bg: "bg-white", text: "text-black" },
+  Mexico: { bg: "bg-[#006847]", text: "text-white" },
+  Morocco: { bg: "bg-[#C1272D]", text: "text-white" },
+  Netherlands: { bg: "bg-[#F36C21]", text: "text-black" },
+  Norway: { bg: "bg-[#BA0C2F]", text: "text-white" },
+  Portugal: { bg: "bg-[#E42518]", text: "text-[#F1BF00]" },
+  Scotland: { bg: "bg-[#0065BF]", text: "text-white" },
+  Senegal: { bg: "bg-[#00853F]", text: "text-white" },
   "South Korea": { bg: "bg-[#C21A30]", text: "text-white" },
-  Australia: { bg: "bg-[#FFCD00]", text: "text-[#008751]" },
-  Iran: { bg: "bg-[#DA0000]", text: "text-white" },
-  "Saudi Arabia": { bg: "bg-[#006C35]", text: "text-white" },
-  Qatar: { bg: "bg-[#8A1538]", text: "text-white" },
-  UAE: { bg: "bg-white", text: "text-[#FF0000]" },
-  Uzbekistan: { bg: "bg-[#0099B5]", text: "text-white" },
+  Spain: { bg: "bg-[#AA151B]", text: "text-[#F1BF00]" },
+  Switzerland: { bg: "bg-[#FF0000]", text: "text-white" },
+  Turkey: { bg: "bg-[#E30A17]", text: "text-white" },
+  USA: { bg: "bg-[#002868]", text: "text-white" },
+  Uruguay: { bg: "bg-[#7BCAE6]", text: "text-black" },
 
-  // CONCACAF
-  "Costa Rica": { bg: "bg-[#CE1126]", text: "text-white" },
-  Panama: { bg: "bg-[#DA291C]", text: "text-white" },
-  Jamaica: { bg: "bg-[#FED100]", text: "text-[#009B3A]" },
-
-  // OFC
-  "New Zealand": { bg: "bg-white", text: "text-black" },
-  Fiji: { bg: "bg-white", text: "text-black" },
-
-  // Fallback
+  // Fallback for any nation not listed above.
   DEFAULT: { bg: "bg-panel2", text: "text-ink" },
 };
 
@@ -130,6 +95,25 @@ export default async function TeamPage(props: {
         </div>
       </div>
 
+      {/* The Legend UI */}
+      <div className="mb-4 flex items-center gap-6 rounded-lg border border-edge bg-panel/50 px-4 py-2">
+        <span className="text-[11px] font-black uppercase tracking-widest text-muted">
+          Legend:
+        </span>
+        <div className="flex items-center gap-2">
+          <span className="h-3 w-4 rounded-sm border-2 border-amber-400 bg-amber-400/20"></span>
+          <span className="text-[11px] font-bold uppercase tracking-widest text-ink">
+            Captain
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="h-3 w-4 rounded-sm border-2 border-slate-300 bg-slate-300/20"></span>
+          <span className="text-[11px] font-bold uppercase tracking-widest text-ink">
+            Vice-Captain
+          </span>
+        </div>
+      </div>
+
       {/* Grid of Player Stat Cards */}
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {squad.map((player) => {
@@ -137,6 +121,13 @@ export default async function TeamPage(props: {
           const isVice = team.viceCaptainId === player.id;
           const kit =
             COUNTRY_COLORS[player.country] || COUNTRY_COLORS["DEFAULT"];
+
+          // Captain = gold border, vice = silver border, otherwise default.
+          const borderStyle = isCaptain
+            ? "border-[3px] border-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.15)]"
+            : isVice
+              ? "border-[3px] border-slate-300 shadow-[0_0_15px_rgba(203,213,225,0.1)]"
+              : "border border-edge hover:border-brand/50";
 
           // Real points breakdown for this player on this team.
           const breakdown = breakdowns.get(player.id);
@@ -150,11 +141,11 @@ export default async function TeamPage(props: {
           return (
             <div
               key={player.id}
-              className="flex flex-col overflow-hidden rounded-xl border border-edge bg-panel shadow-lg transition-colors hover:border-brand/50"
+              className={`flex flex-col overflow-hidden rounded-xl bg-panel transition-colors ${borderStyle}`}
             >
               {/* Card Header (Color Coded by Country) */}
               <div
-                className={`relative flex flex-col justify-center border-b border-edge px-5 py-4 ${kit.bg} ${kit.text}`}
+                className={`flex flex-col justify-center border-b border-edge px-5 py-4 ${kit.bg} ${kit.text}`}
               >
                 <div className="text-xl font-black uppercase tracking-tight">
                   {player.name}
@@ -162,13 +153,6 @@ export default async function TeamPage(props: {
                 <div className="mt-0.5 text-[11px] font-bold uppercase tracking-widest opacity-80">
                   {player.position} // {player.country}
                 </div>
-
-                {/* C/VC Badge floating on the right */}
-                {(isCaptain || isVice) && (
-                  <span className="absolute right-4 top-1/2 flex h-[28px] w-[28px] -translate-y-1/2 items-center justify-center rounded-full border-2 border-brand bg-panel text-[14px] font-black text-brand shadow-md">
-                    {isCaptain ? "C" : "V"}
-                  </span>
-                )}
               </div>
 
               {/* Stats Breakdown Body */}
