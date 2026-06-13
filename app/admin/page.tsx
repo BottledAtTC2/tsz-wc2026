@@ -44,6 +44,33 @@ export default function AdminPage() {
     if (file) setText(await file.text());
   }
 
+  const [fxBusy, setFxBusy] = useState(false);
+  const [fxMsg, setFxMsg] = useState<string | null>(null);
+
+  async function loadFixtures(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setFxBusy(true);
+    setFxMsg(null);
+    try {
+      const r = await fetch("/api/fixtures", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: await file.text(),
+      });
+      const j = await r.json();
+      setFxMsg(
+        r.ok
+          ? `Loaded ${j.total} fixtures (${j.added} new, ${j.finished} finished).`
+          : `Error: ${j.error ?? r.status}`,
+      );
+    } catch (err) {
+      setFxMsg((err as Error).message);
+    } finally {
+      setFxBusy(false);
+    }
+  }
+
   return (
     <main>
       <h1 className="mb-1 text-3xl font-bold">Ingest a match</h1>
@@ -141,6 +168,24 @@ export default function AdminPage() {
           )}
         </div>
       )}
+
+      <section className="mt-10 border-t border-edge pt-6">
+        <h2 className="mb-1 text-xl font-bold">Load fixtures</h2>
+        <p className="mb-3 text-sm text-muted">
+          Upload the <code className="text-ink">fixtures.json</code> grabbed from
+          Sofascore to populate the schedule.
+        </p>
+        <label className="cursor-pointer rounded-lg bg-panel2 px-3 py-2 text-sm hover:bg-edge">
+          {fxBusy ? "Loading…" : "Choose fixtures.json…"}
+          <input
+            type="file"
+            accept="application/json,.json"
+            onChange={loadFixtures}
+            className="hidden"
+          />
+        </label>
+        {fxMsg && <p className="mt-3 text-sm text-muted">{fxMsg}</p>}
+      </section>
     </main>
   );
 }
