@@ -163,7 +163,7 @@ export const players: Player[] = [
   { id: "ounahi", name: "Azzedine Ounahi", country: "Morocco", position: "MID", club: "Girona" },
   { id: "lukaku", name: "Romelu Lukaku", country: "Belgium", position: "FWD", club: "Napoli" },
   { id: "stanisic", name: "Josip Stanišić", country: "Croatia", position: "DEF", club: "Bayern Munich" },
-  { id: "son", name: "Heung-min Son", country: "South Korea", position: "FWD", club: "Tottenham" },
+  { id: "son", name: "Son Heung-min", country: "South Korea", position: "FWD", club: "Tottenham" },
   { id: "pulisic", name: "Christian Pulisic", country: "USA", position: "FWD", club: "AC Milan" },
   { id: "leao", name: "Rafael Leão", country: "Portugal", position: "FWD", club: "AC Milan" },
   { id: "undav", name: "Deniz Undav", country: "Germany", position: "FWD", club: "VfB Stuttgart" },
