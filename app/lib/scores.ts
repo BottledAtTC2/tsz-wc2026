@@ -54,6 +54,50 @@ export function teamPlayerTotals(
   return map;
 }
 
+export interface PlayerSeasonBreakdown {
+  /** Team-specific season total (captain multiplier included). */
+  total: number;
+  /** Point-earning actions, aggregated across matches, summing to `total`. */
+  lines: { label: string; points: number }[];
+}
+
+/**
+ * Per-player season breakdown for one team: each scoring action (goals,
+ * started, chances, cards…) aggregated across matches, plus the captain/vice
+ * bonus, so the lines add up to the player's team total.
+ */
+export function teamPlayerBreakdowns(
+  teamId: string,
+  store = loadScores(),
+): Map<string, PlayerSeasonBreakdown> {
+  const map = new Map<string, PlayerSeasonBreakdown>();
+  const addLine = (b: PlayerSeasonBreakdown, label: string, points: number) => {
+    const existing = b.lines.find((l) => l.label === label);
+    if (existing) existing.points += points;
+    else b.lines.push({ label, points });
+  };
+  for (const match of Object.values(store.matches)) {
+    for (const p of match.players) {
+      if (p.teamId !== teamId) continue;
+      let b = map.get(p.playerId);
+      if (!b) {
+        b = { total: 0, lines: [] };
+        map.set(p.playerId, b);
+      }
+      b.total += p.total;
+      for (const l of p.lines) addLine(b, l.label, l.points);
+      if (p.multiplier !== 1) {
+        const label =
+          p.role === "captain"
+            ? `Captain (×${p.multiplier})`
+            : `Vice-captain (×${p.multiplier})`;
+        addLine(b, label, p.total - p.base);
+      }
+    }
+  }
+  return map;
+}
+
 /**
  * Season points per fantasy team. Each pool decides how many of the 11 players
  * count (`countTop`): the TSZ Pool counts the best 10; the CCO Pool counts all.
