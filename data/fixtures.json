@@ -1,3 +1,660 @@
 {
-  "fixtures": []
+  "fixtures": [
+    {
+      "id": "15186710",
+      "stage": "Round 1",
+      "home": "Mexico",
+      "away": "South Africa",
+      "kickoff": "2026-06-11T19:00:00.000Z",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "finished",
+      "sofascoreId": 15186710
+    },
+    {
+      "id": "15186720",
+      "stage": "Round 1",
+      "home": "South Korea",
+      "away": "Czechia",
+      "kickoff": "2026-06-12T02:00:00.000Z",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "finished",
+      "sofascoreId": 15186720
+    },
+    {
+      "id": "15186836",
+      "stage": "Round 1",
+      "home": "Canada",
+      "away": "Bosnia & Herzegovina",
+      "kickoff": "2026-06-12T19:00:00.000Z",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "finished",
+      "sofascoreId": 15186836
+    },
+    {
+      "id": "15186873",
+      "stage": "Round 1",
+      "home": "USA",
+      "away": "Paraguay",
+      "kickoff": "2026-06-13T01:00:00.000Z",
+      "homeScore": 4,
+      "awayScore": 1,
+      "status": "finished",
+      "sofascoreId": 15186873
+    },
+    {
+      "id": "15186526",
+      "stage": "Round 1",
+      "home": "Qatar",
+      "away": "Switzerland",
+      "kickoff": "2026-06-13T19:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186526
+    },
+    {
+      "id": "15186850",
+      "stage": "Round 1",
+      "home": "Brazil",
+      "away": "Morocco",
+      "kickoff": "2026-06-13T22:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186850
+    },
+    {
+      "id": "15186853",
+      "stage": "Round 1",
+      "home": "Haiti",
+      "away": "Scotland",
+      "kickoff": "2026-06-14T01:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186853
+    },
+    {
+      "id": "15186874",
+      "stage": "Round 1",
+      "home": "Australia",
+      "away": "Türkiye",
+      "kickoff": "2026-06-14T04:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186874
+    },
+    {
+      "id": "15186899",
+      "stage": "Round 1",
+      "home": "Germany",
+      "away": "Curaçao",
+      "kickoff": "2026-06-14T17:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186899
+    },
+    {
+      "id": "15186945",
+      "stage": "Round 1",
+      "home": "Netherlands",
+      "away": "Japan",
+      "kickoff": "2026-06-14T20:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186945
+    },
+    {
+      "id": "15186904",
+      "stage": "Round 1",
+      "home": "Côte d'Ivoire",
+      "away": "Ecuador",
+      "kickoff": "2026-06-14T23:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186904
+    },
+    {
+      "id": "15186951",
+      "stage": "Round 1",
+      "home": "Sweden",
+      "away": "Tunisia",
+      "kickoff": "2026-06-15T02:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186951
+    },
+    {
+      "id": "15186783",
+      "stage": "Round 1",
+      "home": "Spain",
+      "away": "Cabo Verde",
+      "kickoff": "2026-06-15T16:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186783
+    },
+    {
+      "id": "15186837",
+      "stage": "Round 1",
+      "home": "Belgium",
+      "away": "Egypt",
+      "kickoff": "2026-06-15T19:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186837
+    },
+    {
+      "id": "15186811",
+      "stage": "Round 1",
+      "home": "Saudi Arabia",
+      "away": "Uruguay",
+      "kickoff": "2026-06-15T22:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186811
+    },
+    {
+      "id": "15186832",
+      "stage": "Round 1",
+      "home": "Iran",
+      "away": "New Zealand",
+      "kickoff": "2026-06-16T01:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186832
+    },
+    {
+      "id": "15186501",
+      "stage": "Round 1",
+      "home": "France",
+      "away": "Senegal",
+      "kickoff": "2026-06-16T19:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186501
+    },
+    {
+      "id": "15186773",
+      "stage": "Round 1",
+      "home": "Iraq",
+      "away": "Norway",
+      "kickoff": "2026-06-16T22:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186773
+    },
+    {
+      "id": "15186854",
+      "stage": "Round 1",
+      "home": "Argentina",
+      "away": "Algeria",
+      "kickoff": "2026-06-17T01:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186854
+    },
+    {
+      "id": "15186751",
+      "stage": "Round 1",
+      "home": "Austria",
+      "away": "Jordan",
+      "kickoff": "2026-06-17T04:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186751
+    },
+    {
+      "id": "15186709",
+      "stage": "Round 1",
+      "home": "Portugal",
+      "away": "DR Congo",
+      "kickoff": "2026-06-17T17:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186709
+    },
+    {
+      "id": "15186504",
+      "stage": "Round 1",
+      "home": "England",
+      "away": "Croatia",
+      "kickoff": "2026-06-17T20:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186504
+    },
+    {
+      "id": "15186687",
+      "stage": "Round 1",
+      "home": "Ghana",
+      "away": "Panama",
+      "kickoff": "2026-06-17T23:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186687
+    },
+    {
+      "id": "15186722",
+      "stage": "Round 1",
+      "home": "Uzbekistan",
+      "away": "Colombia",
+      "kickoff": "2026-06-18T02:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186722
+    },
+    {
+      "id": "15186731",
+      "stage": "Round 2",
+      "home": "Czechia",
+      "away": "South Africa",
+      "kickoff": "2026-06-18T16:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186731
+    },
+    {
+      "id": "15186806",
+      "stage": "Round 2",
+      "home": "Switzerland",
+      "away": "Bosnia & Herzegovina",
+      "kickoff": "2026-06-18T19:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186806
+    },
+    {
+      "id": "15186798",
+      "stage": "Round 2",
+      "home": "Canada",
+      "away": "Qatar",
+      "kickoff": "2026-06-18T22:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186798
+    },
+    {
+      "id": "15186490",
+      "stage": "Round 2",
+      "home": "Mexico",
+      "away": "South Korea",
+      "kickoff": "2026-06-19T01:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186490
+    },
+    {
+      "id": "15186878",
+      "stage": "Round 2",
+      "home": "USA",
+      "away": "Australia",
+      "kickoff": "2026-06-19T19:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186878
+    },
+    {
+      "id": "15186859",
+      "stage": "Round 2",
+      "home": "Scotland",
+      "away": "Morocco",
+      "kickoff": "2026-06-19T22:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186859
+    },
+    {
+      "id": "15186856",
+      "stage": "Round 2",
+      "home": "Brazil",
+      "away": "Haiti",
+      "kickoff": "2026-06-20T00:30:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186856
+    },
+    {
+      "id": "15186879",
+      "stage": "Round 2",
+      "home": "Türkiye",
+      "away": "Paraguay",
+      "kickoff": "2026-06-20T03:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186879
+    },
+    {
+      "id": "15186957",
+      "stage": "Round 2",
+      "home": "Netherlands",
+      "away": "Sweden",
+      "kickoff": "2026-06-20T17:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186957
+    },
+    {
+      "id": "15186905",
+      "stage": "Round 2",
+      "home": "Germany",
+      "away": "Côte d'Ivoire",
+      "kickoff": "2026-06-20T20:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186905
+    },
+    {
+      "id": "15186906",
+      "stage": "Round 2",
+      "home": "Ecuador",
+      "away": "Curaçao",
+      "kickoff": "2026-06-21T00:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186906
+    },
+    {
+      "id": "15186963",
+      "stage": "Round 2",
+      "home": "Tunisia",
+      "away": "Japan",
+      "kickoff": "2026-06-21T04:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186963
+    },
+    {
+      "id": "15186840",
+      "stage": "Round 2",
+      "home": "Spain",
+      "away": "Saudi Arabia",
+      "kickoff": "2026-06-21T16:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186840
+    },
+    {
+      "id": "15186499",
+      "stage": "Round 2",
+      "home": "Belgium",
+      "away": "Iran",
+      "kickoff": "2026-06-21T19:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186499
+    },
+    {
+      "id": "15186800",
+      "stage": "Round 2",
+      "home": "Uruguay",
+      "away": "Cabo Verde",
+      "kickoff": "2026-06-21T22:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186800
+    },
+    {
+      "id": "15186827",
+      "stage": "Round 2",
+      "home": "New Zealand",
+      "away": "Egypt",
+      "kickoff": "2026-06-22T01:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186827
+    },
+    {
+      "id": "15186502",
+      "stage": "Round 2",
+      "home": "Argentina",
+      "away": "Austria",
+      "kickoff": "2026-06-22T17:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186502
+    },
+    {
+      "id": "15186769",
+      "stage": "Round 2",
+      "home": "France",
+      "away": "Iraq",
+      "kickoff": "2026-06-22T21:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186769
+    },
+    {
+      "id": "15186770",
+      "stage": "Round 2",
+      "home": "Norway",
+      "away": "Senegal",
+      "kickoff": "2026-06-23T00:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186770
+    },
+    {
+      "id": "15186740",
+      "stage": "Round 2",
+      "home": "Jordan",
+      "away": "Algeria",
+      "kickoff": "2026-06-23T03:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186740
+    },
+    {
+      "id": "15186858",
+      "stage": "Round 2",
+      "home": "Portugal",
+      "away": "Uzbekistan",
+      "kickoff": "2026-06-23T17:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186858
+    },
+    {
+      "id": "15186672",
+      "stage": "Round 2",
+      "home": "England",
+      "away": "Ghana",
+      "kickoff": "2026-06-23T20:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186672
+    },
+    {
+      "id": "15186520",
+      "stage": "Round 2",
+      "home": "Panama",
+      "away": "Croatia",
+      "kickoff": "2026-06-23T23:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186520
+    },
+    {
+      "id": "15186713",
+      "stage": "Round 2",
+      "home": "Colombia",
+      "away": "DR Congo",
+      "kickoff": "2026-06-24T02:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186713
+    },
+    {
+      "id": "15186829",
+      "stage": "Round 3",
+      "home": "Bosnia & Herzegovina",
+      "away": "Qatar",
+      "kickoff": "2026-06-24T19:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186829
+    },
+    {
+      "id": "15186821",
+      "stage": "Round 3",
+      "home": "Switzerland",
+      "away": "Canada",
+      "kickoff": "2026-06-24T19:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186821
+    },
+    {
+      "id": "15186864",
+      "stage": "Round 3",
+      "home": "Morocco",
+      "away": "Haiti",
+      "kickoff": "2026-06-24T22:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186864
+    },
+    {
+      "id": "15186861",
+      "stage": "Round 3",
+      "home": "Scotland",
+      "away": "Brazil",
+      "kickoff": "2026-06-24T22:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186861
+    },
+    {
+      "id": "15186732",
+      "stage": "Round 3",
+      "home": "Czechia",
+      "away": "Mexico",
+      "kickoff": "2026-06-25T01:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186732
+    },
+    {
+      "id": "15186744",
+      "stage": "Round 3",
+      "home": "South Africa",
+      "away": "South Korea",
+      "kickoff": "2026-06-25T01:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186744
+    },
+    {
+      "id": "15186908",
+      "stage": "Round 3",
+      "home": "Curaçao",
+      "away": "Côte d'Ivoire",
+      "kickoff": "2026-06-25T20:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186908
+    },
+    {
+      "id": "15186907",
+      "stage": "Round 3",
+      "home": "Ecuador",
+      "away": "Germany",
+      "kickoff": "2026-06-25T20:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186907
+    },
+    {
+      "id": "15186972",
+      "stage": "Round 3",
+      "home": "Japan",
+      "away": "Sweden",
+      "kickoff": "2026-06-25T23:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186972
+    },
+    {
+      "id": "15186973",
+      "stage": "Round 3",
+      "home": "Tunisia",
+      "away": "Netherlands",
+      "kickoff": "2026-06-25T23:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186973
+    },
+    {
+      "id": "15186891",
+      "stage": "Round 3",
+      "home": "Paraguay",
+      "away": "Australia",
+      "kickoff": "2026-06-26T02:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186891
+    },
+    {
+      "id": "15186887",
+      "stage": "Round 3",
+      "home": "Türkiye",
+      "away": "USA",
+      "kickoff": "2026-06-26T02:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186887
+    },
+    {
+      "id": "15186537",
+      "stage": "Round 3",
+      "home": "Norway",
+      "away": "France",
+      "kickoff": "2026-06-26T19:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186537
+    },
+    {
+      "id": "15186771",
+      "stage": "Round 3",
+      "home": "Senegal",
+      "away": "Iraq",
+      "kickoff": "2026-06-26T19:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186771
+    },
+    {
+      "id": "15186803",
+      "stage": "Round 3",
+      "home": "Cabo Verde",
+      "away": "Saudi Arabia",
+      "kickoff": "2026-06-27T00:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186803
+    },
+    {
+      "id": "15186841",
+      "stage": "Round 3",
+      "home": "Uruguay",
+      "away": "Spain",
+      "kickoff": "2026-06-27T00:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186841
+    },
+    {
+      "id": "15186828",
+      "stage": "Round 3",
+      "home": "Egypt",
+      "away": "Iran",
+      "kickoff": "2026-06-27T03:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186828
+    },
+    {
+      "id": "15186822",
+      "stage": "Round 3",
+      "home": "New Zealand",
+      "away": "Belgium",
+      "kickoff": "2026-06-27T03:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186822
+    },
+    {
+      "id": "15186624",
+      "stage": "Round 3",
+      "home": "Croatia",
+      "away": "Ghana",
+      "kickoff": "2026-06-27T21:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186624
+    },
+    {
+      "id": "15186676",
+      "stage": "Round 3",
+      "home": "Panama",
+      "away": "England",
+      "kickoff": "2026-06-27T21:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186676
+    },
+    {
+      "id": "15186696",
+      "stage": "Round 3",
+      "home": "Colombia",
+      "away": "Portugal",
+      "kickoff": "2026-06-27T23:30:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186696
+    },
+    {
+      "id": "15186717",
+      "stage": "Round 3",
+      "home": "DR Congo",
+      "away": "Uzbekistan",
+      "kickoff": "2026-06-27T23:30:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186717
+    },
+    {
+      "id": "15186747",
+      "stage": "Round 3",
+      "home": "Algeria",
+      "away": "Austria",
+      "kickoff": "2026-06-28T02:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186747
+    },
+    {
+      "id": "15186734",
+      "stage": "Round 3",
+      "home": "Jordan",
+      "away": "Argentina",
+      "kickoff": "2026-06-28T02:00:00.000Z",
+      "status": "scheduled",
+      "sofascoreId": 15186734
+    }
+  ]
 }
