@@ -1,10 +1,13 @@
 // Grab the whole World Cup 2026 schedule from Sofascore, from your browser.
 //
-// Open any sofascore.com page (e.g. the World Cup page), open the console
+// Open any sofascore.com page (the World Cup page is ideal), open the console
 // (Cmd+Option+J), paste this, press Enter. It downloads fixtures.json — then
-// upload that on your app's /admin page (Fixtures section).
+// upload that on your app's /admin page (Fixtures section). It merges with
+// anything already loaded, so re-running is safe.
 //
 // World Cup = unique-tournament 16, season 58210 (from the network requests).
+// It pulls the finished/upcoming lists AND every round, so all matchdays and
+// knockout rounds are captured.
 
 (async () => {
   try {
@@ -22,7 +25,7 @@
         });
         if (r.ok) return r.json();
       } catch (_) {}
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 3; i++) {
         try {
           const r = await fetch(path, {
             credentials: "include",
@@ -30,24 +33,35 @@
           });
           if (r.ok) return r.json();
         } catch (_) {}
-        await sleep(1500 * (i + 1));
+        await sleep(1200 * (i + 1));
       }
       return null;
     };
 
     const base = `/api/v1/unique-tournament/${TID}/season/${SID}/events`;
-    const all = [];
+    const seen = new Map();
+    const add = (data) => {
+      if (data && Array.isArray(data.events))
+        for (const e of data.events) seen.set(e.id, e);
+    };
+
+    // Finished + upcoming lists (paginated).
     for (const kind of ["last", "next"]) {
-      for (let page = 0; page < 30; page++) {
-        const data = await j(`${base}/${kind}/${page}`);
-        if (!data || !data.events) break;
-        all.push(...data.events);
-        if (!data.hasNextPage) break;
+      for (let page = 0; page < 40; page++) {
+        const d = await j(`${base}/${kind}/${page}`);
+        if (!d || !d.events || d.events.length === 0) break;
+        add(d);
+        if (!d.hasNextPage) break;
       }
     }
+    // Every round (group matchdays + knockouts) — captures matches not yet played.
+    for (let round = 1; round <= 20; round++) {
+      add(await j(`${base}/round/${round}`));
+    }
 
+    const all = [...seen.values()];
     if (all.length === 0) {
-      alert("Got 0 events — open the World Cup page, let the Matches list load, then retry.");
+      alert("Got 0 events — open the World Cup page, let Matches load, then retry.");
       return;
     }
 
