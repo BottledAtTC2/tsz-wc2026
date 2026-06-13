@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { teams } from "../data/teams";
+import { pools } from "../data/pools";
 import { teamPointsMap, teamBreakdown, loadScores } from "../lib/scores";
 import PoolTabs, { resolvePool } from "../components/PoolTabs";
 
@@ -13,6 +14,11 @@ export default async function LeaderboardPage(
   const poolId = resolvePool(pool);
   const store = loadScores();
   const points = teamPointsMap(store);
+
+  const countTop = pools.find((p) => p.id === poolId)?.countTop;
+  const ruleText = countTop
+    ? `Each team's best ${countTop} of 11 players count.`
+    : "All 11 players count.";
 
   const rows = teams
     .filter((team) => team.poolId === poolId)
@@ -28,9 +34,7 @@ export default async function LeaderboardPage(
   return (
     <main>
       <h1 className="mb-1 text-3xl font-extrabold tracking-tight">Leaderboard</h1>
-      <p className="mb-5 text-sm text-muted">
-        Each team&apos;s best 10 of 11 players count.
-      </p>
+      <p className="mb-5 text-sm text-muted">{ruleText}</p>
 
       <PoolTabs basePath="/leaderboard" active={poolId} />
 

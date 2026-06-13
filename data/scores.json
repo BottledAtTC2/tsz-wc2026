@@ -188,6 +188,62 @@
       "status": "finished",
       "players": [
         {
+          "playerId": "son",
+          "sofascoreId": 111505,
+          "name": "Son Heung-min",
+          "teamId": "kanha",
+          "role": "none",
+          "stats": {
+            "position": "FWD",
+            "minutes": 69,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 1,
+            "shotsOnTarget": 1,
+            "passesCompleted": 20,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 1,
+            "penaltiesMissed": 0
+          },
+          "base": 17,
+          "multiplier": 1,
+          "total": 17,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Chance created",
+              "count": 1,
+              "pointsEach": 3,
+              "points": 3
+            },
+            {
+              "label": "Shot on target",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 4,
+              "pointsEach": 1,
+              "points": 4
+            }
+          ]
+        },
+        {
           "playerId": "patrik-schick",
           "sofascoreId": 280609,
           "name": "Patrik Schick",
@@ -275,7 +331,6 @@
         "Lee Tae-seok",
         "Kang-in Lee",
         "Jae-sung Lee",
-        "Son Heung-min",
         "Hwang Hee-chan",
         "Ji-sung Eom",
         "Hyeon-gyu Oh",
@@ -296,14 +351,7 @@
         "Tomáš Chorý",
         "Mojmír Chytil"
       ],
-      "unmatchedDrafted": [
-        {
-          "playerId": "son",
-          "name": "Heung-min Son",
-          "country": "South Korea",
-          "teamId": "kanha"
-        }
-      ]
+      "unmatchedDrafted": []
     },
     "15186836": {
       "eventId": 15186836,
@@ -347,7 +395,14 @@
         "Kerim Alajbegović",
         "Dženis Burnić"
       ],
-      "unmatchedDrafted": []
+      "unmatchedDrafted": [
+        {
+          "playerId": "davies",
+          "name": "Alphonso Davies",
+          "country": "Canada",
+          "teamId": "diptham"
+        }
+      ]
     },
     "15186873": {
       "eventId": 15186873,
