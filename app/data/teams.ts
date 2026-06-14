@@ -147,7 +147,7 @@ export const teams: FantasyTeam[] = [
       "casemiro", "odegaard", "van-dijk", "gakpo", "pavlovic", "ryerson",
     ],
     captainId: "vinicius",
-    viceCaptainId: "bernardo-silva",
+    viceCaptainId: "declan-rice",
     points: 0,
   },
   {
@@ -233,7 +233,7 @@ export const teams: FantasyTeam[] = [
       "cherki", "arda-guler", "tah", "laimer", "eric-garcia",
     ],
     captainId: "oyarzabal",
-    viceCaptainId: "pedri",
+    viceCaptainId: "kai-havertz",
     points: 0,
   },
   {
@@ -245,7 +245,7 @@ export const teams: FantasyTeam[] = [
       "inacio", "neymar", "rieder", "ounahi", "lukaku",
     ],
     captainId: "mbappe",
-    viceCaptainId: "rieder",
+    viceCaptainId: "ounahi",
     points: 0,
   },
   {
@@ -257,7 +257,7 @@ export const teams: FantasyTeam[] = [
       "de-bruyne", "dani-olmo", "rashford", "luis-diaz", "son", "pulisic",
     ],
     captainId: "bruno-fernandes",
-    viceCaptainId: "de-bruyne",
+    viceCaptainId: "luis-diaz",
     points: 0,
   },
   {
