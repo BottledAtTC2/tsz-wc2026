@@ -29,6 +29,7 @@ const bySofascoreId = new Map<number, Player>();
 const byOurId = new Map<string, Player>();
 for (const p of players) {
   byNormalized.set(normalizeName(p.name), p);
+  for (const alias of p.aliases ?? []) byNormalized.set(normalizeName(alias), p);
   byOurId.set(p.id, p);
   if (p.sofascoreId != null) bySofascoreId.set(p.sofascoreId, p);
 }

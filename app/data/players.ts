@@ -57,7 +57,7 @@ export const players: Player[] = [
   { id: "xhaka", name: "Granit Xhaka", country: "Switzerland", position: "MID", club: "Sunderland" },
 
   // --- Team Tanmay ---
-  { id: "bounou", name: "Yassine Bounou", country: "Morocco", position: "GK", club: "Al-Hilal" },
+  { id: "bounou", name: "Yassine Bounou", country: "Morocco", position: "GK", club: "Al-Hilal", aliases: ["Bono"] },
   { id: "ruben-dias", name: "Rúben Dias", country: "Portugal", position: "DEF", club: "Manchester City" },
   { id: "oreilly", name: "Nico O'Reilly", country: "England", position: "DEF", club: "Manchester City" },
   { id: "van-hecke", name: "Jan Paul van Hecke", country: "Netherlands", position: "DEF", club: "Brighton" },

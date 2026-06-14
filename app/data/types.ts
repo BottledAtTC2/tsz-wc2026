@@ -13,6 +13,8 @@ export interface Player {
   position: Position;
   /** Club side (optional, for display). */
   club?: string;
+  /** Alternate names Sofascore may use (nicknames), for matching. */
+  aliases?: string[];
   /** Sofascore player id, used by the stats pipeline. */
   sofascoreId?: number;
 }
