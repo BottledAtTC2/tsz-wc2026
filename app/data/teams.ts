@@ -28,7 +28,7 @@ export const teams: FantasyTeam[] = [
   },
   {
     id: "aggarwal-sweets",
-    name: "Team Aggarwal Sweets",
+    name: "Bangalore Vibrators",
     poolId: "tsz",
     squad: [
       "pickford", "inacio", "cucurella", "ryerson", "joao-neves", "wirtz",
@@ -65,7 +65,7 @@ export const teams: FantasyTeam[] = [
   },
   {
     id: "udkohli",
-    name: "Team UDKohli",
+    name: "UDKohli",
     poolId: "tsz",
     squad: [
       "unai-simon", "nuno-mendes", "schlotterbeck", "dumfries", "casemiro",
@@ -102,7 +102,7 @@ export const teams: FantasyTeam[] = [
   },
   {
     id: "mfk",
-    name: "Team MFK",
+    name: "Le FiFA",
     poolId: "tsz",
     squad: [
       "theo-hernandez", "bernardo-silva", "cancelo", "rodri", "declan-rice",
