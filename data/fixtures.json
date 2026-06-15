@@ -94,7 +94,9 @@
       "home": "Germany",
       "away": "Curaçao",
       "kickoff": "2026-06-14T17:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 7,
+      "awayScore": 1,
+      "status": "finished",
       "sofascoreId": 15186899
     },
     {
@@ -103,7 +105,9 @@
       "home": "Netherlands",
       "away": "Japan",
       "kickoff": "2026-06-14T20:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "finished",
       "sofascoreId": 15186945
     },
     {
@@ -112,7 +116,9 @@
       "home": "Côte d'Ivoire",
       "away": "Ecuador",
       "kickoff": "2026-06-14T23:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "finished",
       "sofascoreId": 15186904
     },
     {
@@ -121,7 +127,9 @@
       "home": "Sweden",
       "away": "Tunisia",
       "kickoff": "2026-06-15T02:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 5,
+      "awayScore": 1,
+      "status": "finished",
       "sofascoreId": 15186951
     },
     {
