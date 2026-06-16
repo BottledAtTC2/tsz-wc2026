@@ -138,7 +138,9 @@
       "home": "Spain",
       "away": "Cabo Verde",
       "kickoff": "2026-06-15T16:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "finished",
       "sofascoreId": 15186783
     },
     {
@@ -147,7 +149,9 @@
       "home": "Belgium",
       "away": "Egypt",
       "kickoff": "2026-06-15T19:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "finished",
       "sofascoreId": 15186837
     },
     {
@@ -156,7 +160,9 @@
       "home": "Saudi Arabia",
       "away": "Uruguay",
       "kickoff": "2026-06-15T22:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "finished",
       "sofascoreId": 15186811
     },
     {
@@ -165,7 +171,9 @@
       "home": "Iran",
       "away": "New Zealand",
       "kickoff": "2026-06-16T01:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "finished",
       "sofascoreId": 15186832
     },
     {
