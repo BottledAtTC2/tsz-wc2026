@@ -43,9 +43,11 @@ export function allMatches(store = loadScores()): MatchResult[] {
 export function teamPlayerTotals(
   teamId: string,
   store = loadScores(),
+  eventIds?: Set<string>,
 ): Map<string, number> {
   const map = new Map<string, number>();
-  for (const match of Object.values(store.matches)) {
+  for (const [eid, match] of Object.entries(store.matches)) {
+    if (eventIds && !eventIds.has(eid)) continue;
     for (const p of match.players) {
       if (p.teamId !== teamId) continue;
       map.set(p.playerId, (map.get(p.playerId) ?? 0) + p.total);
@@ -102,10 +104,13 @@ export function teamPlayerBreakdowns(
  * Season points per fantasy team. Each pool decides how many of the 11 players
  * count (`countTop`): the TSZ Pool counts the best 10; the CCO Pool counts all.
  */
-export function teamPointsMap(store = loadScores()): Map<string, number> {
+export function teamPointsMap(
+  store = loadScores(),
+  eventIds?: Set<string>,
+): Map<string, number> {
   const map = new Map<string, number>();
   for (const team of teams) {
-    const totals = teamPlayerTotals(team.id, store);
+    const totals = teamPlayerTotals(team.id, store, eventIds);
     const countTop = pools.find((p) => p.id === team.poolId)?.countTop;
     const sorted = team.squad
       .map((pid) => totals.get(pid) ?? 0)

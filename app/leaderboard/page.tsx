@@ -2,10 +2,38 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { teams } from "../data/teams";
 import { pools } from "../data/pools";
-import { teamPointsMap, teamBreakdown, loadScores } from "../lib/scores";
+import { teamPointsMap, loadScores } from "../lib/scores";
+import { loadFixtures } from "../lib/fixtures";
 import PoolTabs, { resolvePool } from "../components/PoolTabs";
 
 export const metadata: Metadata = { title: "Leaderboard — TSZ WC 2026" };
+
+/**
+ * Event ids of the scored matches in the latest round — the round of the most
+ * recently played scored match, grouped by the fixtures' round label.
+ */
+function latestRoundEventIds(store: ReturnType<typeof loadScores>): Set<string> {
+  const stageById = new Map<number, string>();
+  const kickoffById = new Map<number, string>();
+  for (const f of loadFixtures()) {
+    if (f.sofascoreId == null) continue;
+    if (f.stage) stageById.set(f.sofascoreId, f.stage);
+    kickoffById.set(f.sofascoreId, f.kickoff ?? "");
+  }
+  const scored = Object.keys(store.matches);
+  // Find the latest-kicking-off scored match; its round is the current round.
+  let latest: { kickoff: string; stage: string } | null = null;
+  for (const eid of scored) {
+    const n = Number(eid);
+    const stage = stageById.get(n);
+    if (!stage) continue;
+    const kickoff = kickoffById.get(n) ?? "";
+    if (!latest || kickoff > latest.kickoff) latest = { kickoff, stage };
+  }
+  // No round info → treat all scored matches as the round (RD == Total).
+  if (!latest) return new Set(scored);
+  return new Set(scored.filter((eid) => stageById.get(Number(eid)) === latest!.stage));
+}
 
 export default async function LeaderboardPage(
   props: PageProps<"/leaderboard">,
@@ -14,6 +42,7 @@ export default async function LeaderboardPage(
   const poolId = resolvePool(pool);
   const store = loadScores();
   const points = teamPointsMap(store);
+  const roundPoints = teamPointsMap(store, latestRoundEventIds(store));
 
   const countTop = pools.find((p) => p.id === poolId)?.countTop;
   const ruleText = countTop
@@ -22,13 +51,11 @@ export default async function LeaderboardPage(
 
   const rows = teams
     .filter((team) => team.poolId === poolId)
-    .map((team) => {
-      const last = teamBreakdown(team.id, store)[0];
-      const lastPts = last
-        ? last.contributions.reduce((s, c) => s + c.total, 0)
-        : 0;
-      return { team, total: points.get(team.id) ?? 0, lastPts };
-    })
+    .map((team) => ({
+      team,
+      total: points.get(team.id) ?? 0,
+      lastPts: roundPoints.get(team.id) ?? 0,
+    }))
     .sort((a, b) => b.total - a.total);
 
   return (
