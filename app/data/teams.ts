@@ -93,7 +93,7 @@ export const teams: FantasyTeam[] = [
     poolId: "tsz",
     squad: [
       "olise", "nico-williams", "marcos-llorente", "mac-allister",
-      "giovanni-simeone", "raphinha", "alex-sandro", "tah", "baumann",
+      "giuliano-simeone", "raphinha", "alex-sandro", "tah", "baumann",
       "sane", "mctominay",
     ],
     captainId: "olise",
@@ -204,7 +204,7 @@ export const teams: FantasyTeam[] = [
     name: "Saishith",
     poolId: "cco",
     squad: [
-      "nico-williams", "raphinha", "cubarsi", "tchouameni", "giovanni-simeone",
+      "nico-williams", "raphinha", "cubarsi", "tchouameni", "giuliano-simeone",
       "musiala", "doku", "de-jong", "verbruggen", "gvardiol", "koulibaly",
     ],
     captainId: "nico-williams",

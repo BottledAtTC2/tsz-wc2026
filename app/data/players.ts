@@ -100,7 +100,7 @@ export const players: Player[] = [
   { id: "nico-williams", name: "Nico Williams", country: "Spain", position: "FWD", club: "Athletic Bilbao" },
   { id: "marcos-llorente", name: "Marcos Llorente", country: "Spain", position: "DEF", club: "Atlético Madrid" },
   { id: "mac-allister", name: "Alexis Mac Allister", country: "Argentina", position: "MID", club: "Liverpool" },
-  { id: "giovanni-simeone", name: "Giovanni Simeone", country: "Argentina", position: "FWD", club: "Torino" },
+  { id: "giuliano-simeone", name: "Giuliano Simeone", country: "Argentina", position: "FWD", club: "Atlético Madrid" },
   { id: "raphinha", name: "Raphinha", country: "Brazil", position: "FWD", club: "Barcelona" },
   { id: "alex-sandro", name: "Alex Sandro", country: "Brazil", position: "DEF", club: "Flamengo" },
   { id: "tah", name: "Jonathan Tah", country: "Germany", position: "DEF", club: "Bayern Munich" },
