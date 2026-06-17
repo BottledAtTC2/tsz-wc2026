@@ -182,7 +182,9 @@
       "home": "France",
       "away": "Senegal",
       "kickoff": "2026-06-16T19:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "finished",
       "sofascoreId": 15186501
     },
     {
@@ -191,7 +193,9 @@
       "home": "Iraq",
       "away": "Norway",
       "kickoff": "2026-06-16T22:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 1,
+      "awayScore": 4,
+      "status": "finished",
       "sofascoreId": 15186773
     },
     {
@@ -200,7 +204,9 @@
       "home": "Argentina",
       "away": "Algeria",
       "kickoff": "2026-06-17T01:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "finished",
       "sofascoreId": 15186854
     },
     {
@@ -209,7 +215,9 @@
       "home": "Austria",
       "away": "Jordan",
       "kickoff": "2026-06-17T04:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "finished",
       "sofascoreId": 15186751
     },
     {
