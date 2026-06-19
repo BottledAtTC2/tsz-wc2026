@@ -270,7 +270,9 @@
       "home": "Czechia",
       "away": "South Africa",
       "kickoff": "2026-06-18T16:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "finished",
       "sofascoreId": 15186731
     },
     {
@@ -279,7 +281,9 @@
       "home": "Switzerland",
       "away": "Bosnia & Herzegovina",
       "kickoff": "2026-06-18T19:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 4,
+      "awayScore": 1,
+      "status": "finished",
       "sofascoreId": 15186806
     },
     {
@@ -288,7 +292,9 @@
       "home": "Canada",
       "away": "Qatar",
       "kickoff": "2026-06-18T22:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 6,
+      "awayScore": 0,
+      "status": "finished",
       "sofascoreId": 15186798
     },
     {
@@ -297,7 +303,9 @@
       "home": "Mexico",
       "away": "South Korea",
       "kickoff": "2026-06-19T01:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "finished",
       "sofascoreId": 15186490
     },
     {
