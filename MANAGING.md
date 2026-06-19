@@ -82,6 +82,49 @@ to `players.ts` first, then use that id in the squad:
 
 ---
 
+## Add a new pool
+
+Two data edits, no code changes — the pool tab, leaderboard, and scoring all
+pick it up automatically.
+
+**Step 1 — define the pool** in `app/data/pools.ts`:
+
+```ts
+export const pools: Pool[] = [
+  { id: "tsz", name: "TSZ Pool", countTop: 10 },
+  { id: "cco", name: "CCO Pool" },
+  { id: "third", name: "Third Pool", countTop: 10 },   // ← new
+];
+```
+
+- `id`: a short, unique, lowercase slug (used in the URL, e.g. `?pool=third`).
+  Never reuse an existing id.
+- `name`: the tab label shown on the site.
+- `countTop`: `10` = only the best 10 of 11 players count. **Leave the field
+  out entirely** to count all 11 (like the CCO Pool).
+
+**Step 2 — add that pool's teams** in `app/data/teams.ts`, each with
+`poolId: "third"` (matching the new id). Copy the shape of an existing team:
+
+```ts
+{
+  id: "some-unique-team-id",
+  name: "Team Name",
+  poolId: "third",
+  squad: [ "player-id-1", "player-id-2", /* …11 player ids… */ ],
+  captainId: "player-id-1",
+  viceCaptainId: "player-id-2",
+  points: 0,
+},
+```
+
+- If any team drafts a player not already in `players.ts`, **add that player
+  first** (see "Replace an injured player" above for the format).
+- The same real player can be in multiple pools — that's fine, scoring handles it.
+
+That's it. Run `npm run dev`, the new tab appears on Leaderboard/Teams, then
+commit and push.
+
 ## 3. Change a team's name
 
 Change the `name` field only. **Leave `id` alone.**
