@@ -382,6 +382,18 @@ export const teams: FantasyTeam[] = [
     viceCaptainId: "raphinha",
     points: 0,
   },
+  {
+    id: "be1-mradul",
+    name: "Mradul",
+    poolId: "be_1",
+    squad: [
+      "yamal", "nico-williams", "pedri", "maignan", "ramos", "rabiot",
+      "arias", "kokcu", "weghorst", "pavel",
+    ],
+    captainId: "yamal",
+    viceCaptainId: "nico-williams",
+    points: -150,
+  },
 
   // ===== Bid Enclave Pool 2 =====
   {
