@@ -310,7 +310,7 @@ export const teams: FantasyTeam[] = [
   },
   {
     id: "be-kappsons",
-    name: "Team Kappsons",
+    name: "Kappsons",
     poolId: "be_1",
     squad: [
       "dembele", "doue", "neymar", "lautaro", "matheus-cunha", "musiala",
@@ -380,6 +380,116 @@ export const teams: FantasyTeam[] = [
     ],
     captainId: "oyarzabal",
     viceCaptainId: "raphinha",
+    points: 0,
+  },
+
+  // ===== Bid Enclave Pool 2 =====
+  {
+    id: "be2-samarth",
+    name: "Samarth",
+    poolId: "be_2",
+    squad: [
+      "elliot-anderson", "emi-martinez", "nuno-mendes", "joao-neves", "mbappe",
+      "doue", "undav", "endrick", "ueda",
+    ],
+    captainId: "mbappe",
+    viceCaptainId: "nuno-mendes",
+    points: -150,
+  },
+  {
+    id: "be2-nishank",
+    name: "Nishank",
+    poolId: "be_2",
+    squad: [
+      "messi", "julian-alvarez", "pedri", "nico-williams", "oyarzabal",
+      "de-bruyne", "arda-guler", "dani-olmo", "cherki", "bounou", "patrik-schick",
+    ],
+    captainId: "messi",
+    viceCaptainId: "oyarzabal",
+    points: 0,
+  },
+  {
+    id: "be2-maclone",
+    name: "Maclone",
+    poolId: "be_2",
+    squad: [
+      "bruno-fernandes", "bellingham", "saka", "wirtz", "vinicius", "pickford",
+      "oreilly", "sane", "thuram", "mane", "arias",
+    ],
+    captainId: "bruno-fernandes",
+    viceCaptainId: "vinicius",
+    points: 0,
+  },
+  {
+    id: "be2-mradul",
+    name: "Mradul Mavericks",
+    poolId: "be_2",
+    squad: [
+      "doku", "ruben-neves", "ruben-dias", "maignan", "vitinha", "estupinan",
+      "luis-suarez", "valverde", "fidalgo", "mauricio", "saibari",
+    ],
+    captainId: "luis-suarez",
+    viceCaptainId: "mauricio",
+    points: 0,
+  },
+  {
+    id: "be2-swadhin",
+    name: "Swadhin",
+    poolId: "be_2",
+    squad: [
+      "unai-simon", "saliba", "bruno-guimaraes", "odegaard", "kubo", "yamal",
+      "lautaro", "gakpo", "kramaric", "santiago-gimenez", "pedro-neto",
+    ],
+    captainId: "yamal",
+    viceCaptainId: "lautaro",
+    points: 0,
+  },
+  {
+    id: "be2-thalasons",
+    name: "Thalasons",
+    poolId: "be_2",
+    squad: [
+      "rashford", "bernardo-silva", "cancelo", "dembele", "kounde", "olise",
+      "marquinhos", "cubarsi", "courtois", "de-jong", "modric",
+    ],
+    captainId: "olise",
+    viceCaptainId: "dembele",
+    points: 0,
+  },
+  {
+    id: "be2-adrsh",
+    name: "Adrsh Raja",
+    poolId: "be_2",
+    squad: [
+      "kane", "declan-rice", "guehi", "james-rodriguez", "caicedo", "upamecano",
+      "kai-havertz", "kimmich", "luis-diaz", "verbruggen", "depay",
+    ],
+    captainId: "kane",
+    viceCaptainId: "declan-rice",
+    points: 0,
+  },
+  {
+    id: "be2-kappsons",
+    name: "Kappsons",
+    poolId: "be_2",
+    squad: [
+      "diogo-costa", "neuer", "theo-hernandez", "tah", "gabriel", "fabian-ruiz",
+      "rodri", "enzo-fernandez", "neymar", "ronaldo", "raphinha",
+    ],
+    captainId: "raphinha",
+    viceCaptainId: "ronaldo",
+    points: 0,
+  },
+  {
+    id: "be2-lefifa",
+    name: "LeFifa",
+    poolId: "be_2",
+    squad: [
+      "mac-allister", "tchouameni", "musiala", "matheus-cunha", "alisson",
+      "haaland", "van-dijk", "sorloth", "hakimi", "pavlovic", "leao",
+    ],
+    captainId: "haaland",
+    viceCaptainId: "musiala",
     points: 0,
   },
 ];

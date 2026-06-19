@@ -154,6 +154,19 @@ export const players: Player[] = [
   { id: "joao-felix", name: "João Félix", country: "Portugal", position: "FWD", club: "Al-Nassr" },
   { id: "sarr", name: "Ismaïla Sarr", country: "Senegal", position: "FWD", club: "Crystal Palace" },
   { id: "nmecha", name: "Felix Nmecha", country: "Germany", position: "MID", club: "Borussia Dortmund" },
+
+  // --- Additional players drafted in Bid Enclave Pool 2 ---
+  { id: "ueda", name: "Ayase Ueda", country: "Japan", position: "FWD", club: "Feyenoord" },
+  { id: "thuram", name: "Marcus Thuram", country: "France", position: "FWD", club: "Inter" },
+  { id: "arias", name: "Santiago Arias", country: "Colombia", position: "DEF", club: "Bahia" },
+  { id: "ruben-neves", name: "Rúben Neves", country: "Portugal", position: "MID", club: "Al-Hilal" },
+  { id: "estupinan", name: "Pervis Estupiñán", country: "Ecuador", position: "DEF", club: "AC Milan" },
+  { id: "fidalgo", name: "Álvaro Fidalgo", country: "Mexico", position: "MID", club: "Club América" },
+  { id: "mauricio", name: "Mauricio", country: "Paraguay", position: "MID" },
+  { id: "kubo", name: "Takefusa Kubo", country: "Japan", position: "MID", club: "Real Sociedad" },
+  { id: "kramaric", name: "Andrej Kramarić", country: "Croatia", position: "FWD", club: "Hoffenheim" },
+  { id: "santiago-gimenez", name: "Santiago Giménez", country: "Mexico", position: "FWD", club: "AC Milan" },
+  { id: "pedro-neto", name: "Pedro Neto", country: "Portugal", position: "FWD", club: "Chelsea" },
 ];
 
 export const playerById = new Map(players.map((p) => [p.id, p]));
