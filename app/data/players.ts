@@ -167,6 +167,7 @@ export const players: Player[] = [
   { id: "kramaric", name: "Andrej Kramarić", country: "Croatia", position: "FWD", club: "Hoffenheim" },
   { id: "santiago-gimenez", name: "Santiago Giménez", country: "Mexico", position: "FWD", club: "AC Milan" },
   { id: "pedro-neto", name: "Pedro Neto", country: "Portugal", position: "FWD", club: "Chelsea" },
+  { id: "francisco-conceicao", name: "Francisco Conceição", country: "Portugal", position: "FWD", club: "Juventus" },
 ];
 
 export const playerById = new Map(players.map((p) => [p.id, p]));

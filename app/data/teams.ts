@@ -461,7 +461,7 @@ export const teams: FantasyTeam[] = [
     name: "Adrsh Raja",
     poolId: "be_2",
     squad: [
-      "kane", "declan-rice", "guehi", "james-rodriguez", "caicedo", "upamecano",
+      "kane", "declan-rice", "guehi", "reece-james", "francisco-conceicao", "upamecano",
       "kai-havertz", "kimmich", "luis-diaz", "verbruggen", "depay",
     ],
     captainId: "kane",
