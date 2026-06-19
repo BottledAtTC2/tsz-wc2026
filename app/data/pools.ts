@@ -5,4 +5,5 @@ export const pools: Pool[] = [
   { id: "tsz", name: "TSZ Pool", countTop: 10 },
   // All 11 players count.
   { id: "cco", name: "CCO Pool" },
+  { id: "be_1", name: "Bid Enclave Pool 1"}
 ];
