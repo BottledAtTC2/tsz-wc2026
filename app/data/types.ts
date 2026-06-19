@@ -34,7 +34,10 @@ export interface FantasyTeam {
    */
   captainName?: string;
   viceCaptainName?: string;
-  /** Total fantasy points (manual for now, computed by the pipeline later). */
+  /**
+   * Manual season adjustment added to the team's computed total — use for
+   * penalties (e.g. -150) or bonuses. 0 = no adjustment. Does not affect RD pts.
+   */
   points: number;
 }
 

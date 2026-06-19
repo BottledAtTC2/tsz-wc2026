@@ -116,10 +116,11 @@ export function teamPointsMap(
       .map((pid) => totals.get(pid) ?? 0)
       .sort((a, b) => b - a);
     const counted = countTop ? sorted.slice(0, countTop) : sorted;
-    map.set(
-      team.id,
-      counted.reduce((s, x) => s + x, 0),
-    );
+    let sum = counted.reduce((s, x) => s + x, 0);
+    // `points` is a manual season adjustment (penalties/bonuses). Apply it to
+    // the cumulative total only, not to a single round (RD pts).
+    if (!eventIds) sum += team.points ?? 0;
+    map.set(team.id, sum);
   }
   return map;
 }
