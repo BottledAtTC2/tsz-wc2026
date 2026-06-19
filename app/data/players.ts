@@ -152,6 +152,8 @@ export const players: Player[] = [
   { id: "james-rodriguez", name: "James Rodríguez", country: "Colombia", position: "MID", club: "Club León" },
   { id: "nusa", name: "Antonio Nusa", country: "Norway", position: "MID", club: "RB Leipzig" },
   { id: "joao-felix", name: "João Félix", country: "Portugal", position: "FWD", club: "Al-Nassr" },
+  { id: "sarr", name: "Ismaïla Sarr", country: "Senegal", position: "FWD", club: "Crystal Palace" },
+  { id: "nmecha", name: "Felix Nmecha", country: "Germany", position: "MID", club: "Borussia Dortmund" },
 ];
 
 export const playerById = new Map(players.map((p) => [p.id, p]));

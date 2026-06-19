@@ -370,6 +370,18 @@ export const teams: FantasyTeam[] = [
     viceCaptainId: "haaland",
     points: 0,
   },
+  {
+    id: "be-nishank",
+    name: "Nishank",
+    poolId: "be_1",
+    squad: [
+      "luis-suarez", "endrick", "oyarzabal", "dani-olmo", "rashford",
+      "raphinha", "kai-havertz", "sarr", "nmecha", "rodri", "bounou",
+    ],
+    captainId: "oyarzabal",
+    viceCaptainId: "raphinha",
+    points: 0,
+  },
 ];
 
 export const teamById = new Map(teams.map((t) => [t.id, t]));
