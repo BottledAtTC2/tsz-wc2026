@@ -127,9 +127,9 @@ export default function AdminPage() {
 
           {res.players && res.players.length > 0 && (
             <ul className="divide-y divide-edge overflow-hidden rounded-xl border border-edge text-sm">
-              {res.players.map((p) => (
+              {res.players.map((p, i) => (
                 <li
-                  key={`${p.player}-${p.team}`}
+                  key={`${p.player}-${p.team}-${i}`}
                   className="flex justify-between bg-panel/40 px-4 py-2"
                 >
                   <span>

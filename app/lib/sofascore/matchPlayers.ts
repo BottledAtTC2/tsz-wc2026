@@ -34,16 +34,6 @@ for (const p of players) {
   if (p.sofascoreId != null) bySofascoreId.set(p.sofascoreId, p);
 }
 
-/** Index of last-token → players, to fall back on surname-only matches. */
-const bySurname = new Map<string, Player[]>();
-for (const p of players) {
-  const tokens = normalizeName(p.name).split(" ");
-  const surname = tokens[tokens.length - 1];
-  const list = bySurname.get(surname) ?? [];
-  list.push(p);
-  bySurname.set(surname, list);
-}
-
 const COUNTRY_ALIASES: Record<string, string> = {
   türkiye: "turkey",
   turkiye: "turkey",
@@ -75,19 +65,16 @@ function findCandidate(
   const exact = byNormalized.get(norm);
   if (exact) return exact;
 
-  // Surname fallback only when unambiguous.
-  const tokens = norm.split(" ");
-  const surname = tokens[tokens.length - 1];
-  const candidates = bySurname.get(surname);
-  if (candidates && candidates.length === 1) return candidates[0];
-
+  // No surname-only fallback: two real players can share a surname (e.g.
+  // Ismaïla Sarr / Pape Matar Sarr), so matching by surname alone would wrongly
+  // map both to our one player. Unmatched players surface as a diagnostic.
   return null;
 }
 
 /**
  * Resolve a Sofascore player to one of our drafted players, or null.
- * Tries: learned id-map → player's own sofascoreId → exact normalized name →
- * unique surname match. When `expectedCountry` (the side's nation) is given,
+ * Tries: learned id-map → player's own sofascoreId → exact normalized name
+ * (incl. aliases). When `expectedCountry` (the side's nation) is given,
  * the candidate must be from that nation — this prevents cross-country false
  * matches (e.g. a Mexican "Álvarez" matching our Argentine Julián Álvarez).
  */

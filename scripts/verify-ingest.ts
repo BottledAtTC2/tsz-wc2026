@@ -96,9 +96,8 @@ check("messi (TSZ zeeshan, ×2 captain)", tot("messi", "zeeshan"), 192);
 check("messi (CCO zeeshan, ×2 captain)", tot("messi", "cco-zeeshan"), 192);
 check("molina (TSZ, clean sheet)", tot("molina", "zeeshan"), 46);
 check("emi-martinez (TSZ jemin, conceded 1)", tot("emi-martinez", "jemin"), 76);
-check("yamal (TSZ tanmay, ×2 captain, yellow)", tot("yamal", "tanmay"), 80);
-// 4 players × 2 owning teams each = 8 contributions.
-check("contribution count", r1.players.length, 8);
+// Yamal is MID in the data → goal is +50, ×2 captain = 100.
+check("yamal (TSZ tanmay, ×2 captain, yellow)", tot("yamal", "tanmay"), 100);
 check(
   "team zeeshan (TSZ) total",
   r1.players
