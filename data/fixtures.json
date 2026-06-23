@@ -460,7 +460,9 @@
       "home": "Argentina",
       "away": "Austria",
       "kickoff": "2026-06-22T17:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "finished",
       "sofascoreId": 15186502
     },
     {
@@ -469,7 +471,9 @@
       "home": "France",
       "away": "Iraq",
       "kickoff": "2026-06-22T21:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "finished",
       "sofascoreId": 15186769
     },
     {
@@ -478,7 +482,9 @@
       "home": "Norway",
       "away": "Senegal",
       "kickoff": "2026-06-23T00:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "finished",
       "sofascoreId": 15186770
     },
     {
@@ -487,7 +493,9 @@
       "home": "Jordan",
       "away": "Algeria",
       "kickoff": "2026-06-23T03:00:00.000Z",
-      "status": "scheduled",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "finished",
       "sofascoreId": 15186740
     },
     {
@@ -909,7 +917,7 @@
     {
       "id": "12812999",
       "stage": "Round of 32",
-      "home": "1J",
+      "home": "Argentina",
       "away": "H2",
       "kickoff": "2026-07-03T22:00:00.000Z",
       "venue": "Hard Rock Stadium",
@@ -1045,6 +1053,46 @@
       "venue": "Arrowhead Stadium",
       "status": "scheduled",
       "sofascoreId": 12813015
+    },
+    {
+      "id": "12813008",
+      "stage": "Semifinals",
+      "home": "W97",
+      "away": "W98",
+      "kickoff": "2026-07-14T19:00:00.000Z",
+      "venue": "AT&T Stadium",
+      "status": "scheduled",
+      "sofascoreId": 12813008
+    },
+    {
+      "id": "12812996",
+      "stage": "Semifinals",
+      "home": "W99",
+      "away": "W100",
+      "kickoff": "2026-07-15T19:00:00.000Z",
+      "venue": "Mercedes-Benz Stadium",
+      "status": "scheduled",
+      "sofascoreId": 12812996
+    },
+    {
+      "id": "12813003",
+      "stage": "Match for 3rd place",
+      "home": "L101",
+      "away": "L102",
+      "kickoff": "2026-07-18T21:00:00.000Z",
+      "venue": "Hard Rock Stadium",
+      "status": "scheduled",
+      "sofascoreId": 12813003
+    },
+    {
+      "id": "12813005",
+      "stage": "Final",
+      "home": "W101",
+      "away": "W102",
+      "kickoff": "2026-07-19T19:00:00.000Z",
+      "venue": "MetLife Stadium",
+      "status": "scheduled",
+      "sofascoreId": 12813005
     }
   ]
 }
