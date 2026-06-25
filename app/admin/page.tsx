@@ -44,6 +44,42 @@ export default function AdminPage() {
     if (file) setText(await file.text());
   }
 
+  // Bulk: ingest several match files in one go, one after another.
+  const [batch, setBatch] = useState<
+    { name: string; ok: boolean; match?: string; scored?: number; error?: string }[]
+  >([]);
+  const [batchBusy, setBatchBusy] = useState(false);
+
+  async function ingestMany(e: React.ChangeEvent<HTMLInputElement>) {
+    const files = Array.from(e.target.files ?? []);
+    if (files.length === 0) return;
+    setBatchBusy(true);
+    const out: typeof batch = [];
+    setBatch([]);
+    for (const f of files) {
+      try {
+        const r = await fetch("/api/ingest", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: await f.text(),
+        });
+        const j = (await r.json()) as IngestResponse;
+        out.push({
+          name: f.name,
+          ok: r.ok,
+          match: j.match,
+          scored: j.scoredPlayers,
+          error: j.error,
+        });
+      } catch (err) {
+        out.push({ name: f.name, ok: false, error: (err as Error).message });
+      }
+      setBatch([...out]); // live progress
+    }
+    setBatchBusy(false);
+    e.target.value = ""; // allow re-selecting the same files
+  }
+
   const [fxBusy, setFxBusy] = useState(false);
   const [fxMsg, setFxMsg] = useState<string | null>(null);
 
@@ -168,6 +204,43 @@ export default function AdminPage() {
           )}
         </div>
       )}
+
+      <section className="mt-10 border-t border-edge pt-6">
+        <h2 className="mb-1 text-xl font-bold">Ingest multiple matches</h2>
+        <p className="mb-3 text-sm text-muted">
+          Select several <code className="text-ink">match-&lt;id&gt;.json</code>{" "}
+          files at once — each is ingested in turn.
+        </p>
+        <label className="cursor-pointer rounded-lg bg-panel2 px-3 py-2 text-sm hover:bg-edge">
+          {batchBusy ? "Ingesting…" : "Choose match files…"}
+          <input
+            type="file"
+            accept="application/json,.json"
+            multiple
+            onChange={ingestMany}
+            className="hidden"
+          />
+        </label>
+        {batch.length > 0 && (
+          <ul className="mt-3 divide-y divide-edge overflow-hidden rounded-xl border border-edge text-sm">
+            {batch.map((b, i) => (
+              <li
+                key={i}
+                className="flex justify-between gap-3 bg-panel/40 px-4 py-2"
+              >
+                <span className="truncate text-muted">{b.name}</span>
+                <span
+                  className={`shrink-0 ${b.ok ? "text-brand" : "text-red-400"}`}
+                >
+                  {b.ok
+                    ? `${b.match} · ${b.scored} scored`
+                    : (b.error ?? "failed")}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
 
       <section className="mt-10 border-t border-edge pt-6">
         <h2 className="mb-1 text-xl font-bold">Load fixtures</h2>
