@@ -214,13 +214,17 @@ export function scoreEvent(
         if (featured) unresolved.push(entry.player.name);
         continue;
       }
-      const owners = ownership.get(player.id);
-      if (!owners) continue; // resolved but not drafted — expected, ignore
       const stats = statLine(entry, player.position);
       if (stats.minutes <= 0) continue; // didn't feature
       applyContext(stats, sofaId, side, incs);
 
-      // One result per owning team, each with that team's captain multiplier.
+      // Auction owners each get a result (with their captain multiplier).
+      // A player drafted only in drafts/dream-teams has no auction owner — store
+      // one neutral result (teamId "") so their base stats are still recorded
+      // for those views. Auction pages filter by teamId, so "" never shows.
+      const owners = ownership.get(player.id) ?? [
+        { teamId: "", role: "none" as CaptainRole },
+      ];
       for (const own of owners) {
         const score = computePlayerScore(stats, own.role);
         results.push({
