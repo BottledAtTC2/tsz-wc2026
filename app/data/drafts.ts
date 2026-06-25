@@ -41,4 +41,47 @@ export interface Draft {
 //     // no captain/vice, all players count
 //   },
 // },
-export const drafts: Draft[] = [];
+export const drafts: Draft[] = [
+  {
+    id: "mfk-vs-ayush-anand",
+    teamA: {
+      name: "MFK",
+      squad: [
+        "mbappe", "olise", "oyarzabal", "vinicius", "dembele", "nico-williams",
+        "declan-rice", "vitinha", "raphinha", "haaland", "matheus-cunha",
+      ],
+      captainId: "olise",
+      viceCaptainId: "oyarzabal",
+    },
+    teamB: {
+      name: "Ayush Anand",
+      squad: [
+        "kane", "bellingham", "yamal", "bruno-fernandes", "julian-alvarez",
+        "wirtz", "luis-diaz", "arda-guler", "messi", "kai-havertz", "saka",
+      ],
+      captainId: "kane",
+      viceCaptainId: "bellingham",
+    },
+  },
+  {
+    id: "ayush-anand-vs-ps-dada",
+    teamA: {
+      name: "Ayush Anand",
+      squad: [
+        "kane", "olise", "vinicius", "oyarzabal", "julian-alvarez", "wirtz",
+        "luis-diaz", "bellingham", "arda-guler", "kai-havertz", "saka",
+      ],
+      captainId: "kane",
+      viceCaptainId: "bellingham",
+    },
+    teamB: {
+      name: "PS Dada",
+      squad: [
+        "mbappe", "yamal", "dembele", "bruno-fernandes", "nico-williams",
+        "haaland", "messi", "declan-rice", "matheus-cunha", "musiala", "pedri",
+      ],
+      captainId: "mbappe",
+      viceCaptainId: "yamal",
+    },
+  },
+];
