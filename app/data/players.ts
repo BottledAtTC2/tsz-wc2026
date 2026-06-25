@@ -179,7 +179,7 @@ export const players: Player[] = [
   { id: "perisic", name: "Ivan Perišić", country: "Croatia", position: "MID", club: "PSV" },
 
   // --- Additional players drafted in the Dream Team ---
-  { id: "galindez", name: "Galíndez", country: "Argentina", position: "GK" },
+  { id: "galindez", name: "Hernán Galíndez", country: "Ecuador", position: "GK", club: "Aucas" },
 ];
 
 export const playerById = new Map(players.map((p) => [p.id, p]));
