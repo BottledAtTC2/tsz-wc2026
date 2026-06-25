@@ -55,7 +55,7 @@ export const players: Player[] = [
   { id: "yildiz", name: "Kenan Yıldız", country: "Turkey", position: "MID", club: "Juventus" },
   { id: "tchouameni", name: "Aurélien Tchouaméni", country: "France", position: "MID", club: "Real Madrid" },
   { id: "modric", name: "Luka Modrić", country: "Croatia", position: "MID", club: "AC Milan" },
-  { id: "yamal", name: "Lamine Yamal", country: "Spain", position: "FWD", club: "Barcelona" },
+  { id: "yamal", name: "Lamine Yamal", country: "Spain", position: "MID", club: "Barcelona" },
   { id: "matheus-cunha", name: "Matheus Cunha", country: "Brazil", position: "FWD", club: "Manchester United" },
   { id: "luis-diaz", name: "Luis Díaz", country: "Colombia", position: "FWD", club: "Bayern Munich" },
   { id: "brahim-diaz", name: "Brahim Díaz", country: "Morocco", position: "FWD", club: "Real Madrid" },
@@ -170,6 +170,13 @@ export const players: Player[] = [
   { id: "kokcu", name: "Orkun Kökçü", country: "Turkey", position: "MID", club: "Benfica" },
   { id: "weghorst", name: "Wout Weghorst", country: "Netherlands", position: "FWD", club: "Ajax" },
   { id: "pavel", name: "Pavel Šulc", country: "Czechia", position: "MID", club: "Viktoria Plzeň" },
+
+  // --- Additional players drafted in the RCB Fam Pool ---
+  { id: "laporte", name: "Aymeric Laporte", country: "Spain", position: "DEF", club: "Athletic Bilbao" },
+  { id: "gyokeres", name: "Viktor Gyökeres", country: "Sweden", position: "FWD", club: "Arsenal" },
+  { id: "raya", name: "David Raya", country: "Spain", position: "GK", club: "Arsenal" },
+  { id: "rudiger", name: "Antonio Rüdiger", country: "Germany", position: "DEF", club: "Real Madrid" },
+  { id: "perisic", name: "Ivan Perišić", country: "Croatia", position: "MID", club: "PSV" },
 ];
 
 export const playerById = new Map(players.map((p) => [p.id, p]));

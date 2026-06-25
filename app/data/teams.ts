@@ -504,6 +504,128 @@ export const teams: FantasyTeam[] = [
     viceCaptainId: "musiala",
     points: 0,
   },
+
+  // ===== RCB Fam Pool =====
+  {
+    id: "rcb-chokers",
+    name: "Chokers",
+    poolId: "rcb",
+    squad: [
+      "verbruggen", "cucurella", "laporte", "reece-james", "de-jong",
+      "bellingham", "mctominay", "ferran-torres", "doue", "messi", "vinicius",
+    ],
+    captainId: "messi",
+    viceCaptainId: "vinicius",
+    points: 0,
+  },
+  {
+    id: "rcb-champions",
+    name: "Champions",
+    poolId: "rcb",
+    squad: [
+      "alisson", "tah", "dumfries", "davies", "pedri", "enzo-fernandez",
+      "vitinha", "musiala", "julian-alvarez", "trossard", "de-ketelaere",
+    ],
+    captainId: "julian-alvarez",
+    viceCaptainId: "vitinha",
+    points: 0,
+  },
+  {
+    id: "rcb-saisuresh",
+    name: "SaiSuresh",
+    poolId: "rcb",
+    squad: [
+      "emi-martinez", "cubarsi", "schlotterbeck", "hincapie", "joao-neves",
+      "bernardo-silva", "dani-olmo", "cherki", "raphinha", "pulisic", "gyokeres",
+    ],
+    captainId: "raphinha",
+    viceCaptainId: "cherki",
+    points: 0,
+  },
+  {
+    id: "rcb-rcbfam",
+    name: "RCB FAM",
+    poolId: "rcb",
+    squad: [
+      "maignan", "marquinhos", "guehi", "gvardiol", "bruno-fernandes",
+      "pavlovic", "odegaard", "gakpo", "saka", "doku", "embolo",
+    ],
+    captainId: "bruno-fernandes",
+    viceCaptainId: "doku",
+    points: 0,
+  },
+  {
+    id: "rcb-aman",
+    name: "Aman",
+    poolId: "rcb",
+    squad: [
+      "raya", "upamecano", "cancelo", "van-dijk", "wirtz", "tielemans",
+      "bruno-guimaraes", "olise", "brahim-diaz", "luis-diaz", "saibari",
+    ],
+    captainId: "olise",
+    viceCaptainId: "luis-diaz",
+    points: 0,
+  },
+  {
+    id: "rcb-night-merchants",
+    name: "Night Merchants",
+    poolId: "rcb",
+    squad: [
+      "unai-simon", "molina", "pacho", "nuno-mendes", "reijnders", "casemiro",
+      "morgan-rogers", "salah", "oyarzabal", "kai-havertz", "dembele",
+    ],
+    captainId: "dembele",
+    viceCaptainId: "oyarzabal",
+    points: 0,
+  },
+  {
+    id: "rcb-tanmay",
+    name: "Tanmay XI",
+    poolId: "rcb",
+    squad: [
+      "diogo-costa", "saliba", "ruben-dias", "hakimi", "elliot-anderson",
+      "tchouameni", "yildiz", "yamal", "haaland", "matheus-cunha", "luis-suarez",
+    ],
+    captainId: "yamal",
+    viceCaptainId: "matheus-cunha",
+    points: 0,
+  },
+  {
+    id: "rcb-haggu",
+    name: "Haggu XI",
+    poolId: "rcb",
+    squad: [
+      "pickford", "rashford", "ronaldo", "son", "fabian-ruiz", "rodri",
+      "mac-allister", "marcos-llorente", "cristian-romero", "konate", "oreilly",
+    ],
+    captainId: "ronaldo",
+    viceCaptainId: "fabian-ruiz",
+    points: 0,
+  },
+  {
+    id: "rcb-dip",
+    name: "Dip",
+    poolId: "rcb",
+    squad: [
+      "neuer", "gabriel", "rudiger", "kounde", "de-bruyne", "arda-guler",
+      "valverde", "mbappe", "nico-williams", "depay", "lautaro",
+    ],
+    captainId: "mbappe",
+    viceCaptainId: "arda-guler",
+    points: 0,
+  },
+  {
+    id: "rcb-team10",
+    name: "Team 10",
+    poolId: "rcb",
+    squad: [
+      "courtois", "eric-garcia", "theo-hernandez", "david-raum", "declan-rice",
+      "kimmich", "modric", "perisic", "sorloth", "kane", "joao-felix",
+    ],
+    captainId: "kane",
+    viceCaptainId: "declan-rice",
+    points: 0,
+  },
 ];
 
 export const teamById = new Map(teams.map((t) => [t.id, t]));

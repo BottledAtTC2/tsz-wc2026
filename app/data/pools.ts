@@ -7,4 +7,5 @@ export const pools: Pool[] = [
   { id: "cco", name: "CCO Pool" },
   { id: "be_1", name: "Bid Enclave Pool 1" },
   { id: "be_2", name: "Bid Enclave Pool 2" },
+  { id: "rcb", name: "RCB Fam Pool" },
 ];
