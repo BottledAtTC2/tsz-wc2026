@@ -142,6 +142,36 @@ export function playerPointsMap(store = loadScores()): Map<string, number> {
   return map;
 }
 
+/**
+ * Per-player season breakdown (base points + aggregated scoring lines), keyed
+ * by player id and independent of any fantasy team. Used by Dream Team views,
+ * which aren't stored in scores.json.
+ */
+export function playerBreakdowns(
+  store = loadScores(),
+): Map<string, PlayerSeasonBreakdown> {
+  const map = new Map<string, PlayerSeasonBreakdown>();
+  for (const match of Object.values(store.matches)) {
+    const seen = new Set<string>();
+    for (const p of match.players) {
+      if (seen.has(p.playerId)) continue;
+      seen.add(p.playerId);
+      let b = map.get(p.playerId);
+      if (!b) {
+        b = { total: 0, lines: [] };
+        map.set(p.playerId, b);
+      }
+      b.total += p.base;
+      for (const l of p.lines) {
+        const e = b.lines.find((x) => x.label === l.label);
+        if (e) e.points += l.points;
+        else b.lines.push({ label: l.label, points: l.points });
+      }
+    }
+  }
+  return map;
+}
+
 /** Which players count toward a team's total (best N by that team's totals). */
 export function countedPlayerIds(
   teamId: string,

@@ -7,6 +7,7 @@ const links = [
   { href: "/leaderboard", label: "Leaderboard" },
   { href: "/teams", label: "Teams" },
   { href: "/drafts", label: "Drafts" },
+  { href: "/dream-team", label: "Dream Team" },
   { href: "/players", label: "Players" },
   { href: "/fixtures", label: "Fixtures" },
   { href: "/rules", label: "Rules" },
