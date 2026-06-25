@@ -56,11 +56,19 @@ export const dreamTeams: DreamTeam[] = [
     ],
   },
   {
-    id: "dt-jatin",
-    name: "Jatin",
+    id: "dt-karan",
+    name: "Karan",
     squad: [
       "emi-martinez", "upamecano", "van-dijk", "nuno-mendes", "mbappe",
       "vinicius", "kane", "messi", "declan-rice", "pedri", "bruno-fernandes",
+    ],
+  },
+  {
+    id: "dt-jatin",
+    name: "Jatin",
+    squad: [
+      "emi-martinez", "gabriel", "van-dijk", "nuno-mendes", "mbappe",
+      "vinicius", "lautaro", "raphinha", "olise", "yamal", "bruno-fernandes",
     ],
   },
   {
