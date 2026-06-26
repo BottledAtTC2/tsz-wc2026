@@ -156,7 +156,7 @@ export const players: Player[] = [
   { id: "nmecha", name: "Felix Nmecha", country: "Germany", position: "MID", club: "Borussia Dortmund" },
   { id: "ueda", name: "Ayase Ueda", country: "Japan", position: "FWD", club: "Feyenoord" },
   { id: "thuram", name: "Marcus Thuram", country: "France", position: "FWD", club: "Inter" },
-  { id: "arias", name: "Santiago Arias", country: "Colombia", position: "DEF", club: "Bahia" },
+  { id: "arias", name: "Jhon Arias", country: "Colombia", position: "MID", club: "Palmeiras" },
   { id: "ruben-neves", name: "Rúben Neves", country: "Portugal", position: "MID", club: "Al-Hilal" },
   { id: "estupinan", name: "Pervis Estupiñán", country: "Ecuador", position: "DEF", club: "AC Milan" },
   { id: "fidalgo", name: "Álvaro Fidalgo", country: "Mexico", position: "MID", club: "Club América" },

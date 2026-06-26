@@ -18413,142 +18413,6 @@
           ]
         },
         {
-          "playerId": "arias",
-          "sofascoreId": 844096,
-          "name": "Jhon Arias",
-          "teamId": "be1-mradul",
-          "role": "none",
-          "stats": {
-            "position": "MID",
-            "minutes": 77,
-            "started": true,
-            "goals": 0,
-            "assists": 0,
-            "chancesCreated": 1,
-            "shotsOnTarget": 1,
-            "passesCompleted": 45,
-            "tacklesWon": 3,
-            "interceptionsWon": 2,
-            "saves": 0,
-            "penaltiesSaved": 0,
-            "cleanSheet": false,
-            "yellowCards": 0,
-            "redCards": 0,
-            "ownGoals": 0,
-            "goalsConceded": 0,
-            "penaltiesMissed": 0
-          },
-          "base": 42,
-          "multiplier": 1,
-          "total": 42,
-          "lines": [
-            {
-              "label": "Started",
-              "count": 1,
-              "pointsEach": 4,
-              "points": 4
-            },
-            {
-              "label": "Chance created",
-              "count": 1,
-              "pointsEach": 3,
-              "points": 3
-            },
-            {
-              "label": "Shot on target",
-              "count": 1,
-              "pointsEach": 6,
-              "points": 6
-            },
-            {
-              "label": "Passes completed (per 5)",
-              "count": 9,
-              "pointsEach": 1,
-              "points": 9
-            },
-            {
-              "label": "Tackle won",
-              "count": 3,
-              "pointsEach": 4,
-              "points": 12
-            },
-            {
-              "label": "Interception won",
-              "count": 2,
-              "pointsEach": 4,
-              "points": 8
-            }
-          ]
-        },
-        {
-          "playerId": "arias",
-          "sofascoreId": 844096,
-          "name": "Jhon Arias",
-          "teamId": "be2-maclone",
-          "role": "none",
-          "stats": {
-            "position": "MID",
-            "minutes": 77,
-            "started": true,
-            "goals": 0,
-            "assists": 0,
-            "chancesCreated": 1,
-            "shotsOnTarget": 1,
-            "passesCompleted": 45,
-            "tacklesWon": 3,
-            "interceptionsWon": 2,
-            "saves": 0,
-            "penaltiesSaved": 0,
-            "cleanSheet": false,
-            "yellowCards": 0,
-            "redCards": 0,
-            "ownGoals": 0,
-            "goalsConceded": 0,
-            "penaltiesMissed": 0
-          },
-          "base": 42,
-          "multiplier": 1,
-          "total": 42,
-          "lines": [
-            {
-              "label": "Started",
-              "count": 1,
-              "pointsEach": 4,
-              "points": 4
-            },
-            {
-              "label": "Chance created",
-              "count": 1,
-              "pointsEach": 3,
-              "points": 3
-            },
-            {
-              "label": "Shot on target",
-              "count": 1,
-              "pointsEach": 6,
-              "points": 6
-            },
-            {
-              "label": "Passes completed (per 5)",
-              "count": 9,
-              "pointsEach": 1,
-              "points": 9
-            },
-            {
-              "label": "Tackle won",
-              "count": 3,
-              "pointsEach": 4,
-              "points": 12
-            },
-            {
-              "label": "Interception won",
-              "count": 2,
-              "pointsEach": 4,
-              "points": 8
-            }
-          ]
-        },
-        {
           "playerId": "james-rodriguez",
           "sofascoreId": 107414,
           "name": "James Rodríguez",
@@ -19166,9 +19030,17 @@
         "Simon Banza",
         "Joris Kayembe",
         "Charles Pickel",
-        "Nathanaël Mbuku"
+        "Nathanaël Mbuku",
+        "Santiago Arias"
       ],
-      "unmatchedDrafted": []
+      "unmatchedDrafted": [
+        {
+          "playerId": "arias",
+          "name": "Jhon Arias",
+          "country": "Colombia",
+          "teamId": "be1-mradul, be2-maclone"
+        }
+      ]
     },
     "15186720": {
       "eventId": 15186720,
@@ -19586,118 +19458,6 @@
               "count": 1,
               "pointsEach": -2,
               "points": -2
-            }
-          ]
-        },
-        {
-          "playerId": "arias",
-          "sofascoreId": 844096,
-          "name": "Jhon Arias",
-          "teamId": "be1-mradul",
-          "role": "none",
-          "stats": {
-            "position": "MID",
-            "minutes": 89,
-            "started": true,
-            "goals": 0,
-            "assists": 0,
-            "chancesCreated": 2,
-            "shotsOnTarget": 0,
-            "passesCompleted": 42,
-            "tacklesWon": 1,
-            "interceptionsWon": 0,
-            "saves": 0,
-            "penaltiesSaved": 0,
-            "cleanSheet": false,
-            "yellowCards": 0,
-            "redCards": 0,
-            "ownGoals": 0,
-            "goalsConceded": 1,
-            "penaltiesMissed": 0
-          },
-          "base": 22,
-          "multiplier": 1,
-          "total": 22,
-          "lines": [
-            {
-              "label": "Started",
-              "count": 1,
-              "pointsEach": 4,
-              "points": 4
-            },
-            {
-              "label": "Chance created",
-              "count": 2,
-              "pointsEach": 3,
-              "points": 6
-            },
-            {
-              "label": "Passes completed (per 5)",
-              "count": 8,
-              "pointsEach": 1,
-              "points": 8
-            },
-            {
-              "label": "Tackle won",
-              "count": 1,
-              "pointsEach": 4,
-              "points": 4
-            }
-          ]
-        },
-        {
-          "playerId": "arias",
-          "sofascoreId": 844096,
-          "name": "Jhon Arias",
-          "teamId": "be2-maclone",
-          "role": "none",
-          "stats": {
-            "position": "MID",
-            "minutes": 89,
-            "started": true,
-            "goals": 0,
-            "assists": 0,
-            "chancesCreated": 2,
-            "shotsOnTarget": 0,
-            "passesCompleted": 42,
-            "tacklesWon": 1,
-            "interceptionsWon": 0,
-            "saves": 0,
-            "penaltiesSaved": 0,
-            "cleanSheet": false,
-            "yellowCards": 0,
-            "redCards": 0,
-            "ownGoals": 0,
-            "goalsConceded": 1,
-            "penaltiesMissed": 0
-          },
-          "base": 22,
-          "multiplier": 1,
-          "total": 22,
-          "lines": [
-            {
-              "label": "Started",
-              "count": 1,
-              "pointsEach": 4,
-              "points": 4
-            },
-            {
-              "label": "Chance created",
-              "count": 2,
-              "pointsEach": 3,
-              "points": 6
-            },
-            {
-              "label": "Passes completed (per 5)",
-              "count": 8,
-              "pointsEach": 1,
-              "points": 8
-            },
-            {
-              "label": "Tackle won",
-              "count": 1,
-              "pointsEach": 4,
-              "points": 4
             }
           ]
         },
@@ -20399,9 +20159,17 @@
         "Richard Ríos",
         "Cucho Hernández",
         "Kevin Castaño",
-        "Andrés Gómez"
+        "Andrés Gómez",
+        "Santiago Arias"
       ],
-      "unmatchedDrafted": []
+      "unmatchedDrafted": [
+        {
+          "playerId": "arias",
+          "name": "Jhon Arias",
+          "country": "Colombia",
+          "teamId": "be1-mradul, be2-maclone"
+        }
+      ]
     },
     "15186731": {
       "eventId": 15186731,
