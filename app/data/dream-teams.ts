@@ -75,7 +75,7 @@ export const dreamTeams: DreamTeam[] = [
     id: "dt-tanmay",
     name: "Tanmay",
     squad: [
-      "maignan", "hakimi", "nuno-mendes", "cucurella", "bruno-fernandes",
+      "alisson", "hakimi", "nuno-mendes", "cucurella", "bruno-fernandes",
       "yamal", "bellingham", "mbappe", "dembele", "matheus-cunha", "kane",
     ],
   },
@@ -139,7 +139,7 @@ export const dreamTeams: DreamTeam[] = [
     id: "dt-yash-a",
     name: "Yash A",
     squad: [
-      "maignan", "hakimi", "nuno-mendes", "cucurella", "bruno-fernandes",
+      "alisson", "hakimi", "nuno-mendes", "cucurella", "bruno-fernandes",
       "olise", "yamal", "vinicius", "messi", "mbappe", "kane",
     ],
   },

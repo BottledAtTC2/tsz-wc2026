@@ -22392,7 +22392,7 @@
           "sofascoreId": 883537,
           "name": "Luis Díaz",
           "teamId": "rcb-aman",
-          "role": "vice",
+          "role": "none",
           "stats": {
             "position": "FWD",
             "minutes": 90,
@@ -22414,8 +22414,8 @@
             "penaltiesMissed": 0
           },
           "base": 17,
-          "multiplier": 1.5,
-          "total": 25.5,
+          "multiplier": 1,
+          "total": 17,
           "lines": [
             {
               "label": "Started",
@@ -28921,7 +28921,7 @@
           "sofascoreId": 883537,
           "name": "Luis Díaz",
           "teamId": "rcb-aman",
-          "role": "vice",
+          "role": "none",
           "stats": {
             "position": "FWD",
             "minutes": 90,
@@ -28943,8 +28943,8 @@
             "penaltiesMissed": 0
           },
           "base": 32,
-          "multiplier": 1.5,
-          "total": 48,
+          "multiplier": 1,
+          "total": 32,
           "lines": [
             {
               "label": "Started",
@@ -30190,7 +30190,7 @@
           "sofascoreId": 883537,
           "name": "Luis Díaz",
           "teamId": "rcb-aman",
-          "role": "vice",
+          "role": "none",
           "stats": {
             "position": "FWD",
             "minutes": 89,
@@ -30212,8 +30212,8 @@
             "penaltiesMissed": 0
           },
           "base": 79,
-          "multiplier": 1.5,
-          "total": 118.5,
+          "multiplier": 1,
+          "total": 79,
           "lines": [
             {
               "label": "Started",
@@ -74549,154 +74549,6 @@
           "playerId": "schlotterbeck",
           "sofascoreId": 940871,
           "name": "Nico Schlotterbeck",
-          "teamId": "udkohli",
-          "role": "none",
-          "stats": {
-            "position": "DEF",
-            "minutes": 90,
-            "started": true,
-            "goals": 1,
-            "assists": 0,
-            "chancesCreated": 0,
-            "shotsOnTarget": 2,
-            "passesCompleted": 74,
-            "tacklesWon": 2,
-            "interceptionsWon": 5,
-            "saves": 0,
-            "penaltiesSaved": 0,
-            "cleanSheet": false,
-            "yellowCards": 0,
-            "redCards": 0,
-            "ownGoals": 0,
-            "goalsConceded": 1,
-            "penaltiesMissed": 0
-          },
-          "base": 116,
-          "multiplier": 1,
-          "total": 116,
-          "lines": [
-            {
-              "label": "Started",
-              "count": 1,
-              "pointsEach": 4,
-              "points": 4
-            },
-            {
-              "label": "Goal (DEF)",
-              "count": 1,
-              "pointsEach": 60,
-              "points": 60
-            },
-            {
-              "label": "Shot on target",
-              "count": 2,
-              "pointsEach": 6,
-              "points": 12
-            },
-            {
-              "label": "Passes completed (per 5)",
-              "count": 14,
-              "pointsEach": 1,
-              "points": 14
-            },
-            {
-              "label": "Tackle won",
-              "count": 2,
-              "pointsEach": 4,
-              "points": 8
-            },
-            {
-              "label": "Interception won",
-              "count": 5,
-              "pointsEach": 4,
-              "points": 20
-            },
-            {
-              "label": "Goal conceded",
-              "count": 1,
-              "pointsEach": -2,
-              "points": -2
-            }
-          ]
-        },
-        {
-          "playerId": "schlotterbeck",
-          "sofascoreId": 940871,
-          "name": "Nico Schlotterbeck",
-          "teamId": "bangalore-vibrators",
-          "role": "none",
-          "stats": {
-            "position": "DEF",
-            "minutes": 90,
-            "started": true,
-            "goals": 1,
-            "assists": 0,
-            "chancesCreated": 0,
-            "shotsOnTarget": 2,
-            "passesCompleted": 74,
-            "tacklesWon": 2,
-            "interceptionsWon": 5,
-            "saves": 0,
-            "penaltiesSaved": 0,
-            "cleanSheet": false,
-            "yellowCards": 0,
-            "redCards": 0,
-            "ownGoals": 0,
-            "goalsConceded": 1,
-            "penaltiesMissed": 0
-          },
-          "base": 116,
-          "multiplier": 1,
-          "total": 116,
-          "lines": [
-            {
-              "label": "Started",
-              "count": 1,
-              "pointsEach": 4,
-              "points": 4
-            },
-            {
-              "label": "Goal (DEF)",
-              "count": 1,
-              "pointsEach": 60,
-              "points": 60
-            },
-            {
-              "label": "Shot on target",
-              "count": 2,
-              "pointsEach": 6,
-              "points": 12
-            },
-            {
-              "label": "Passes completed (per 5)",
-              "count": 14,
-              "pointsEach": 1,
-              "points": 14
-            },
-            {
-              "label": "Tackle won",
-              "count": 2,
-              "pointsEach": 4,
-              "points": 8
-            },
-            {
-              "label": "Interception won",
-              "count": 5,
-              "pointsEach": 4,
-              "points": 20
-            },
-            {
-              "label": "Goal conceded",
-              "count": 1,
-              "pointsEach": -2,
-              "points": -2
-            }
-          ]
-        },
-        {
-          "playerId": "schlotterbeck",
-          "sofascoreId": 940871,
-          "name": "Nico Schlotterbeck",
           "teamId": "rcb-saisuresh",
           "role": "none",
           "stats": {
@@ -74758,6 +74610,178 @@
               "count": 5,
               "pointsEach": 4,
               "points": 20
+            },
+            {
+              "label": "Goal conceded",
+              "count": 1,
+              "pointsEach": -2,
+              "points": -2
+            }
+          ]
+        },
+        {
+          "playerId": "brown",
+          "sofascoreId": 1159759,
+          "name": "Nathaniel Brown",
+          "teamId": "udkohli",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 73,
+            "started": true,
+            "goals": 1,
+            "assists": 1,
+            "chancesCreated": 3,
+            "shotsOnTarget": 1,
+            "passesCompleted": 32,
+            "tacklesWon": 2,
+            "interceptionsWon": 1,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 1,
+            "penaltiesMissed": 0
+          },
+          "base": 115,
+          "multiplier": 1,
+          "total": 115,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal (DEF)",
+              "count": 1,
+              "pointsEach": 60,
+              "points": 60
+            },
+            {
+              "label": "Assist",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            },
+            {
+              "label": "Chance created",
+              "count": 3,
+              "pointsEach": 3,
+              "points": 9
+            },
+            {
+              "label": "Shot on target",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 6,
+              "pointsEach": 1,
+              "points": 6
+            },
+            {
+              "label": "Tackle won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            },
+            {
+              "label": "Interception won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal conceded",
+              "count": 1,
+              "pointsEach": -2,
+              "points": -2
+            }
+          ]
+        },
+        {
+          "playerId": "brown",
+          "sofascoreId": 1159759,
+          "name": "Nathaniel Brown",
+          "teamId": "bangalore-vibrators",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 73,
+            "started": true,
+            "goals": 1,
+            "assists": 1,
+            "chancesCreated": 3,
+            "shotsOnTarget": 1,
+            "passesCompleted": 32,
+            "tacklesWon": 2,
+            "interceptionsWon": 1,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 1,
+            "penaltiesMissed": 0
+          },
+          "base": 115,
+          "multiplier": 1,
+          "total": 115,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal (DEF)",
+              "count": 1,
+              "pointsEach": 60,
+              "points": 60
+            },
+            {
+              "label": "Assist",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            },
+            {
+              "label": "Chance created",
+              "count": 3,
+              "pointsEach": 3,
+              "points": 9
+            },
+            {
+              "label": "Shot on target",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 6,
+              "pointsEach": 1,
+              "points": 6
+            },
+            {
+              "label": "Tackle won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            },
+            {
+              "label": "Interception won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
             },
             {
               "label": "Goal conceded",
@@ -75924,7 +75948,7 @@
           "sofascoreId": 1019322,
           "name": "Florian Wirtz",
           "teamId": "rcb-aman",
-          "role": "none",
+          "role": "vice",
           "stats": {
             "position": "MID",
             "minutes": 90,
@@ -75946,8 +75970,8 @@
             "penaltiesMissed": 0
           },
           "base": 59,
-          "multiplier": 1,
-          "total": 59,
+          "multiplier": 1.5,
+          "total": 88.5,
           "lines": [
             {
               "label": "Started",
@@ -76621,7 +76645,6 @@
         }
       ],
       "unresolved": [
-        "Nathaniel Brown",
         "Leon Goretzka",
         "Waldemar Anton",
         "Eloy Room",
@@ -77997,130 +78020,6 @@
           "playerId": "schlotterbeck",
           "sofascoreId": 940871,
           "name": "Nico Schlotterbeck",
-          "teamId": "udkohli",
-          "role": "none",
-          "stats": {
-            "position": "DEF",
-            "minutes": 45,
-            "started": true,
-            "goals": 0,
-            "assists": 0,
-            "chancesCreated": 1,
-            "shotsOnTarget": 0,
-            "passesCompleted": 35,
-            "tacklesWon": 1,
-            "interceptionsWon": 0,
-            "saves": 0,
-            "penaltiesSaved": 0,
-            "cleanSheet": false,
-            "yellowCards": 0,
-            "redCards": 0,
-            "ownGoals": 0,
-            "goalsConceded": 1,
-            "penaltiesMissed": 0
-          },
-          "base": 16,
-          "multiplier": 1,
-          "total": 16,
-          "lines": [
-            {
-              "label": "Started",
-              "count": 1,
-              "pointsEach": 4,
-              "points": 4
-            },
-            {
-              "label": "Chance created",
-              "count": 1,
-              "pointsEach": 3,
-              "points": 3
-            },
-            {
-              "label": "Passes completed (per 5)",
-              "count": 7,
-              "pointsEach": 1,
-              "points": 7
-            },
-            {
-              "label": "Tackle won",
-              "count": 1,
-              "pointsEach": 4,
-              "points": 4
-            },
-            {
-              "label": "Goal conceded",
-              "count": 1,
-              "pointsEach": -2,
-              "points": -2
-            }
-          ]
-        },
-        {
-          "playerId": "schlotterbeck",
-          "sofascoreId": 940871,
-          "name": "Nico Schlotterbeck",
-          "teamId": "bangalore-vibrators",
-          "role": "none",
-          "stats": {
-            "position": "DEF",
-            "minutes": 45,
-            "started": true,
-            "goals": 0,
-            "assists": 0,
-            "chancesCreated": 1,
-            "shotsOnTarget": 0,
-            "passesCompleted": 35,
-            "tacklesWon": 1,
-            "interceptionsWon": 0,
-            "saves": 0,
-            "penaltiesSaved": 0,
-            "cleanSheet": false,
-            "yellowCards": 0,
-            "redCards": 0,
-            "ownGoals": 0,
-            "goalsConceded": 1,
-            "penaltiesMissed": 0
-          },
-          "base": 16,
-          "multiplier": 1,
-          "total": 16,
-          "lines": [
-            {
-              "label": "Started",
-              "count": 1,
-              "pointsEach": 4,
-              "points": 4
-            },
-            {
-              "label": "Chance created",
-              "count": 1,
-              "pointsEach": 3,
-              "points": 3
-            },
-            {
-              "label": "Passes completed (per 5)",
-              "count": 7,
-              "pointsEach": 1,
-              "points": 7
-            },
-            {
-              "label": "Tackle won",
-              "count": 1,
-              "pointsEach": 4,
-              "points": 4
-            },
-            {
-              "label": "Goal conceded",
-              "count": 1,
-              "pointsEach": -2,
-              "points": -2
-            }
-          ]
-        },
-        {
-          "playerId": "schlotterbeck",
-          "sofascoreId": 940871,
-          "name": "Nico Schlotterbeck",
           "teamId": "rcb-saisuresh",
           "role": "none",
           "stats": {
@@ -78167,6 +78066,142 @@
             },
             {
               "label": "Tackle won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal conceded",
+              "count": 1,
+              "pointsEach": -2,
+              "points": -2
+            }
+          ]
+        },
+        {
+          "playerId": "brown",
+          "sofascoreId": 1159759,
+          "name": "Nathaniel Brown",
+          "teamId": "udkohli",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 1,
+            "passesCompleted": 30,
+            "tacklesWon": 6,
+            "interceptionsWon": 1,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 1,
+            "penaltiesMissed": 0
+          },
+          "base": 42,
+          "multiplier": 1,
+          "total": 42,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Shot on target",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 6,
+              "pointsEach": 1,
+              "points": 6
+            },
+            {
+              "label": "Tackle won",
+              "count": 6,
+              "pointsEach": 4,
+              "points": 24
+            },
+            {
+              "label": "Interception won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal conceded",
+              "count": 1,
+              "pointsEach": -2,
+              "points": -2
+            }
+          ]
+        },
+        {
+          "playerId": "brown",
+          "sofascoreId": 1159759,
+          "name": "Nathaniel Brown",
+          "teamId": "bangalore-vibrators",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 1,
+            "passesCompleted": 30,
+            "tacklesWon": 6,
+            "interceptionsWon": 1,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 1,
+            "penaltiesMissed": 0
+          },
+          "base": 42,
+          "multiplier": 1,
+          "total": 42,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Shot on target",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 6,
+              "pointsEach": 1,
+              "points": 6
+            },
+            {
+              "label": "Tackle won",
+              "count": 6,
+              "pointsEach": 4,
+              "points": 24
+            },
+            {
+              "label": "Interception won",
               "count": 1,
               "pointsEach": 4,
               "points": 4
@@ -79204,7 +79239,7 @@
           "sofascoreId": 1019322,
           "name": "Florian Wirtz",
           "teamId": "rcb-aman",
-          "role": "none",
+          "role": "vice",
           "stats": {
             "position": "MID",
             "minutes": 90,
@@ -79226,8 +79261,8 @@
             "penaltiesMissed": 0
           },
           "base": 41,
-          "multiplier": 1,
-          "total": 41,
+          "multiplier": 1.5,
+          "total": 61.5,
           "lines": [
             {
               "label": "Started",
@@ -79693,7 +79728,6 @@
         }
       ],
       "unresolved": [
-        "Nathaniel Brown",
         "Jamie Leweling",
         "Nadiem Amiri",
         "Leon Goretzka",
@@ -82841,7 +82875,7 @@
           "sofascoreId": 1019322,
           "name": "Florian Wirtz",
           "teamId": "rcb-aman",
-          "role": "none",
+          "role": "vice",
           "stats": {
             "position": "MID",
             "minutes": 73,
@@ -82863,8 +82897,8 @@
             "penaltiesMissed": 0
           },
           "base": 39,
-          "multiplier": 1,
-          "total": 39,
+          "multiplier": 1.5,
+          "total": 58.5,
           "lines": [
             {
               "label": "Started",
@@ -83298,16 +83332,22 @@
       ],
       "unmatchedDrafted": [
         {
-          "playerId": "schlotterbeck",
-          "name": "Nico Schlotterbeck",
+          "playerId": "brown",
+          "name": "Nathaniel Brown",
           "country": "Germany",
-          "teamId": "udkohli, bangalore-vibrators, rcb-saisuresh"
+          "teamId": "udkohli, bangalore-vibrators"
         },
         {
           "playerId": "baumann",
           "name": "Oliver Baumann",
           "country": "Germany",
           "teamId": "abhishek"
+        },
+        {
+          "playerId": "schlotterbeck",
+          "name": "Nico Schlotterbeck",
+          "country": "Germany",
+          "teamId": "rcb-saisuresh"
         }
       ]
     },

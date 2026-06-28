@@ -170,8 +170,7 @@ export const players: Player[] = [
   { id: "kokcu", name: "Orkun Kökçü", country: "Turkey", position: "MID", club: "Benfica" },
   { id: "weghorst", name: "Wout Weghorst", country: "Netherlands", position: "FWD", club: "Ajax" },
   { id: "pavel", name: "Pavel Šulc", country: "Czechia", position: "MID", club: "Viktoria Plzeň" },
-
-  // --- Additional players drafted in the RCB Fam Pool ---
+  { id: "brown", name: "Nathaniel Brown", country: "Germany", position: "DEF", club: "Bayern Munich" },
   { id: "laporte", name: "Aymeric Laporte", country: "Spain", position: "DEF", club: "Athletic Bilbao" },
   { id: "gyokeres", name: "Viktor Gyökeres", country: "Sweden", position: "FWD", club: "Arsenal" },
   { id: "raya", name: "David Raya", country: "Spain", position: "GK", club: "Arsenal" },

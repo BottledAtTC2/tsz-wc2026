@@ -68,12 +68,12 @@ export const teams: FantasyTeam[] = [
     name: "UDKohli",
     poolId: "tsz",
     squad: [
-      "unai-simon", "nuno-mendes", "schlotterbeck", "dumfries", "casemiro",
+      "unai-simon", "nuno-mendes", "brown", "dumfries", "casemiro",
       "bruno-guimaraes", "valverde", "morgan-rogers", "kane", "ronaldo", "salah",
     ],
     captainId: "kane",
     viceCaptainId: "nuno-mendes",
-    points: 0,
+    points: -25,
   },
   {
     id: "zeeshan",
@@ -180,12 +180,12 @@ export const teams: FantasyTeam[] = [
     poolId: "cco",
     squad: [
       "yamal", "ronaldo", "vitinha", "cristian-romero", "theo-hernandez",
-      "schlotterbeck", "salah", "mctominay", "edouard-mendy", "mane",
+      "brown", "salah", "mctominay", "edouard-mendy", "mane",
       "reijnders",
     ],
     captainId: "yamal",
     viceCaptainId: "vitinha",
-    points: 0,
+    points: -25,
   },
   {
     id: "cco-zeeshan",
@@ -563,7 +563,7 @@ export const teams: FantasyTeam[] = [
       "bruno-guimaraes", "olise", "brahim-diaz", "luis-diaz", "saibari",
     ],
     captainId: "olise",
-    viceCaptainId: "luis-diaz",
+    viceCaptainId: "wirtz",
     points: 0,
   },
   {
