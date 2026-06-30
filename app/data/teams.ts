@@ -317,7 +317,7 @@ export const teams: FantasyTeam[] = [
       "nusa", "valverde", "pavlovic", "saliba", "emi-martinez",
     ],
     captainId: "dembele",
-    viceCaptainId: "doue",
+    viceCaptainId: "matheus-cunha",
     points: 0,
   },
   {

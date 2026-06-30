@@ -175,6 +175,8 @@ export const players: Player[] = [
   { id: "gyokeres", name: "Viktor Gyökeres", country: "Sweden", position: "FWD", club: "Arsenal" },
   { id: "raya", name: "David Raya", country: "Spain", position: "GK", club: "Arsenal" },
   { id: "rudiger", name: "Antonio Rüdiger", country: "Germany", position: "DEF", club: "Real Madrid" },
+  { id: "brobbey", name: "Brian Brobbey", country: "Netherlands", position: "FWD", club: "Sunderland" },
+  { id: "balogun", name: "Folarin Balogun", country: "USA", position: "FWD", club: "Monaco" },
   { id: "perisic", name: "Ivan Perišić", country: "Croatia", position: "MID", club: "PSV" },
 
   // --- Additional players drafted in the Dream Team ---

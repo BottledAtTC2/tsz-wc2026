@@ -56,11 +56,74 @@ export const drafts: Draft[] = [
     teamB: {
       name: "Ayush Anand",
       squad: [
-        "kane", "bellingham", "yamal", "bruno-fernandes", "julian-alvarez",
+        "kane", "", "yamal", "bruno-fernandes", "julian-alvarez",
         "wirtz", "luis-diaz", "arda-guler", "messi", "kai-havertz", "saka",
       ],
       captainId: "kane",
       viceCaptainId: "bellingham",
+    },
+  },
+  {
+    id: "tanmay-vs-ayush-anand",
+    teamA: {
+      name: "Tanmay",
+      squad: [
+        "kane", "yamal", "vinicius", "bruno-fernandes", "dembele",
+        "pedri", "gakpo", "ronaldo", "lautaro", "mike-maignan", "nuno-mendes",
+      ],
+      captainId: "kane",
+      viceCaptainId: "yamal",
+    },
+    teamB: {
+      name: "Ayush Anand",
+      squad: [
+        "mbappe", "olise", "oyarzabal", "vinicius", "dembele", "nico-williams",
+        "declan-rice", "vitinha", "raphinha", "haaland", "matheus-cunha",
+      ],
+      captainId: "olise",
+      viceCaptainId: "oyarzabal",
+    },
+  },
+  {
+    id: "mradul-vs-nishank",
+    teamA: {
+      name: "Mradul",
+      squad: [
+        "messi", "undav", "dembele", "saka", "vinicius", "haaland",
+        "ronaldo", "lukaku", "brobbey", "courtois", "nuno-mendes",
+      ],
+      captainId: "messi",
+      viceCaptainId: "ronaldo",
+    },
+    teamB: {
+      name: "Nishank",
+      squad: [
+        "kane", "mbappe", "gakpo", "bellingham", "kai-havertz",
+        "olise", "oyarzabal", "matheus-cunha", "de-bruyne", "unai-simon", "yamal",
+      ],
+      captainId: "mbappe",
+      viceCaptainId: "messi",
+    },  
+  },
+  {
+    id: "nishank-vs-tanmay",
+    teamA: {
+      name: "Nishank",
+      squad: [
+        "haaland", "mbappe", "messi", "bellingham", "kai-havertz",
+        "olise", "oyarzabal", "declan-rice", "brobbey", "unai-simon", "matheus-cunha",
+      ],
+      captainId: "mbappe",
+      viceCaptainId: "messi",
+    },
+    teamB: {
+      name: "Tanmay",
+      squad: [
+        "kane", "yamal", "vinicius", "bruno-fernandes", "dembele",
+        "pedri", "gakpo", "ronaldo", "lautaro", "mike-maignan", "nuno-mendes",
+      ],
+      captainId: "kane",
+      viceCaptainId: "yamal",
     },
   },
   {
