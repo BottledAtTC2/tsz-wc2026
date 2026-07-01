@@ -129,9 +129,13 @@ export function teamPointsMap(
  * Season points per real player id — the player's own (base) points, without
  * any captain multiplier, counted once per match even if owned by many teams.
  */
-export function playerPointsMap(store = loadScores()): Map<string, number> {
+export function playerPointsMap(
+  store = loadScores(),
+  eventIds?: Set<string>,
+): Map<string, number> {
   const map = new Map<string, number>();
-  for (const match of Object.values(store.matches)) {
+  for (const [eid, match] of Object.entries(store.matches)) {
+    if (eventIds && !eventIds.has(eid)) continue;
     const seen = new Set<string>();
     for (const p of match.players) {
       if (seen.has(p.playerId)) continue;

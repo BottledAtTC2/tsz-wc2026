@@ -20,6 +20,11 @@ export interface Draft {
   id: string;
   /** Optional label, e.g. "Round of 16". Falls back to "TeamA vs TeamB". */
   title?: string;
+  /**
+   * Optional first fixture stage to count. Omit to count every scored match.
+   * Examples: "Round of 32", "Round of 16", "Quarterfinals".
+   */
+  scoringStartsAt?: string;
   teamA: DraftTeam;
   teamB: DraftTeam;
 }
@@ -28,6 +33,8 @@ export interface Draft {
 //
 // {
 //   id: "ayush-vs-mfk",
+//   title: "Round of 32 Auction",
+//   scoringStartsAt: "Round of 32", // omit to include group-stage points too
 //   teamA: {
 //     name: "Ayush",
 //     squad: ["messi", "yamal", "kane", "saka", "pedri"],
@@ -86,6 +93,7 @@ export const drafts: Draft[] = [
   },
   {
     id: "mradul-vs-nishank",
+    scoringStartsAt: "Round of 32",
     teamA: {
       name: "Mradul",
       squad: [
@@ -106,7 +114,30 @@ export const drafts: Draft[] = [
     },  
   },
   {
+    id: "ayush-anand-vs-nishank",
+    scoringStartsAt: "Round of 32",
+    teamA: {
+      name: "Ayush Anand",
+      squad: [
+        "kane", "bellingham", "yamal", "saka", "vinicius", "lautaro",
+        "dani-olmo", "gakpo", "bruno-fernandes", "emi-martinez", "balogun",
+      ],
+      captainId: "kane",
+      viceCaptainId: "bellingham",
+    },
+    teamB: {
+      name: "Nishank",
+      squad: [
+        "messi", "mbappe", "dembele", "olise", "kai-havertz",
+        "declan-rice", "oyarzabal", "matheus-cunha", "brobbey", "unai-simon", "haaland",
+      ],
+      captainId: "mbappe",
+      viceCaptainId: "messi",
+    },
+  },
+  {
     id: "nishank-vs-tanmay",
+    scoringStartsAt: "Round of 32",
     teamA: {
       name: "Nishank",
       squad: [

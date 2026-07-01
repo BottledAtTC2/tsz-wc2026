@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { drafts, type DraftTeam } from "../data/drafts";
+import { drafts, type Draft, type DraftTeam } from "../data/drafts";
 import { playerById } from "../data/players";
-import { playerPointsMap } from "../lib/scores";
+import { loadFixtures } from "../lib/fixtures";
+import { loadScores, playerPointsMap, type ScoresStore } from "../lib/scores";
 import { SCORING } from "../lib/scoring";
 
 export const metadata: Metadata = { title: "Drafts — TSZ WC 2026" };
@@ -20,6 +21,43 @@ interface Scored {
   rows: { pid: string; pts: number; mult: number; counted: boolean }[];
 }
 
+const STAGE_ORDER = new Map<string, number>([
+  ["Group stage", 1],
+  ["Round 1", 1],
+  ["Round 2", 2],
+  ["Round 3", 3],
+  ["Round of 32", 4],
+  ["Round of 16", 5],
+  ["Quarterfinals", 6],
+  ["Semifinals", 7],
+  ["Match for 3rd place", 8],
+  ["Final", 9],
+]);
+
+function stageRank(stage: string): number | undefined {
+  return STAGE_ORDER.get(stage);
+}
+
+function eventIdsFromStage(startStage: string, store: ScoresStore): Set<string> {
+  const startRank = stageRank(startStage);
+  if (startRank == null) return new Set(Object.keys(store.matches));
+
+  const ids = new Set<string>();
+  for (const fixture of loadFixtures()) {
+    if (fixture.sofascoreId == null) continue;
+    const rank = stageRank(fixture.stage);
+    if (rank != null && rank >= startRank) ids.add(String(fixture.sofascoreId));
+  }
+  return ids;
+}
+
+function pointsForDraft(draft: Draft, store: ScoresStore): Map<string, number> {
+  const eventIds = draft.scoringStartsAt
+    ? eventIdsFromStage(draft.scoringStartsAt, store)
+    : undefined;
+  return playerPointsMap(store, eventIds);
+}
+
 // A draft team's score = each player's base season points × that team's
 // captain/vice multiplier; if countTop is set, only the best N count.
 function scoreTeam(team: DraftTeam, base: Map<string, number>): Scored {
@@ -36,20 +74,26 @@ function scoreTeam(team: DraftTeam, base: Map<string, number>): Scored {
   return { total, rows };
 }
 
-function ruleLabel(team: DraftTeam): string {
-  return team.countTop != null
+function ruleLabel(team: DraftTeam, scoringStartsAt?: string): string {
+  const countRule = team.countTop != null
     ? `Best ${team.countTop} count`
     : "All count";
+  const stageRule = scoringStartsAt
+    ? `From ${scoringStartsAt}`
+    : "All matches";
+  return `${countRule} · ${stageRule}`;
 }
 
 function TeamColumn({
   team,
   scored,
   win,
+  scoringStartsAt,
 }: {
   team: DraftTeam;
   scored: Scored;
   win: boolean;
+  scoringStartsAt?: string;
 }) {
   return (
     <div className="flex-1">
@@ -65,7 +109,7 @@ function TeamColumn({
           </span>
         </div>
         <div className="mt-1 text-[10px] font-black uppercase tracking-widest text-muted">
-          {ruleLabel(team)}
+          {ruleLabel(team, scoringStartsAt)}
         </div>
       </div>
       <ul className="space-y-1">
@@ -100,7 +144,7 @@ function TeamColumn({
 }
 
 export default function DraftsPage() {
-  const base = playerPointsMap();
+  const store = loadScores();
 
   return (
     <main className="font-sans">
@@ -118,6 +162,7 @@ export default function DraftsPage() {
       ) : (
         <div className="space-y-5">
           {drafts.map((d) => {
+            const base = pointsForDraft(d, store);
             const a = scoreTeam(d.teamA, base);
             const b = scoreTeam(d.teamB, base);
             const aWin = a.total > b.total;
@@ -133,12 +178,22 @@ export default function DraftsPage() {
                   </div>
                 )}
                 <div className="flex flex-col gap-5 p-5 md:flex-row">
-                  <TeamColumn team={d.teamA} scored={a} win={aWin} />
+                  <TeamColumn
+                    team={d.teamA}
+                    scored={a}
+                    win={aWin}
+                    scoringStartsAt={d.scoringStartsAt}
+                  />
                   <div className="flex items-center justify-center text-[11px] font-black uppercase tracking-widest text-muted md:flex-col">
                     {aWin || bWin ? "" : "draw"}
                     <span className="mx-2 md:my-2">vs</span>
                   </div>
-                  <TeamColumn team={d.teamB} scored={b} win={bWin} />
+                  <TeamColumn
+                    team={d.teamB}
+                    scored={b}
+                    win={bWin}
+                    scoringStartsAt={d.scoringStartsAt}
+                  />
                 </div>
               </div>
             );
