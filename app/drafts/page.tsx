@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import { drafts, type Draft, type DraftTeam } from "../data/drafts";
 import { playerById } from "../data/players";
 import { loadFixtures } from "../lib/fixtures";
@@ -19,6 +20,11 @@ function multiplierFor(team: DraftTeam, pid: string): number {
 interface Scored {
   total: number;
   rows: { pid: string; pts: number; mult: number; counted: boolean }[];
+}
+
+interface ScoredDraftTeam {
+  team: DraftTeam;
+  scored: Scored;
 }
 
 const STAGE_ORDER = new Map<string, number>([
@@ -82,6 +88,16 @@ function ruleLabel(team: DraftTeam, scoringStartsAt?: string): string {
     ? `From ${scoringStartsAt}`
     : "All matches";
   return `${countRule} · ${stageRule}`;
+}
+
+function draftTitle(draft: Draft): string {
+  return draft.title ?? draft.teams.map((team) => team.name).join(" vs ");
+}
+
+function winnerIndex(scoredTeams: ScoredDraftTeam[]): number | undefined {
+  const highScore = Math.max(...scoredTeams.map(({ scored }) => scored.total));
+  const leaders = scoredTeams.filter(({ scored }) => scored.total === highScore);
+  return leaders.length === 1 ? scoredTeams.indexOf(leaders[0]) : undefined;
 }
 
 function TeamColumn({
@@ -152,7 +168,7 @@ export default function DraftsPage() {
         Drafts
       </h1>
       <p className="mb-8 text-[15px] font-bold uppercase tracking-widest text-muted">
-        Head-to-head 1v1 matchups
+        Head-to-head matchups
       </p>
 
       {drafts.length === 0 ? (
@@ -163,37 +179,37 @@ export default function DraftsPage() {
         <div className="space-y-5">
           {drafts.map((d) => {
             const base = pointsForDraft(d, store);
-            const a = scoreTeam(d.teamA, base);
-            const b = scoreTeam(d.teamB, base);
-            const aWin = a.total > b.total;
-            const bWin = b.total > a.total;
+            const scoredTeams = d.teams.map((team) => ({
+              team,
+              scored: scoreTeam(team, base),
+            }));
+            const winner = winnerIndex(scoredTeams);
+            const draw = winner == null;
             return (
               <div
                 key={d.id}
                 className="overflow-hidden rounded-xl border border-edge bg-panel shadow-lg"
               >
-                {d.title && (
-                  <div className="border-b border-edge bg-panel2 px-5 py-2 text-[11px] font-black uppercase tracking-widest text-muted">
-                    {d.title}
-                  </div>
-                )}
+                <div className="border-b border-edge bg-panel2 px-5 py-2 text-[11px] font-black uppercase tracking-widest text-muted">
+                  {draftTitle(d)}
+                </div>
                 <div className="flex flex-col gap-5 p-5 md:flex-row">
-                  <TeamColumn
-                    team={d.teamA}
-                    scored={a}
-                    win={aWin}
-                    scoringStartsAt={d.scoringStartsAt}
-                  />
-                  <div className="flex items-center justify-center text-[11px] font-black uppercase tracking-widest text-muted md:flex-col">
-                    {aWin || bWin ? "" : "draw"}
-                    <span className="mx-2 md:my-2">vs</span>
-                  </div>
-                  <TeamColumn
-                    team={d.teamB}
-                    scored={b}
-                    win={bWin}
-                    scoringStartsAt={d.scoringStartsAt}
-                  />
+                  {scoredTeams.map(({ team, scored }, index) => (
+                    <Fragment key={`${d.id}-${team.name}`}>
+                      {index > 0 && (
+                        <div className="flex items-center justify-center text-[11px] font-black uppercase tracking-widest text-muted md:flex-col">
+                          {draw && index === 1 ? "draw" : ""}
+                          <span className="mx-2 md:my-2">vs</span>
+                        </div>
+                      )}
+                      <TeamColumn
+                        team={team}
+                        scored={scored}
+                        win={winner === index}
+                        scoringStartsAt={d.scoringStartsAt}
+                      />
+                    </Fragment>
+                  ))}
                 </div>
               </div>
             );
