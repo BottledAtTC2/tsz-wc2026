@@ -535,12 +535,12 @@ export const teams: FantasyTeam[] = [
     name: "SaiSuresh",
     poolId: "rcb",
     squad: [
-      "emi-martinez", "cubarsi", "schlotterbeck", "hincapie", "joao-neves",
+      "emi-martinez", "cubarsi", "brown", "hincapie", "joao-neves",
       "bernardo-silva", "dani-olmo", "cherki", "raphinha", "pulisic", "gyokeres",
     ],
     captainId: "raphinha",
     viceCaptainId: "cherki",
-    points: 0,
+    points: -25,
   },
   {
     id: "rcb-rcbfam",
