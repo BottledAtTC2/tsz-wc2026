@@ -79,7 +79,7 @@ export const drafts: Draft[] = [
         "pedri", "gakpo", "ronaldo", "lautaro", "mike-maignan", "nuno-mendes",
       ],
       captainId: "kane",
-      viceCaptainId: "yamal",
+      viceCaptainId: "dembele",
     },
     teamB: {
       name: "Ayush Anand",
