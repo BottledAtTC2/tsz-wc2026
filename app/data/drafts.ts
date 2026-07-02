@@ -110,7 +110,7 @@ export const drafts: Draft[] = [
         "olise", "oyarzabal", "matheus-cunha", "de-bruyne", "unai-simon", "yamal",
       ],
       captainId: "mbappe",
-      viceCaptainId: "messi",
+      viceCaptainId: "yamal",
     },  
   },
   {

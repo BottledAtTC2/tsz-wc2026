@@ -799,7 +799,9 @@
       "away": "Canada",
       "kickoff": "2026-06-28T19:00:00.000Z",
       "venue": "SoFi Stadium",
-      "status": "scheduled",
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "finished",
       "sofascoreId": 12813000
     },
     {
@@ -809,7 +811,9 @@
       "away": "Japan",
       "kickoff": "2026-06-29T17:00:00.000Z",
       "venue": "NRG Stadium",
-      "status": "scheduled",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "finished",
       "sofascoreId": 12813012
     },
     {
@@ -819,7 +823,9 @@
       "away": "Paraguay",
       "kickoff": "2026-06-29T20:30:00.000Z",
       "venue": "Gillette Stadium",
-      "status": "scheduled",
+      "homeScore": 4,
+      "awayScore": 5,
+      "status": "finished",
       "sofascoreId": 12813014
     },
     {
@@ -829,7 +835,9 @@
       "away": "Morocco",
       "kickoff": "2026-06-30T01:00:00.000Z",
       "venue": "Estadio BBVA",
-      "status": "scheduled",
+      "homeScore": 3,
+      "awayScore": 4,
+      "status": "finished",
       "sofascoreId": 12812998
     },
     {
@@ -839,7 +847,9 @@
       "away": "Norway",
       "kickoff": "2026-06-30T17:00:00.000Z",
       "venue": "AT&T Stadium",
-      "status": "scheduled",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "finished",
       "sofascoreId": 12812989
     },
     {
@@ -849,7 +859,9 @@
       "away": "Sweden",
       "kickoff": "2026-06-30T21:00:00.000Z",
       "venue": "MetLife Stadium",
-      "status": "scheduled",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "finished",
       "sofascoreId": 12812995
     },
     {
@@ -857,9 +869,11 @@
       "stage": "Round of 32",
       "home": "Mexico",
       "away": "Ecuador",
-      "kickoff": "2026-07-01T01:00:00.000Z",
+      "kickoff": "2026-07-01T02:00:00.000Z",
       "venue": "Estadio Azteca",
-      "status": "scheduled",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "finished",
       "sofascoreId": 12813001
     },
     {
@@ -869,7 +883,9 @@
       "away": "DR Congo",
       "kickoff": "2026-07-01T16:00:00.000Z",
       "venue": "Mercedes-Benz Stadium",
-      "status": "scheduled",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "finished",
       "sofascoreId": 12813020
     },
     {
@@ -879,7 +895,9 @@
       "away": "Senegal",
       "kickoff": "2026-07-01T20:00:00.000Z",
       "venue": "Lumen Field",
-      "status": "scheduled",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "finished",
       "sofascoreId": 12813013
     },
     {
@@ -889,7 +907,9 @@
       "away": "Bosnia & Herzegovina",
       "kickoff": "2026-07-02T00:00:00.000Z",
       "venue": "Levi's Stadium",
-      "status": "scheduled",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "finished",
       "sofascoreId": 12812992
     },
     {
@@ -916,7 +936,7 @@
       "id": "12813019",
       "stage": "Round of 32",
       "home": "Switzerland",
-      "away": "3E/3F/3G/3I/3J",
+      "away": "Algeria",
       "kickoff": "2026-07-03T03:00:00.000Z",
       "venue": "BC Place",
       "status": "scheduled",
@@ -925,8 +945,8 @@
     {
       "id": "12813018",
       "stage": "Round of 32",
-      "home": "2D",
-      "away": "G2",
+      "home": "Australia",
+      "away": "Egypt",
       "kickoff": "2026-07-03T18:00:00.000Z",
       "venue": "AT&T Stadium",
       "status": "scheduled",
@@ -936,7 +956,7 @@
       "id": "12812999",
       "stage": "Round of 32",
       "home": "Argentina",
-      "away": "H2",
+      "away": "Cabo Verde",
       "kickoff": "2026-07-03T22:00:00.000Z",
       "venue": "Hard Rock Stadium",
       "status": "scheduled",
@@ -945,8 +965,8 @@
     {
       "id": "12813011",
       "stage": "Round of 32",
-      "home": "1K",
-      "away": "3D/3E/3I/3J/3L",
+      "home": "Colombia",
+      "away": "Ghana",
       "kickoff": "2026-07-04T01:30:00.000Z",
       "venue": "Arrowhead Stadium",
       "status": "scheduled",
@@ -955,8 +975,8 @@
     {
       "id": "12813009",
       "stage": "Round of 16",
-      "home": "W73",
-      "away": "W75",
+      "home": "Canada",
+      "away": "Morocco",
       "kickoff": "2026-07-04T17:00:00.000Z",
       "venue": "NRG Stadium",
       "status": "scheduled",
@@ -965,8 +985,8 @@
     {
       "id": "12813010",
       "stage": "Round of 16",
-      "home": "W74",
-      "away": "W77",
+      "home": "Paraguay",
+      "away": "France",
       "kickoff": "2026-07-04T21:00:00.000Z",
       "venue": "Lincoln Financial Field",
       "status": "scheduled",
@@ -975,8 +995,8 @@
     {
       "id": "12813006",
       "stage": "Round of 16",
-      "home": "W76",
-      "away": "W78",
+      "home": "Brazil",
+      "away": "Norway",
       "kickoff": "2026-07-05T20:00:00.000Z",
       "venue": "MetLife Stadium",
       "status": "scheduled",
@@ -985,8 +1005,8 @@
     {
       "id": "12813007",
       "stage": "Round of 16",
-      "home": "W79",
-      "away": "W80",
+      "home": "Mexico",
+      "away": "England",
       "kickoff": "2026-07-06T00:00:00.000Z",
       "venue": "Estadio Azteca",
       "status": "scheduled",
@@ -1005,8 +1025,8 @@
     {
       "id": "12813002",
       "stage": "Round of 16",
-      "home": "W81",
-      "away": "W82",
+      "home": "USA",
+      "away": "Belgium",
       "kickoff": "2026-07-07T00:00:00.000Z",
       "venue": "Lumen Field",
       "status": "scheduled",
