@@ -919,7 +919,9 @@
       "away": "Austria",
       "kickoff": "2026-07-02T19:00:00.000Z",
       "venue": "SoFi Stadium",
-      "status": "scheduled",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "finished",
       "sofascoreId": 12813004
     },
     {
@@ -929,7 +931,9 @@
       "away": "Croatia",
       "kickoff": "2026-07-02T23:00:00.000Z",
       "venue": "BMO Field",
-      "status": "scheduled",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "finished",
       "sofascoreId": 12812997
     },
     {
@@ -939,7 +943,9 @@
       "away": "Algeria",
       "kickoff": "2026-07-03T03:00:00.000Z",
       "venue": "BC Place",
-      "status": "scheduled",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "finished",
       "sofascoreId": 12813019
     },
     {
@@ -1015,8 +1021,8 @@
     {
       "id": "12812990",
       "stage": "Round of 16",
-      "home": "W83",
-      "away": "W84",
+      "home": "Portugal",
+      "away": "Spain",
       "kickoff": "2026-07-06T19:00:00.000Z",
       "venue": "AT&T Stadium",
       "status": "scheduled",
@@ -1045,7 +1051,7 @@
     {
       "id": "12812991",
       "stage": "Round of 16",
-      "home": "W85",
+      "home": "Switzerland",
       "away": "W87",
       "kickoff": "2026-07-07T20:00:00.000Z",
       "venue": "BC Place",

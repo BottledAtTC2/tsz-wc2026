@@ -65,7 +65,7 @@ export const drafts: Draft[] = [
       {
         name: "Ayush Anand",
         squad: [
-          "kane", "", "yamal", "bruno-fernandes", "julian-alvarez",
+          "kane", "bellingham", "yamal", "bruno-fernandes", "julian-alvarez",
           "wirtz", "luis-diaz", "arda-guler", "messi", "kai-havertz", "saka",
         ],
         captainId: "kane",
