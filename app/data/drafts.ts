@@ -164,7 +164,7 @@ export const drafts: Draft[] = [
           "pedri", "gakpo", "ronaldo", "lautaro", "maignan", "nuno-mendes",
         ],
         captainId: "kane",
-        viceCaptainId: "yamal",
+        viceCaptainId: "dembele",
       },
     ],
   },
