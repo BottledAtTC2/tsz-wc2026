@@ -1,10 +1,12 @@
-import type { PlayerId } from "./types";
+import type { PlayerId, ReplacementRule } from "./types";
 
 /** One side of a draft matchup. */
 export interface DraftTeam {
   name: string;
   /** Drafted real players (player ids from players.ts). */
   squad: PlayerId[];
+  /** Keep originals in `squad`; add injury replacements here. */
+  replacements?: ReplacementRule[];
   /** Optional captain (2x) / vice-captain (1.5x). Omit if the draft has none. */
   captainId?: PlayerId;
   viceCaptainId?: PlayerId;
@@ -80,7 +82,7 @@ export const drafts: Draft[] = [
         name: "Tanmay",
         squad: [
           "kane", "yamal", "vinicius", "bruno-fernandes", "dembele",
-          "pedri", "gakpo", "ronaldo", "lautaro", "mike-maignan", "nuno-mendes",
+          "pedri", "gakpo", "ronaldo", "lautaro", "maignan", "nuno-mendes",
         ],
         captainId: "kane",
         viceCaptainId: "dembele",

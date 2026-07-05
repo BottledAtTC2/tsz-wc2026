@@ -6,6 +6,11 @@
 import { teams } from "../../data/teams";
 import { playerById } from "../../data/players";
 import type { Position } from "../../data/types";
+import {
+  activePlayerForSlot,
+  ownsPlayerInEvent,
+  roleForPlayerInEvent,
+} from "../replacements";
 import { computePlayerScore } from "../scoring";
 import type {
   CaptainRole,
@@ -26,18 +31,13 @@ interface Ownership {
   role: CaptainRole;
 }
 
-// A real player can be drafted by several fantasy teams (e.g. one per pool),
-// each with its own captain/vice designation — so each player maps to a LIST
-// of owners.
-const ownership = new Map<string, Ownership[]>();
-for (const t of teams) {
-  for (const pid of t.squad) {
-    const role: CaptainRole =
-      pid === t.captainId ? "captain" : pid === t.viceCaptainId ? "vice" : "none";
-    const owners = ownership.get(pid) ?? [];
-    owners.push({ teamId: t.id, role });
-    ownership.set(pid, owners);
+function ownersForEvent(playerId: string, eventId: number): Ownership[] {
+  const owners: Ownership[] = [];
+  for (const t of teams) {
+    if (!ownsPlayerInEvent(t, playerId, eventId)) continue;
+    owners.push({ teamId: t.id, role: roleForPlayerInEvent(t, playerId, eventId) });
   }
+  return owners;
 }
 
 export interface PlayerMatchResult {
@@ -91,18 +91,54 @@ function concedingSide(inc: SofaIncident): Side {
   return inc.isHome ? "away" : "home";
 }
 
+/**
+ * Pre-tally goals and assists from the incidents list, keyed by Sofascore
+ * player id. Excludes penalty shootouts — those don't score fantasy points.
+ *
+ * Sofascore's /lineups statistics block sometimes omits goals/assists scored
+ * in extra time (it only reflects regulation). The incidents list is always
+ * complete, so we take the max of both sources.
+ */
+function incidentGoalsAssists(incidents: SofaIncident[]): {
+  goals: Map<number, number>;
+  assists: Map<number, number>;
+} {
+  const goals = new Map<number, number>();
+  const assists = new Map<number, number>();
+  for (const inc of incidents) {
+    // Only regular goals — penaltyShootout incidents have incidentType="penaltyShootout",
+    // so they're already excluded here. ownGoals are credited to ownGoals, not goals.
+    if (inc.incidentType !== "goal") continue;
+    if (inc.incidentClass === "ownGoal") continue;
+    const scorerId = inc.player?.id;
+    if (scorerId != null) goals.set(scorerId, (goals.get(scorerId) ?? 0) + 1);
+    const assistId = inc.assist1?.id;
+    if (assistId != null) assists.set(assistId, (assists.get(assistId) ?? 0) + 1);
+  }
+  return { goals, assists };
+}
+
+
 /** Build the statistics-derived portion of a player's stat line. */
 function statLine(
   entry: SofaLineupPlayer,
   position: Position,
+  incGoals: Map<number, number>,
+  incAssists: Map<number, number>,
 ): PlayerMatchStats {
   const s = entry.statistics ?? {};
+  const sofaId = entry.player.id;
+  // Take the higher of lineup stats vs incident-derived counts so that ET
+  // goals/assists (which Sofascore sometimes omits from the stats block)
+  // are never missed.
+  const goals = Math.max(s.goals ?? 0, incGoals.get(sofaId) ?? 0);
+  const assists = Math.max(s.goalAssist ?? 0, incAssists.get(sofaId) ?? 0);
   return {
     position,
     minutes: s.minutesPlayed ?? 0,
     started: entry.substitute !== true,
-    goals: s.goals ?? 0,
-    assists: s.goalAssist ?? 0,
+    goals,
+    assists,
     chancesCreated: s.keyPass ?? 0,
     shotsOnTarget: s.onTargetScoringAttempt ?? 0,
     passesCompleted: s.accuratePass ?? 0,
@@ -167,6 +203,8 @@ function applyContext(
   stats.yellowCards = hasRed ? 0 : yellows;
 
   // Goals conceded while on the pitch (GK/DEF relevant for points/clean sheet).
+  // Penalty shootout incidents use incidentType="penaltyShootout" (not "goal"),
+  // so the type check below already excludes them naturally.
   let conceded = 0;
   for (const inc of incidents) {
     if (inc.incidentType !== "goal") continue;
@@ -194,6 +232,9 @@ export function scoreEvent(
   const results: PlayerMatchResult[] = [];
   const unresolved: string[] = [];
 
+  // Pre-build incident-derived goal/assist tallies once, shared across all players.
+  const { goals: incGoals, assists: incAssists } = incidentGoalsAssists(incs);
+
   const sides: Side[] = ["home", "away"];
   for (const side of sides) {
     const sideCountry =
@@ -214,7 +255,7 @@ export function scoreEvent(
         if (featured) unresolved.push(entry.player.name);
         continue;
       }
-      const stats = statLine(entry, player.position);
+      const stats = statLine(entry, player.position, incGoals, incAssists);
       if (stats.minutes <= 0) continue; // didn't feature
       applyContext(stats, sofaId, side, incs);
 
@@ -222,10 +263,11 @@ export function scoreEvent(
       // A player drafted only in drafts/dream-teams has no auction owner — store
       // one neutral result (teamId "") so their base stats are still recorded
       // for those views. Auction pages filter by teamId, so "" never shows.
-      const owners = ownership.get(player.id) ?? [
+      const owners = ownersForEvent(player.id, event.id);
+      const resultOwners = owners.length > 0 ? owners : [
         { teamId: "", role: "none" as CaptainRole },
       ];
-      for (const own of owners) {
+      for (const own of resultOwners) {
         const score = computePlayerScore(stats, own.role);
         results.push({
           playerId: player.id,
@@ -248,8 +290,10 @@ export function scoreEvent(
     eventId: event.id,
     home: event.homeTeam?.name ?? "Home",
     away: event.awayTeam?.name ?? "Away",
-    homeScore: event.homeScore?.normaltime ?? event.homeScore?.current ?? null,
-    awayScore: event.awayScore?.normaltime ?? event.awayScore?.current ?? null,
+    // `current` is always the true final score (includes ET goals).
+    // `normaltime` freezes at 90 min so ET matches would show 1-1 instead of 3-2.
+    homeScore: event.homeScore?.current ?? event.homeScore?.normaltime ?? null,
+    awayScore: event.awayScore?.current ?? event.awayScore?.normaltime ?? null,
     status: event.status?.type,
     players: results,
     unresolved,
@@ -270,16 +314,19 @@ function unmatchedDrafted(
   if (nations.size === 0) return [];
 
   const out: UnmatchedDrafted[] = [];
-  for (const [playerId, owners] of ownership) {
-    if (scoredIds.has(playerId)) continue;
-    const p = playerById.get(playerId);
-    if (p && nations.has(normalizeCountry(p.country))) {
-      out.push({
-        playerId,
-        name: p.name,
-        country: p.country,
-        teamId: owners.map((o) => o.teamId).join(", "),
-      });
+  for (const t of teams) {
+    for (const playerId of t.squad) {
+      const activeId = activePlayerForSlot(t, playerId, event.id);
+      if (scoredIds.has(activeId)) continue;
+      const p = playerById.get(activeId);
+      if (p && nations.has(normalizeCountry(p.country))) {
+        out.push({
+          playerId: activeId,
+          name: p.name,
+          country: p.country,
+          teamId: t.id,
+        });
+      }
     }
   }
   return out;

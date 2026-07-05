@@ -177,6 +177,7 @@ export const players: Player[] = [
   { id: "rudiger", name: "Antonio Rüdiger", country: "Germany", position: "DEF", club: "Real Madrid" },
   { id: "brobbey", name: "Brian Brobbey", country: "Netherlands", position: "FWD", club: "Sunderland" },
   { id: "balogun", name: "Folarin Balogun", country: "USA", position: "FWD", club: "Monaco" },
+  { id: "spence", name: "Djed Spence", country: "England", position: "DEF", club: "Tottenham Hotspur" },
   { id: "perisic", name: "Ivan Perišić", country: "Croatia", position: "MID", club: "PSV" },
 
   // --- Additional players drafted in the Dream Team ---

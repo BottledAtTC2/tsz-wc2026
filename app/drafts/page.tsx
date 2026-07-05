@@ -3,23 +3,34 @@ import { Fragment } from "react";
 import { drafts, type Draft, type DraftTeam } from "../data/drafts";
 import { playerById } from "../data/players";
 import { loadFixtures } from "../lib/fixtures";
-import { loadScores, playerPointsMap, type ScoresStore } from "../lib/scores";
-import { SCORING } from "../lib/scoring";
+import {
+  loadScores,
+  rosterPlayerBreakdowns,
+  rosterSlotTotals,
+  type ScoresStore,
+} from "../lib/scores";
+import {
+  latestScoredEventId,
+  rosterDisplayPlayers,
+} from "../lib/rosterDisplay";
+import { roleForPlayerInEvent } from "../lib/replacements";
 
 export const metadata: Metadata = { title: "Drafts — TSZ WC 2026" };
 
 // Reads computed points from disk, so render per request.
 export const dynamic = "force-dynamic";
 
-function multiplierFor(team: DraftTeam, pid: string): number {
-  if (pid === team.captainId) return SCORING.captainMultiplier;
-  if (pid === team.viceCaptainId) return SCORING.viceCaptainMultiplier;
-  return 1;
-}
-
 interface Scored {
   total: number;
-  rows: { pid: string; pts: number; mult: number; counted: boolean }[];
+  rows: {
+    pid: string;
+    originalId: string;
+    pts: number;
+    counted: boolean;
+    replacementFor?: string;
+    replacedBy?: string;
+    role: "captain" | "vice" | "none";
+  }[];
 }
 
 interface ScoredDraftTeam {
@@ -57,26 +68,51 @@ function eventIdsFromStage(startStage: string, store: ScoresStore): Set<string> 
   return ids;
 }
 
-function pointsForDraft(draft: Draft, store: ScoresStore): Map<string, number> {
-  const eventIds = draft.scoringStartsAt
+function eventIdsForDraft(draft: Draft, store: ScoresStore): Set<string> | undefined {
+  return draft.scoringStartsAt
     ? eventIdsFromStage(draft.scoringStartsAt, store)
     : undefined;
-  return playerPointsMap(store, eventIds);
 }
 
 // A draft team's score = each player's base season points × that team's
 // captain/vice multiplier; if countTop is set, only the best N count.
-function scoreTeam(team: DraftTeam, base: Map<string, number>): Scored {
-  const rows = team.squad.map((pid) => {
-    const mult = multiplierFor(team, pid);
-    return { pid, mult, pts: (base.get(pid) ?? 0) * mult, counted: true };
-  });
-  const ranked = [...rows].sort((a, b) => b.pts - a.pts);
+function scoreTeam(
+  team: DraftTeam,
+  store: ScoresStore,
+  eventIds?: Set<string>,
+): Scored {
+  const slotTotals = rosterSlotTotals(team, store, eventIds);
+  const playerBreakdowns = rosterPlayerBreakdowns(team, store, eventIds);
+  const latestEventId = latestScoredEventId(store);
+  const ranked = team.squad
+    .map((pid) => ({ pid, pts: slotTotals.get(pid) ?? 0 }))
+    .sort((a, b) => b.pts - a.pts);
+  const keep = new Set(team.squad);
   if (team.countTop != null) {
-    const keep = new Set(ranked.slice(0, team.countTop).map((r) => r.pid));
-    for (const r of rows) r.counted = keep.has(r.pid);
+    keep.clear();
+    for (const r of ranked.slice(0, team.countTop)) keep.add(r.pid);
   }
-  const total = rows.reduce((s, r) => (r.counted ? s + r.pts : s), 0);
+  const rows = rosterDisplayPlayers(team).map((row) => {
+    const role = latestEventId
+      ? roleForPlayerInEvent(team, row.player.id, latestEventId)
+      : row.player.id === team.captainId
+        ? "captain"
+        : row.player.id === team.viceCaptainId
+          ? "vice"
+          : "none";
+    return {
+      pid: row.player.id,
+      originalId: row.originalId,
+      pts: playerBreakdowns.get(row.player.id)?.total ?? 0,
+      counted: keep.has(row.originalId),
+      replacementFor: row.replacementFor?.id,
+      replacedBy: row.replacedBy?.id,
+      role,
+    };
+  });
+  const total = ranked
+    .filter((r) => keep.has(r.pid))
+    .reduce((s, r) => s + r.pts, 0);
   return { total, rows };
 }
 
@@ -134,19 +170,39 @@ function TeamColumn({
           .sort((a, b) => b.pts - a.pts)
           .map((r) => {
             const p = playerById.get(r.pid);
-            const isC = r.pid === team.captainId;
-            const isVc = r.pid === team.viceCaptainId;
+            const replacementFor = r.replacementFor
+              ? playerById.get(r.replacementFor)
+              : undefined;
+            const isReplacement = Boolean(r.replacementFor);
+            const isInjured = Boolean(r.replacedBy);
+            const isC = r.role === "captain";
+            const isVc = r.role === "vice";
             return (
               <li
-                key={r.pid}
-                className={`flex items-center justify-between gap-2 text-[13px] font-bold ${
+                key={`${r.pid}-${r.replacementFor ?? "original"}`}
+                className={`flex items-start justify-between gap-2 rounded-sm px-1.5 py-1 text-[13px] font-bold ${
                   r.counted ? "" : "opacity-40"
+                } ${
+                  isInjured
+                    ? "bg-white/5 text-muted opacity-60"
+                    : isReplacement
+                      ? "bg-brand/10"
+                      : ""
                 }`}
               >
-                <span className="truncate text-ink">
-                  {p?.name ?? r.pid}
+                <span className="min-w-0 text-ink">
+                  <span className={isInjured ? "line-through" : ""}>
+                    {p?.name ?? r.pid}
+                  </span>
                   {isC && <span className="ml-1 text-brand">C</span>}
                   {isVc && <span className="ml-1 text-accent">V</span>}
+                  {(isReplacement || isInjured) && (
+                    <span className="mt-0.5 block truncate text-[9px] font-black uppercase tracking-widest text-muted">
+                      {isReplacement
+                        ? `Replacement for ${replacementFor?.name ?? r.replacementFor}`
+                        : "Injured / ruled out"}
+                    </span>
+                  )}
                 </span>
                 <span className="shrink-0 tabular-nums text-muted">
                   {Math.round(r.pts * 10) / 10}
@@ -178,10 +234,10 @@ export default function DraftsPage() {
       ) : (
         <div className="space-y-5">
           {drafts.map((d) => {
-            const base = pointsForDraft(d, store);
+            const eventIds = eventIdsForDraft(d, store);
             const scoredTeams = d.teams.map((team) => ({
               team,
-              scored: scoreTeam(team, base),
+              scored: scoreTeam(team, store, eventIds),
             }));
             const winner = winnerIndex(scoredTeams);
             const draw = winner == null;

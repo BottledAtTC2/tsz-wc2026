@@ -20,14 +20,16 @@
 
     const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
     const base = "/api/v1/event/" + id;
-    // Sofascore challenges repeat fetches, but the page already downloaded
-    // this data — so read it from the browser cache first, then fall back to
-    // a few live retries for anything not cached.
-    const j = async (p) => {
+
+    // Fetch a URL with cache-busting retries on failure.
+    // `cacheMode` lets callers choose "force-cache" (fast, use cached response)
+    // or "reload" (always hit the network, needed for lineups whose stats can
+    // be stale from a regulation-time cache entry on ET matches).
+    const j = async (p, cacheMode = "force-cache") => {
       try {
         const r = await fetch(p, {
           credentials: "include",
-          cache: "force-cache",
+          cache: cacheMode,
           headers: { Accept: "application/json" },
         });
         if (r.ok) return r.json();
@@ -47,7 +49,9 @@
 
     const bundle = {
       event: (await j(base)).event,
-      lineups: await j(base + "/lineups"),
+      // Always bypass cache for lineups — the browser may have cached the
+      // regulation-time stats and extra-time goals/assists would be missing.
+      lineups: await j(base + "/lineups", "reload"),
       incidents: await j(base + "/incidents"),
     };
 
@@ -75,4 +79,4 @@
 })();
 
 // --- Bookmarklet version (everything on one line; use as the bookmark URL) ---
-// javascript:(async()=>{try{const m=location.href.match(/id:(\d+)/)||location.href.match(/(\d{6,})/);const id=(m&&m[1])||prompt("Sofascore event id?");if(!id)return;const s=ms=>new Promise(r=>setTimeout(r,ms));const b="/api/v1/event/"+id;const j=async p=>{try{const r=await fetch(p,{credentials:"include",cache:"force-cache",headers:{Accept:"application/json"}});if(r.ok)return r.json()}catch(_){}for(let i=0;i<4;i++){try{const r=await fetch(p,{credentials:"include",headers:{Accept:"application/json"}});if(r.ok)return r.json()}catch(_){}await s(1500*(i+1))}throw new Error("blocked "+p)};const o={event:(await j(b)).event,lineups:await j(b+"/lineups"),incidents:await j(b+"/incidents")};const t=JSON.stringify(o);const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([t],{type:"application/json"}));a.download="match-"+id+".json";a.click();try{await navigator.clipboard.writeText(t)}catch(_){}alert("Downloaded match-"+id+".json. Open your app /admin and upload it.")}catch(e){alert("Failed: "+e.message)}})();
+// javascript:(async()=>{try{const m=location.href.match(/id:(\d+)/)||location.href.match(/(\d{6,})/);const id=(m&&m[1])||prompt("Sofascore event id?");if(!id)return;const s=ms=>new Promise(r=>setTimeout(r,ms));const b="/api/v1/event/"+id;const j=async(p,c="force-cache")=>{try{const r=await fetch(p,{credentials:"include",cache:c,headers:{Accept:"application/json"}});if(r.ok)return r.json()}catch(_){}for(let i=0;i<4;i++){try{const r=await fetch(p,{credentials:"include",headers:{Accept:"application/json"}});if(r.ok)return r.json()}catch(_){}await s(1500*(i+1))}throw new Error("blocked "+p)};const o={event:(await j(b)).event,lineups:await j(b+"/lineups","reload"),incidents:await j(b+"/incidents")};const t=JSON.stringify(o);const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([t],{type:"application/json"}));a.download="match-"+id+".json";a.click();try{await navigator.clipboard.writeText(t)}catch(_){}alert("Downloaded match-"+id+".json. Open your app /admin and upload it.")}catch(e){alert("Failed: "+e.message)}})();

@@ -955,7 +955,9 @@
       "away": "Egypt",
       "kickoff": "2026-07-03T18:00:00.000Z",
       "venue": "AT&T Stadium",
-      "status": "scheduled",
+      "homeScore": 3,
+      "awayScore": 5,
+      "status": "finished",
       "sofascoreId": 12813018
     },
     {
@@ -965,7 +967,9 @@
       "away": "Cabo Verde",
       "kickoff": "2026-07-03T22:00:00.000Z",
       "venue": "Hard Rock Stadium",
-      "status": "scheduled",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "finished",
       "sofascoreId": 12812999
     },
     {
@@ -975,7 +979,9 @@
       "away": "Ghana",
       "kickoff": "2026-07-04T01:30:00.000Z",
       "venue": "Arrowhead Stadium",
-      "status": "scheduled",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "finished",
       "sofascoreId": 12813011
     },
     {
@@ -985,7 +991,9 @@
       "away": "Morocco",
       "kickoff": "2026-07-04T17:00:00.000Z",
       "venue": "NRG Stadium",
-      "status": "scheduled",
+      "homeScore": 0,
+      "awayScore": 3,
+      "status": "finished",
       "sofascoreId": 12813009
     },
     {
@@ -995,7 +1003,9 @@
       "away": "France",
       "kickoff": "2026-07-04T21:00:00.000Z",
       "venue": "Lincoln Financial Field",
-      "status": "scheduled",
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "finished",
       "sofascoreId": 12813010
     },
     {
@@ -1041,8 +1051,8 @@
     {
       "id": "12812993",
       "stage": "Round of 16",
-      "home": "W86",
-      "away": "W88",
+      "home": "Argentina",
+      "away": "Egypt",
       "kickoff": "2026-07-07T16:00:00.000Z",
       "venue": "Mercedes-Benz Stadium",
       "status": "scheduled",
@@ -1052,7 +1062,7 @@
       "id": "12812991",
       "stage": "Round of 16",
       "home": "Switzerland",
-      "away": "W87",
+      "away": "Colombia",
       "kickoff": "2026-07-07T20:00:00.000Z",
       "venue": "BC Place",
       "status": "scheduled",
@@ -1061,8 +1071,8 @@
     {
       "id": "12813016",
       "stage": "Quarterfinals",
-      "home": "W89",
-      "away": "W90",
+      "home": "France",
+      "away": "Morocco",
       "kickoff": "2026-07-09T20:00:00.000Z",
       "venue": "Gillette Stadium",
       "status": "scheduled",

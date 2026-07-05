@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { dreamTeams } from "../data/dream-teams";
-import { playerPointsMap } from "../lib/scores";
-import { SCORING } from "../lib/scoring";
+import { loadScores, rosterSlotTotals, type ScoresStore } from "../lib/scores";
 import type { DreamTeam } from "../data/dream-teams";
 
 export const metadata: Metadata = { title: "Dream Team — TSZ WC 2026" };
@@ -11,26 +10,19 @@ export const dynamic = "force-dynamic";
 
 export function dreamTeamTotal(
   team: DreamTeam,
-  base: Map<string, number>,
+  store: ScoresStore,
 ): number {
-  const vals = team.squad.map((pid) => {
-    const m =
-      pid === team.captainId
-        ? SCORING.captainMultiplier
-        : pid === team.viceCaptainId
-          ? SCORING.viceCaptainMultiplier
-          : 1;
-    return (base.get(pid) ?? 0) * m;
-  });
+  const totals = rosterSlotTotals(team, store);
+  const vals = team.squad.map((pid) => totals.get(pid) ?? 0);
   vals.sort((a, b) => b - a);
   const counted = team.countTop != null ? vals.slice(0, team.countTop) : vals;
   return counted.reduce((s, x) => s + x, 0);
 }
 
 export default function DreamTeamPage() {
-  const base = playerPointsMap();
+  const store = loadScores();
   const rows = dreamTeams
-    .map((team) => ({ team, total: dreamTeamTotal(team, base) }))
+    .map((team) => ({ team, total: dreamTeamTotal(team, store) }))
     .sort((a, b) => b.total - a.total);
 
   return (

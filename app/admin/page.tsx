@@ -192,7 +192,7 @@ export default function AdminPage() {
               </div>
               <ul className="text-ink">
                 {res.unmatchedDrafted.map((u) => (
-                  <li key={u.name}>
+                  <li key={`${u.name}-${u.teamId}`}>
                     {u.name}{" "}
                     <span className="text-muted">
                       ({u.country}, {u.teamId})

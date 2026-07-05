@@ -1,4 +1,4 @@
-import type { PlayerId } from "./types";
+import type { PlayerId, ReplacementRule } from "./types";
 
 /**
  * A "Dream Team" entry — one member's dream XI. Kept separate from the auction
@@ -9,6 +9,8 @@ export interface DreamTeam {
   id: string;
   name: string;
   squad: PlayerId[];
+  /** Keep originals in `squad`; add injury replacements here. */
+  replacements?: ReplacementRule[];
   captainId?: PlayerId;
   viceCaptainId?: PlayerId;
   countTop?: number;
@@ -22,6 +24,13 @@ export const dreamTeams: DreamTeam[] = [
       "unai-simon", "hakimi", "van-dijk", "reece-james", "bruno-fernandes",
       "olise", "dumfries", "kane", "ronaldo", "vinicius", "mbappe",
     ],
+    replacements: [
+    {
+      outgoingId: "reece-james",
+      incomingId: "oreilly",
+      startsEventId: 15186676, // inclusive: replacement counts from this game onwards
+    },
+  ],
   },
   {
     id: "dt-abhishek",
@@ -86,6 +95,13 @@ export const dreamTeams: DreamTeam[] = [
       "emi-martinez", "nuno-mendes", "reece-james", "hakimi", "yamal",
       "bruno-fernandes", "olise", "mbappe", "kane", "oyarzabal", "vinicius",
     ],
+    replacements: [
+    {
+      outgoingId: "reece-james",
+      incomingId: "oreilly",
+      startsEventId: 15186676, // inclusive: replacement counts from this game onwards
+    },
+  ],
   },
   {
     id: "dt-yash-mix",
@@ -134,6 +150,13 @@ export const dreamTeams: DreamTeam[] = [
       "emi-martinez", "nuno-mendes", "hakimi", "reece-james", "bruno-fernandes",
       "olise", "yamal", "mbappe", "kane", "oyarzabal", "vinicius",
     ],
+    replacements: [
+    {
+      outgoingId: "reece-james",
+      incomingId: "guehi",
+      startsEventId: 15186676, // inclusive: replacement counts from this game onwards
+    },
+  ],
   },
   {
     id: "dt-yash-a",

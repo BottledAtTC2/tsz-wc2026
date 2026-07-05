@@ -6,6 +6,8 @@ import { teamPointsMap, loadScores } from "../lib/scores";
 import { loadFixtures } from "../lib/fixtures";
 import PoolTabs, { resolvePool } from "../components/PoolTabs";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = { title: "Leaderboard — TSZ WC 2026" };
 
 /**

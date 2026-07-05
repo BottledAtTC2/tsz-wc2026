@@ -12,6 +12,7 @@
 
 import { NextResponse, type NextRequest } from "next/server";
 import { readFileSync } from "node:fs";
+import { revalidatePath } from "next/cache";
 import { scoreEvent } from "../../lib/sofascore/ingest";
 import { saveMatchResult, teamPointsMap } from "../../lib/scores";
 import { loadIdMap, recordIds } from "../../lib/sofascore/learnedIds";
@@ -73,6 +74,7 @@ export async function POST(req: NextRequest) {
         playerId: p.playerId,
       })),
     );
+    revalidatePath("/", "layout");
   }
 
   return NextResponse.json({

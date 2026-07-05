@@ -7,6 +7,12 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { teams, teamById } from "../data/teams";
 import { pools } from "../data/pools";
+import {
+  activePlayerForSlot,
+  roleForPlayerInEvent,
+  type ReplaceableRoster,
+} from "./replacements";
+import { SCORING, type CaptainRole } from "./scoring";
 import type { MatchResult } from "./sofascore/ingest";
 
 export interface ScoresStore {
@@ -46,11 +52,223 @@ export function teamPlayerTotals(
   eventIds?: Set<string>,
 ): Map<string, number> {
   const map = new Map<string, number>();
+  const team = teamById.get(teamId);
+  if (!team) return map;
   for (const [eid, match] of Object.entries(store.matches)) {
     if (eventIds && !eventIds.has(eid)) continue;
-    for (const p of match.players) {
-      if (p.teamId !== teamId) continue;
-      map.set(p.playerId, (map.get(p.playerId) ?? 0) + p.total);
+    for (const slotId of team.squad) {
+      const playerId = activePlayerForSlot(team, slotId, Number(eid));
+      const p = baseResultForPlayer(match, playerId);
+      if (!p) continue;
+      map.set(
+        playerId,
+        (map.get(playerId) ?? 0) +
+          adjustedTeamTotal(teamId, match, playerId, p.base),
+      );
+    }
+  }
+  return map;
+}
+
+function addBreakdownLine(
+  b: PlayerSeasonBreakdown,
+  label: string,
+  points: number,
+) {
+  const existing = b.lines.find((l) => l.label === label);
+  if (existing) existing.points += points;
+  else b.lines.push({ label, points });
+}
+
+function basePointsForPlayer(match: MatchResult, playerId: string): number {
+  const row = match.players.find((p) => p.playerId === playerId);
+  return row?.base ?? 0;
+}
+
+function baseResultForPlayer(
+  match: MatchResult,
+  playerId: string,
+): MatchResult["players"][number] | undefined {
+  return match.players.find((p) => p.playerId === playerId);
+}
+
+function roleMultiplier(role: CaptainRole): number {
+  if (role === "captain") return SCORING.captainMultiplier;
+  if (role === "vice") return SCORING.viceCaptainMultiplier;
+  return 1;
+}
+
+function adjustedTeamRole(
+  teamId: string,
+  match: MatchResult,
+  playerId: string,
+): CaptainRole {
+  const team = teamById.get(teamId);
+  if (!team) return "none";
+  return roleForPlayerInEvent(team, playerId, match.eventId);
+}
+
+function adjustedTeamTotal(
+  teamId: string,
+  match: MatchResult,
+  playerId: string,
+  base: number,
+): number {
+  return base * roleMultiplier(adjustedTeamRole(teamId, match, playerId));
+}
+
+function teamTotalForPlayer(
+  match: MatchResult,
+  teamId: string,
+  playerId: string,
+): number {
+  const row = baseResultForPlayer(match, playerId);
+  return row ? adjustedTeamTotal(teamId, match, playerId, row.base) : 0;
+}
+
+export function rosterSlotBaseTotals(
+  roster: ReplaceableRoster,
+  store = loadScores(),
+  eventIds?: Set<string>,
+): Map<string, number> {
+  const map = new Map<string, number>();
+  for (const [eid, match] of Object.entries(store.matches)) {
+    if (eventIds && !eventIds.has(eid)) continue;
+    for (const slotId of roster.squad) {
+      const activeId = activePlayerForSlot(roster, slotId, Number(eid));
+      map.set(slotId, (map.get(slotId) ?? 0) + basePointsForPlayer(match, activeId));
+    }
+  }
+  return map;
+}
+
+export function rosterSlotBaseBreakdowns(
+  roster: ReplaceableRoster,
+  store = loadScores(),
+  eventIds?: Set<string>,
+): Map<string, PlayerSeasonBreakdown> {
+  const map = new Map<string, PlayerSeasonBreakdown>();
+  for (const [eid, match] of Object.entries(store.matches)) {
+    if (eventIds && !eventIds.has(eid)) continue;
+    for (const slotId of roster.squad) {
+      const activeId = activePlayerForSlot(roster, slotId, Number(eid));
+      const row = baseResultForPlayer(match, activeId);
+      if (!row) continue;
+      let b = map.get(slotId);
+      if (!b) {
+        b = { total: 0, lines: [] };
+        map.set(slotId, b);
+      }
+      b.total += row.base;
+      for (const l of row.lines) addBreakdownLine(b, l.label, l.points);
+    }
+  }
+  return map;
+}
+
+export function rosterSlotTotals(
+  roster: ReplaceableRoster,
+  store = loadScores(),
+  eventIds?: Set<string>,
+): Map<string, number> {
+  const map = new Map<string, number>();
+  for (const [eid, match] of Object.entries(store.matches)) {
+    if (eventIds && !eventIds.has(eid)) continue;
+    for (const slotId of roster.squad) {
+      const activeId = activePlayerForSlot(roster, slotId, Number(eid));
+      const row = baseResultForPlayer(match, activeId);
+      if (!row) continue;
+      const role = roleForPlayerInEvent(roster, activeId, Number(eid));
+      map.set(slotId, (map.get(slotId) ?? 0) + row.base * roleMultiplier(role));
+    }
+  }
+  return map;
+}
+
+export function rosterPlayerBreakdowns(
+  roster: ReplaceableRoster,
+  store = loadScores(),
+  eventIds?: Set<string>,
+): Map<string, PlayerSeasonBreakdown> {
+  const map = new Map<string, PlayerSeasonBreakdown>();
+  for (const [eid, match] of Object.entries(store.matches)) {
+    if (eventIds && !eventIds.has(eid)) continue;
+    for (const slotId of roster.squad) {
+      const activeId = activePlayerForSlot(roster, slotId, Number(eid));
+      const row = baseResultForPlayer(match, activeId);
+      if (!row) continue;
+      let b = map.get(activeId);
+      if (!b) {
+        b = { total: 0, lines: [] };
+        map.set(activeId, b);
+      }
+      const role = roleForPlayerInEvent(roster, activeId, Number(eid));
+      const multiplier = roleMultiplier(role);
+      const total = row.base * multiplier;
+      b.total += total;
+      for (const l of row.lines) addBreakdownLine(b, l.label, l.points);
+      if (multiplier !== 1) {
+        const label =
+          role === "captain"
+            ? `Captain (×${multiplier})`
+            : `Vice-captain (×${multiplier})`;
+        addBreakdownLine(b, label, total - row.base);
+      }
+    }
+  }
+  return map;
+}
+
+function teamSlotTotals(
+  teamId: string,
+  store = loadScores(),
+  eventIds?: Set<string>,
+): Map<string, number> {
+  const team = teamById.get(teamId);
+  const map = new Map<string, number>();
+  if (!team) return map;
+  for (const [eid, match] of Object.entries(store.matches)) {
+    if (eventIds && !eventIds.has(eid)) continue;
+    for (const slotId of team.squad) {
+      const activeId = activePlayerForSlot(team, slotId, Number(eid));
+      map.set(
+        slotId,
+        (map.get(slotId) ?? 0) + teamTotalForPlayer(match, teamId, activeId),
+      );
+    }
+  }
+  return map;
+}
+
+export function teamSlotBreakdowns(
+  teamId: string,
+  store = loadScores(),
+): Map<string, PlayerSeasonBreakdown> {
+  const team = teamById.get(teamId);
+  const map = new Map<string, PlayerSeasonBreakdown>();
+  if (!team) return map;
+  for (const [eid, match] of Object.entries(store.matches)) {
+    for (const slotId of team.squad) {
+      const activeId = activePlayerForSlot(team, slotId, Number(eid));
+      const row = baseResultForPlayer(match, activeId);
+      if (!row) continue;
+      let b = map.get(slotId);
+      if (!b) {
+        b = { total: 0, lines: [] };
+        map.set(slotId, b);
+      }
+      const role = adjustedTeamRole(teamId, match, activeId);
+      const total = row.base * roleMultiplier(role);
+      b.total += total;
+      for (const l of row.lines) addBreakdownLine(b, l.label, l.points);
+      const multiplier = roleMultiplier(role);
+      if (multiplier !== 1) {
+        const label =
+          role === "captain"
+            ? `Captain (×${multiplier})`
+            : `Vice-captain (×${multiplier})`;
+        addBreakdownLine(b, label, total - row.base);
+      }
     }
   }
   return map;
@@ -73,27 +291,29 @@ export function teamPlayerBreakdowns(
   store = loadScores(),
 ): Map<string, PlayerSeasonBreakdown> {
   const map = new Map<string, PlayerSeasonBreakdown>();
-  const addLine = (b: PlayerSeasonBreakdown, label: string, points: number) => {
-    const existing = b.lines.find((l) => l.label === label);
-    if (existing) existing.points += points;
-    else b.lines.push({ label, points });
-  };
-  for (const match of Object.values(store.matches)) {
-    for (const p of match.players) {
-      if (p.teamId !== teamId) continue;
-      let b = map.get(p.playerId);
+  const team = teamById.get(teamId);
+  if (!team) return map;
+  for (const [eid, match] of Object.entries(store.matches)) {
+    for (const slotId of team.squad) {
+      const playerId = activePlayerForSlot(team, slotId, Number(eid));
+      const p = baseResultForPlayer(match, playerId);
+      if (!p) continue;
+      let b = map.get(playerId);
       if (!b) {
         b = { total: 0, lines: [] };
-        map.set(p.playerId, b);
+        map.set(playerId, b);
       }
-      b.total += p.total;
-      for (const l of p.lines) addLine(b, l.label, l.points);
-      if (p.multiplier !== 1) {
+      const role = adjustedTeamRole(teamId, match, playerId);
+      const multiplier = roleMultiplier(role);
+      const total = p.base * multiplier;
+      b.total += total;
+      for (const l of p.lines) addBreakdownLine(b, l.label, l.points);
+      if (multiplier !== 1) {
         const label =
-          p.role === "captain"
-            ? `Captain (×${p.multiplier})`
-            : `Vice-captain (×${p.multiplier})`;
-        addLine(b, label, p.total - p.base);
+          role === "captain"
+            ? `Captain (×${multiplier})`
+            : `Vice-captain (×${multiplier})`;
+        addBreakdownLine(b, label, total - p.base);
       }
     }
   }
@@ -110,7 +330,7 @@ export function teamPointsMap(
 ): Map<string, number> {
   const map = new Map<string, number>();
   for (const team of teams) {
-    const totals = teamPlayerTotals(team.id, store, eventIds);
+    const totals = teamSlotTotals(team.id, store, eventIds);
     const countTop = pools.find((p) => p.id === team.poolId)?.countTop;
     const sorted = team.squad
       .map((pid) => totals.get(pid) ?? 0)
@@ -167,9 +387,7 @@ export function playerBreakdowns(
       }
       b.total += p.base;
       for (const l of p.lines) {
-        const e = b.lines.find((x) => x.label === l.label);
-        if (e) e.points += l.points;
-        else b.lines.push({ label: l.label, points: l.points });
+        addBreakdownLine(b, l.label, l.points);
       }
     }
   }
@@ -185,7 +403,7 @@ export function countedPlayerIds(
   if (!team) return new Set();
   const countTop = pools.find((p) => p.id === team.poolId)?.countTop;
   if (!countTop) return new Set(team.squad);
-  const totals = teamPlayerTotals(teamId, store);
+  const totals = teamSlotTotals(teamId, store);
   return new Set(
     team.squad
       .map((pid) => ({ pid, pts: totals.get(pid) ?? 0 }))

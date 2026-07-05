@@ -2,10 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { dreamTeamById } from "../../data/dream-teams";
-import { playerById } from "../../data/players";
-import { playerBreakdowns } from "../../lib/scores";
+import {
+  loadScores,
+  rosterPlayerBreakdowns,
+  rosterSlotTotals,
+} from "../../lib/scores";
+import {
+  latestScoredEventId,
+  rosterDisplayPlayers,
+} from "../../lib/rosterDisplay";
 import { colorsFor } from "../../lib/countryColors";
-import { SCORING } from "../../lib/scoring";
+import { roleForPlayerInEvent } from "../../lib/replacements";
 
 export const metadata: Metadata = { title: "Dream Team — TSZ WC 2026" };
 
@@ -20,28 +27,26 @@ export default async function DreamTeamView(props: {
   const team = dreamTeamById.get(id);
   if (!team) return notFound();
 
-  const breakdowns = playerBreakdowns();
+  const store = loadScores();
+  const breakdowns = rosterPlayerBreakdowns(team, store);
+  const slotTotals = rosterSlotTotals(team, store);
+  const latestEventId = latestScoredEventId(store);
 
-  const squad = team.squad
-    .map((pid) => playerById.get(pid))
-    .filter(Boolean) as NonNullable<ReturnType<typeof playerById.get>>[];
+  const squad = rosterDisplayPlayers(team);
   squad.sort(
     (a, b) =>
-      posOrder[a.position as keyof typeof posOrder] -
-      posOrder[b.position as keyof typeof posOrder],
+      posOrder[a.player.position as keyof typeof posOrder] -
+        posOrder[b.player.position as keyof typeof posOrder] ||
+      team.squad.indexOf(a.originalId) - team.squad.indexOf(b.originalId) ||
+      Number(Boolean(a.replacementFor)) - Number(Boolean(b.replacementFor)),
   );
 
-  const mult = (pid: string) =>
-    pid === team.captainId
-      ? SCORING.captainMultiplier
-      : pid === team.viceCaptainId
-        ? SCORING.viceCaptainMultiplier
-        : 1;
-
-  const total = team.squad.reduce(
-    (s, pid) => s + (breakdowns.get(pid)?.total ?? 0) * mult(pid),
-    0,
-  );
+  const sortedTotals = team.squad
+    .map((pid) => slotTotals.get(pid) ?? 0)
+    .sort((a, b) => b - a);
+  const countedTotals =
+    team.countTop != null ? sortedTotals.slice(0, team.countTop) : sortedTotals;
+  const total = countedTotals.reduce((s, pts) => s + pts, 0);
 
   return (
     <main className="font-sans">
@@ -68,31 +73,47 @@ export default async function DreamTeamView(props: {
       </div>
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {squad.map((player) => {
+        {squad.map(({ player, replacementFor, replacedBy }) => {
           const kit = colorsFor(player.country);
-          const isC = player.id === team.captainId;
-          const isVc = player.id === team.viceCaptainId;
+          const isInjured = Boolean(replacedBy);
+          const isReplacement = Boolean(replacementFor);
+          const displayRole = latestEventId
+            ? roleForPlayerInEvent(team, player.id, latestEventId)
+            : player.id === team.captainId
+              ? "captain"
+              : player.id === team.viceCaptainId
+                ? "vice"
+                : "none";
+          const isC = displayRole === "captain";
+          const isVc = displayRole === "vice";
           const b = breakdowns.get(player.id);
-          const m = mult(player.id);
           const lines = (b?.lines ?? []).map((l) => ({
             label: l.label,
-            pts: l.points * m,
+            pts: l.points,
           }));
-          const playerTotal = (b?.total ?? 0) * m;
+          const playerTotal = b?.total ?? 0;
 
           return (
             <div
-              key={player.id}
-              className="flex flex-col overflow-hidden rounded-xl border border-edge bg-panel shadow-lg"
+              key={`${player.id}-${replacementFor?.id ?? "original"}`}
+              className={`flex flex-col overflow-hidden rounded-xl bg-panel shadow-lg ${
+                isReplacement
+                  ? "border-[3px] border-accent"
+                  : isInjured
+                    ? "border-[3px] border-red-200/50 opacity-65"
+                    : "border border-edge"
+              }`}
             >
               <div
-                className={`relative flex flex-col justify-center border-b border-edge px-5 py-4 ${kit.bg} ${kit.text}`}
+                className={`relative flex flex-col justify-center border-b border-edge px-5 py-4 ${
+                  isInjured ? "grayscale" : ""
+                } ${kit.bg} ${kit.text}`}
               >
                 <div className="text-xl font-black uppercase tracking-tight">
                   {player.name}
                 </div>
                 <div className="mt-0.5 text-[11px] font-bold uppercase tracking-widest opacity-80">
-                  {player.position} // {player.country}
+                  {player.position} / {player.country}
                 </div>
                 {(isC || isVc) && (
                   <span className="absolute right-4 top-1/2 flex h-[28px] w-[28px] -translate-y-1/2 items-center justify-center rounded-full border-2 border-brand bg-panel text-[14px] font-black text-brand shadow-md">
@@ -100,6 +121,25 @@ export default async function DreamTeamView(props: {
                   </span>
                 )}
               </div>
+
+              {(isReplacement || isInjured) && (
+                <div
+                  className={`border-b border-edge px-4 py-3 ${
+                    isReplacement
+                      ? "bg-brand text-black"
+                      : "bg-white text-red-950"
+                  }`}
+                >
+                  <div className="text-[10px] font-black uppercase tracking-widest opacity-70">
+                    {isReplacement ? "Replacement Alert" : "Player Status"}
+                  </div>
+                  <div className="mt-1 text-[13px] font-black uppercase tracking-widest">
+                    {isReplacement
+                      ? `Replaces ${replacementFor?.name}`
+                      : "Injured / Ruled Out"}
+                  </div>
+                </div>
+              )}
 
               <div className="flex flex-1 flex-col gap-1 bg-panel p-4">
                 <div className="mb-2 text-[10px] font-black uppercase tracking-widest text-muted">

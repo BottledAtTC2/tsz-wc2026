@@ -7,6 +7,10 @@ import PoolTabs, { resolvePool } from "../components/PoolTabs";
 
 export const metadata: Metadata = { title: "Teams — TSZ WC 2026" };
 
+// Reads computed points from disk on every request so the page reflects
+// newly ingested matches without needing a rebuild.
+export const dynamic = "force-dynamic";
+
 export default async function TeamsPage(props: PageProps<"/teams">) {
   const { pool } = await props.searchParams;
   const poolId = resolvePool(pool);

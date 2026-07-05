@@ -68,12 +68,19 @@ export const teams: FantasyTeam[] = [
     name: "UDKohli",
     poolId: "tsz",
     squad: [
-      "unai-simon", "nuno-mendes", "brown", "dumfries", "casemiro",
-      "bruno-guimaraes", "valverde", "morgan-rogers", "kane", "ronaldo", "salah",
+      "unai-simon", "nuno-mendes", "schlotterbeck", "dumfries", "casemiro",
+      "bruno-guimaraes", "valverde", "morgan-rogers", "kane", "ronaldo", "salah"
     ],
+    replacements: [
+    {
+      outgoingId: "schlotterbeck",
+      incomingId: "brown",
+      startsEventId: 15186907, // inclusive: replacement counts from this game onwards
+    },
+  ],
     captainId: "kane",
     viceCaptainId: "nuno-mendes",
-    points: -25,
+    points: 0,
   },
   {
     id: "zeeshan",
@@ -180,12 +187,19 @@ export const teams: FantasyTeam[] = [
     poolId: "cco",
     squad: [
       "yamal", "ronaldo", "vitinha", "cristian-romero", "theo-hernandez",
-      "brown", "salah", "mctominay", "edouard-mendy", "mane",
-      "reijnders",
+      "schlotterbeck", "salah", "mctominay", "edouard-mendy", "mane",
+      "reijnders"
     ],
+    replacements: [
+    {
+      outgoingId: "schlotterbeck",
+      incomingId: "brown",
+      startsEventId: 15186907, // inclusive: replacement counts from this game onwards
+    },
+  ],
     captainId: "yamal",
     viceCaptainId: "vitinha",
-    points: -25,
+    points: 0,
   },
   {
     id: "cco-zeeshan",
@@ -512,8 +526,15 @@ export const teams: FantasyTeam[] = [
     poolId: "rcb",
     squad: [
       "verbruggen", "cucurella", "laporte", "reece-james", "de-jong",
-      "bellingham", "mctominay", "ferran-torres", "doue", "messi", "vinicius",
+      "bellingham", "mctominay", "ferran-torres", "doue", "messi", "vinicius"
     ],
+    replacements: [
+    {
+      outgoingId: "reece-james",
+      incomingId: "spence",
+      startsEventId: 15186676, // inclusive: replacement counts from this game onwards
+    },
+  ],
     captainId: "messi",
     viceCaptainId: "vinicius",
     points: 0,
@@ -535,12 +556,19 @@ export const teams: FantasyTeam[] = [
     name: "SaiSuresh",
     poolId: "rcb",
     squad: [
-      "emi-martinez", "cubarsi", "brown", "hincapie", "joao-neves",
-      "bernardo-silva", "dani-olmo", "cherki", "raphinha", "pulisic", "gyokeres",
+      "emi-martinez", "cubarsi", "schlotterbeck", "hincapie", "joao-neves",
+      "bernardo-silva", "dani-olmo", "cherki", "raphinha", "pulisic", "gyokeres"
     ],
+    replacements: [
+    {
+      outgoingId: "schlotterbeck",
+      incomingId: "brown",
+      startsEventId: 15186907, // inclusive: replacement counts from this game onwards
+    },
+  ],
     captainId: "raphinha",
     viceCaptainId: "cherki",
-    points: -25,
+    points: 0,
   },
   {
     id: "rcb-rcbfam",

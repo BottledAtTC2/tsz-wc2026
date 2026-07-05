@@ -4,6 +4,36 @@ export type Position = "GK" | "DEF" | "MID" | "FWD";
 
 export type PlayerId = string;
 
+/** Injury replacement rule for a roster slot. */
+export interface ReplacementRule {
+  /** The drafted/original player whose points stop at the cutoff. */
+  outgoingId: PlayerId;
+  /** The replacement player whose points start at the cutoff. */
+  incomingId: PlayerId;
+  /**
+   * Replacement starts with this Sofascore event id, inclusive.
+   * Use when the replacement should count "from this game onwards".
+   */
+  startsEventId?: number;
+  /**
+   * Replacement starts after this Sofascore event id, exclusive.
+   * Use when the injured player should still count for this game.
+   */
+  startsAfterEventId?: number;
+  /**
+   * Exact Sofascore event ids where the replacement should count. If set, this
+   * overrides the chronological start fields above.
+   */
+  scoringEventIds?: number[];
+  /**
+   * Optional captain/vice changes that start at the same cutoff as this
+   * replacement. Use when the injured player had one of those roles.
+   */
+  newCaptainId?: PlayerId;
+  newViceCaptainId?: PlayerId;
+  note?: string;
+}
+
 /** A real-world World Cup player. */
 export interface Player {
   id: PlayerId;
@@ -26,6 +56,8 @@ export interface FantasyTeam {
   poolId: string;
   /** Drafted real players (player ids). Filled from the auction/draft. */
   squad: PlayerId[];
+  /** Injury replacements. Keep the original in `squad`; add replacements here. */
+  replacements?: ReplacementRule[];
   captainId?: PlayerId;
   viceCaptainId?: PlayerId;
   /**

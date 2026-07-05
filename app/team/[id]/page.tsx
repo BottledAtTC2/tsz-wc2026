@@ -2,14 +2,22 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { teams } from "../../data/teams";
-import { playerById } from "../../data/players";
 import {
   loadScores,
   teamPointsMap,
   teamPlayerBreakdowns,
 } from "../../lib/scores";
+import { roleForPlayerInEvent } from "../../lib/replacements";
+import {
+  latestScoredEventId,
+  rosterDisplayPlayers,
+} from "../../lib/rosterDisplay";
 
 export const metadata: Metadata = { title: "Team Squad — TSZ WC 2026" };
+
+// Reads computed points from disk on every request so the page reflects
+// newly ingested matches without needing a rebuild.
+export const dynamic = "force-dynamic";
 
 // Colour map for the nations our drafted players actually belong to.
 const COUNTRY_COLORS: Record<string, { bg: string; text: string }> = {
@@ -54,21 +62,21 @@ export default async function TeamPage(props: {
   const team = teams.find((t) => t.id === id);
   if (!team) return notFound();
 
-  // Load full player objects and sort them by position logically
+  // Load full player objects and sort them by position logically.
   const posOrder = { GK: 1, DEF: 2, MID: 3, FWD: 4 };
-  const squad = team.squad
-    .map((playerId) => playerById.get(playerId))
-    .filter(Boolean) as NonNullable<ReturnType<typeof playerById.get>>[];
-
+  const squad = rosterDisplayPlayers(team);
   squad.sort(
     (a, b) =>
-      posOrder[a.position as keyof typeof posOrder] -
-      posOrder[b.position as keyof typeof posOrder],
+      posOrder[a.player.position as keyof typeof posOrder] -
+        posOrder[b.player.position as keyof typeof posOrder] ||
+      team.squad.indexOf(a.originalId) - team.squad.indexOf(b.originalId) ||
+      Number(Boolean(a.replacementFor)) - Number(Boolean(b.replacementFor)),
   );
 
   const totalPoints = pointsMap.get(team.id) ?? 0;
   // Real per-player season breakdowns for this team.
   const breakdowns = teamPlayerBreakdowns(team.id, store);
+  const latestEventId = latestScoredEventId(store);
 
   return (
     <main className="font-sans">
@@ -116,9 +124,18 @@ export default async function TeamPage(props: {
 
       {/* Grid of Player Stat Cards */}
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {squad.map((player) => {
-          const isCaptain = team.captainId === player.id;
-          const isVice = team.viceCaptainId === player.id;
+        {squad.map(({ player, replacementFor, replacedBy }) => {
+          const isInjured = Boolean(replacedBy);
+          const isReplacement = Boolean(replacementFor);
+          const displayRole = latestEventId
+            ? roleForPlayerInEvent(team, player.id, latestEventId)
+            : player.id === team.captainId
+              ? "captain"
+              : player.id === team.viceCaptainId
+                ? "vice"
+                : "none";
+          const isCaptain = displayRole === "captain";
+          const isVice = displayRole === "vice";
           const kit =
             COUNTRY_COLORS[player.country] || COUNTRY_COLORS["DEFAULT"];
 
@@ -127,7 +144,11 @@ export default async function TeamPage(props: {
             ? "border-[3px] border-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.15)]"
             : isVice
               ? "border-[3px] border-slate-300 shadow-[0_0_15px_rgba(203,213,225,0.1)]"
-              : "border border-edge hover:border-brand/50";
+              : isReplacement
+                ? "border-[3px] border-accent shadow-[0_0_15px_rgba(0,166,80,0.16)]"
+                : isInjured
+                  ? "border-[3px] border-red-200/50"
+                  : "border border-edge hover:border-brand/50";
 
           // Real points breakdown for this player on this team.
           const breakdown = breakdowns.get(player.id);
@@ -140,20 +161,43 @@ export default async function TeamPage(props: {
 
           return (
             <div
-              key={player.id}
-              className={`flex flex-col overflow-hidden rounded-xl bg-panel transition-colors ${borderStyle}`}
+              key={`${player.id}-${replacementFor?.id ?? "original"}`}
+              className={`flex flex-col overflow-hidden rounded-xl bg-panel transition-colors ${
+                isInjured ? "bg-panel/55 opacity-65" : ""
+              } ${borderStyle}`}
             >
               {/* Card Header (Color Coded by Country) */}
               <div
-                className={`flex flex-col justify-center border-b border-edge px-5 py-4 ${kit.bg} ${kit.text}`}
+                className={`flex flex-col justify-center border-b border-edge px-5 py-4 ${
+                  isInjured ? "grayscale" : ""
+                } ${kit.bg} ${kit.text}`}
               >
                 <div className="text-xl font-black uppercase tracking-tight">
                   {player.name}
                 </div>
                 <div className="mt-0.5 text-[11px] font-bold uppercase tracking-widest opacity-80">
-                  {player.position} // {player.country}
+                  {player.position} / {player.country}
                 </div>
               </div>
+
+              {(isReplacement || isInjured) && (
+                <div
+                  className={`border-b border-edge px-4 py-3 ${
+                    isReplacement
+                      ? "bg-brand text-black"
+                      : "bg-white text-red-950"
+                  }`}
+                >
+                  <div className="text-[10px] font-black uppercase tracking-widest opacity-70">
+                    {isReplacement ? "Replacement Alert" : "Player Status"}
+                  </div>
+                  <div className="mt-1 text-[13px] font-black uppercase tracking-widest">
+                    {isReplacement
+                      ? `Replaces ${replacementFor?.name}`
+                      : "Injured / Ruled Out"}
+                  </div>
+                </div>
+              )}
 
               {/* Stats Breakdown Body */}
               <div className="flex flex-1 flex-col gap-1 bg-panel p-4">
