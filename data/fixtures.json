@@ -1015,7 +1015,9 @@
       "away": "Norway",
       "kickoff": "2026-07-05T20:00:00.000Z",
       "venue": "MetLife Stadium",
-      "status": "scheduled",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "finished",
       "sofascoreId": 12813006
     },
     {
@@ -1023,9 +1025,11 @@
       "stage": "Round of 16",
       "home": "Mexico",
       "away": "England",
-      "kickoff": "2026-07-06T00:00:00.000Z",
+      "kickoff": "2026-07-06T01:00:00.000Z",
       "venue": "Estadio Azteca",
-      "status": "scheduled",
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "finished",
       "sofascoreId": 12813007
     },
     {
@@ -1091,8 +1095,8 @@
     {
       "id": "12813017",
       "stage": "Quarterfinals",
-      "home": "W91",
-      "away": "W92",
+      "home": "Norway",
+      "away": "England",
       "kickoff": "2026-07-11T21:00:00.000Z",
       "venue": "Hard Rock Stadium",
       "status": "scheduled",
