@@ -1039,7 +1039,9 @@
       "away": "Spain",
       "kickoff": "2026-07-06T19:00:00.000Z",
       "venue": "AT&T Stadium",
-      "status": "scheduled",
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "finished",
       "sofascoreId": 12812990
     },
     {
@@ -1049,7 +1051,9 @@
       "away": "Belgium",
       "kickoff": "2026-07-07T00:00:00.000Z",
       "venue": "Lumen Field",
-      "status": "scheduled",
+      "homeScore": 1,
+      "awayScore": 4,
+      "status": "finished",
       "sofascoreId": 12813002
     },
     {
@@ -1085,8 +1089,8 @@
     {
       "id": "12812994",
       "stage": "Quarterfinals",
-      "home": "W93",
-      "away": "W94",
+      "home": "Spain",
+      "away": "Belgium",
       "kickoff": "2026-07-10T19:00:00.000Z",
       "venue": "SoFi Stadium",
       "status": "scheduled",
