@@ -1099,7 +1099,9 @@
       "away": "Belgium",
       "kickoff": "2026-07-10T19:00:00.000Z",
       "venue": "SoFi Stadium",
-      "status": "scheduled",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "finished",
       "sofascoreId": 12812994
     },
     {
@@ -1126,7 +1128,7 @@
       "id": "12813008",
       "stage": "Semifinals",
       "home": "France",
-      "away": "W98",
+      "away": "Spain",
       "kickoff": "2026-07-14T19:00:00.000Z",
       "venue": "AT&T Stadium",
       "status": "scheduled",
