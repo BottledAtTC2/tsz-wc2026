@@ -46255,6 +46255,3554 @@
         }
       ]
     },
+    "12813016": {
+      "eventId": 12813016,
+      "home": "France",
+      "away": "Morocco",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "finished",
+      "players": [
+        {
+          "playerId": "maignan",
+          "sofascoreId": 191210,
+          "name": "Mike Maignan",
+          "teamId": "yash",
+          "role": "none",
+          "stats": {
+            "position": "GK",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 13,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 1,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 32,
+          "multiplier": 1,
+          "total": 32,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 2,
+              "pointsEach": 1,
+              "points": 2
+            },
+            {
+              "label": "Save",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "maignan",
+          "sofascoreId": 191210,
+          "name": "Mike Maignan",
+          "teamId": "sidmay",
+          "role": "none",
+          "stats": {
+            "position": "GK",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 13,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 1,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 32,
+          "multiplier": 1,
+          "total": 32,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 2,
+              "pointsEach": 1,
+              "points": 2
+            },
+            {
+              "label": "Save",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "maignan",
+          "sofascoreId": 191210,
+          "name": "Mike Maignan",
+          "teamId": "be1-mradul",
+          "role": "none",
+          "stats": {
+            "position": "GK",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 13,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 1,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 32,
+          "multiplier": 1,
+          "total": 32,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 2,
+              "pointsEach": 1,
+              "points": 2
+            },
+            {
+              "label": "Save",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "maignan",
+          "sofascoreId": 191210,
+          "name": "Mike Maignan",
+          "teamId": "be2-mradul",
+          "role": "none",
+          "stats": {
+            "position": "GK",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 13,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 1,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 32,
+          "multiplier": 1,
+          "total": 32,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 2,
+              "pointsEach": 1,
+              "points": 2
+            },
+            {
+              "label": "Save",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "maignan",
+          "sofascoreId": 191210,
+          "name": "Mike Maignan",
+          "teamId": "rcb-rcbfam",
+          "role": "none",
+          "stats": {
+            "position": "GK",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 13,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 1,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 32,
+          "multiplier": 1,
+          "total": 32,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 2,
+              "pointsEach": 1,
+              "points": 2
+            },
+            {
+              "label": "Save",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "kounde",
+          "sofascoreId": 827212,
+          "name": "Jules Koundé",
+          "teamId": "jemin",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 87,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 31,
+            "tacklesWon": 0,
+            "interceptionsWon": 1,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 34,
+          "multiplier": 1,
+          "total": 34,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 6,
+              "pointsEach": 1,
+              "points": 6
+            },
+            {
+              "label": "Interception won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "kounde",
+          "sofascoreId": 827212,
+          "name": "Jules Koundé",
+          "teamId": "be2-thalasons",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 87,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 31,
+            "tacklesWon": 0,
+            "interceptionsWon": 1,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 34,
+          "multiplier": 1,
+          "total": 34,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 6,
+              "pointsEach": 1,
+              "points": 6
+            },
+            {
+              "label": "Interception won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "kounde",
+          "sofascoreId": 827212,
+          "name": "Jules Koundé",
+          "teamId": "rcb-dip",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 87,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 31,
+            "tacklesWon": 0,
+            "interceptionsWon": 1,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 34,
+          "multiplier": 1,
+          "total": 34,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 6,
+              "pointsEach": 1,
+              "points": 6
+            },
+            {
+              "label": "Interception won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "upamecano",
+          "sofascoreId": 798583,
+          "name": "Dayot Upamecano",
+          "teamId": "aman",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 1,
+            "passesCompleted": 59,
+            "tacklesWon": 3,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 53,
+          "multiplier": 1,
+          "total": 53,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Shot on target",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 11,
+              "pointsEach": 1,
+              "points": 11
+            },
+            {
+              "label": "Tackle won",
+              "count": 3,
+              "pointsEach": 4,
+              "points": 12
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "upamecano",
+          "sofascoreId": 798583,
+          "name": "Dayot Upamecano",
+          "teamId": "kanha",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 1,
+            "passesCompleted": 59,
+            "tacklesWon": 3,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 53,
+          "multiplier": 1,
+          "total": 53,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Shot on target",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 11,
+              "pointsEach": 1,
+              "points": 11
+            },
+            {
+              "label": "Tackle won",
+              "count": 3,
+              "pointsEach": 4,
+              "points": 12
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "upamecano",
+          "sofascoreId": 798583,
+          "name": "Dayot Upamecano",
+          "teamId": "be-aman",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 1,
+            "passesCompleted": 59,
+            "tacklesWon": 3,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 53,
+          "multiplier": 1,
+          "total": 53,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Shot on target",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 11,
+              "pointsEach": 1,
+              "points": 11
+            },
+            {
+              "label": "Tackle won",
+              "count": 3,
+              "pointsEach": 4,
+              "points": 12
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "upamecano",
+          "sofascoreId": 798583,
+          "name": "Dayot Upamecano",
+          "teamId": "be2-adrsh",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 1,
+            "passesCompleted": 59,
+            "tacklesWon": 3,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 53,
+          "multiplier": 1,
+          "total": 53,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Shot on target",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 11,
+              "pointsEach": 1,
+              "points": 11
+            },
+            {
+              "label": "Tackle won",
+              "count": 3,
+              "pointsEach": 4,
+              "points": 12
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "upamecano",
+          "sofascoreId": 798583,
+          "name": "Dayot Upamecano",
+          "teamId": "rcb-aman",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 1,
+            "passesCompleted": 59,
+            "tacklesWon": 3,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 53,
+          "multiplier": 1,
+          "total": 53,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Shot on target",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 11,
+              "pointsEach": 1,
+              "points": 11
+            },
+            {
+              "label": "Tackle won",
+              "count": 3,
+              "pointsEach": 4,
+              "points": 12
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "saliba",
+          "sofascoreId": 941168,
+          "name": "William Saliba",
+          "teamId": "jemin",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 1,
+            "shotsOnTarget": 0,
+            "passesCompleted": 56,
+            "tacklesWon": 0,
+            "interceptionsWon": 1,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 42,
+          "multiplier": 1,
+          "total": 42,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Chance created",
+              "count": 1,
+              "pointsEach": 3,
+              "points": 3
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 11,
+              "pointsEach": 1,
+              "points": 11
+            },
+            {
+              "label": "Interception won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "saliba",
+          "sofascoreId": 941168,
+          "name": "William Saliba",
+          "teamId": "night-merchants",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 1,
+            "shotsOnTarget": 0,
+            "passesCompleted": 56,
+            "tacklesWon": 0,
+            "interceptionsWon": 1,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 42,
+          "multiplier": 1,
+          "total": 42,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Chance created",
+              "count": 1,
+              "pointsEach": 3,
+              "points": 3
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 11,
+              "pointsEach": 1,
+              "points": 11
+            },
+            {
+              "label": "Interception won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "saliba",
+          "sofascoreId": 941168,
+          "name": "William Saliba",
+          "teamId": "be-kappsons",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 1,
+            "shotsOnTarget": 0,
+            "passesCompleted": 56,
+            "tacklesWon": 0,
+            "interceptionsWon": 1,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 42,
+          "multiplier": 1,
+          "total": 42,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Chance created",
+              "count": 1,
+              "pointsEach": 3,
+              "points": 3
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 11,
+              "pointsEach": 1,
+              "points": 11
+            },
+            {
+              "label": "Interception won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "saliba",
+          "sofascoreId": 941168,
+          "name": "William Saliba",
+          "teamId": "be2-swadhin",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 1,
+            "shotsOnTarget": 0,
+            "passesCompleted": 56,
+            "tacklesWon": 0,
+            "interceptionsWon": 1,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 42,
+          "multiplier": 1,
+          "total": 42,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Chance created",
+              "count": 1,
+              "pointsEach": 3,
+              "points": 3
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 11,
+              "pointsEach": 1,
+              "points": 11
+            },
+            {
+              "label": "Interception won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "saliba",
+          "sofascoreId": 941168,
+          "name": "William Saliba",
+          "teamId": "rcb-tanmay",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 1,
+            "shotsOnTarget": 0,
+            "passesCompleted": 56,
+            "tacklesWon": 0,
+            "interceptionsWon": 1,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": true,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 42,
+          "multiplier": 1,
+          "total": 42,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Chance created",
+              "count": 1,
+              "pointsEach": 3,
+              "points": 3
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 11,
+              "pointsEach": 1,
+              "points": 11
+            },
+            {
+              "label": "Interception won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Clean sheet",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            }
+          ]
+        },
+        {
+          "playerId": "rabiot",
+          "sofascoreId": 250737,
+          "name": "Adrien Rabiot",
+          "teamId": "jokic",
+          "role": "none",
+          "stats": {
+            "position": "MID",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 46,
+            "tacklesWon": 1,
+            "interceptionsWon": 3,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 29,
+          "multiplier": 1,
+          "total": 29,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 9,
+              "pointsEach": 1,
+              "points": 9
+            },
+            {
+              "label": "Tackle won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Interception won",
+              "count": 3,
+              "pointsEach": 4,
+              "points": 12
+            }
+          ]
+        },
+        {
+          "playerId": "rabiot",
+          "sofascoreId": 250737,
+          "name": "Adrien Rabiot",
+          "teamId": "be1-mradul",
+          "role": "none",
+          "stats": {
+            "position": "MID",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 46,
+            "tacklesWon": 1,
+            "interceptionsWon": 3,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 29,
+          "multiplier": 1,
+          "total": 29,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 9,
+              "pointsEach": 1,
+              "points": 9
+            },
+            {
+              "label": "Tackle won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Interception won",
+              "count": 3,
+              "pointsEach": 4,
+              "points": 12
+            }
+          ]
+        },
+        {
+          "playerId": "dembele",
+          "sofascoreId": 818244,
+          "name": "Ousmane Dembélé",
+          "teamId": "shivadip",
+          "role": "captain",
+          "stats": {
+            "position": "FWD",
+            "minutes": 90,
+            "started": true,
+            "goals": 1,
+            "assists": 0,
+            "chancesCreated": 4,
+            "shotsOnTarget": 1,
+            "passesCompleted": 28,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 67,
+          "multiplier": 2,
+          "total": 134,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal (FWD)",
+              "count": 1,
+              "pointsEach": 40,
+              "points": 40
+            },
+            {
+              "label": "Chance created",
+              "count": 4,
+              "pointsEach": 3,
+              "points": 12
+            },
+            {
+              "label": "Shot on target",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 5,
+              "pointsEach": 1,
+              "points": 5
+            }
+          ]
+        },
+        {
+          "playerId": "dembele",
+          "sofascoreId": 818244,
+          "name": "Ousmane Dembélé",
+          "teamId": "sidmay",
+          "role": "captain",
+          "stats": {
+            "position": "FWD",
+            "minutes": 90,
+            "started": true,
+            "goals": 1,
+            "assists": 0,
+            "chancesCreated": 4,
+            "shotsOnTarget": 1,
+            "passesCompleted": 28,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 67,
+          "multiplier": 2,
+          "total": 134,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal (FWD)",
+              "count": 1,
+              "pointsEach": 40,
+              "points": 40
+            },
+            {
+              "label": "Chance created",
+              "count": 4,
+              "pointsEach": 3,
+              "points": 12
+            },
+            {
+              "label": "Shot on target",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 5,
+              "pointsEach": 1,
+              "points": 5
+            }
+          ]
+        },
+        {
+          "playerId": "dembele",
+          "sofascoreId": 818244,
+          "name": "Ousmane Dembélé",
+          "teamId": "be-kappsons",
+          "role": "captain",
+          "stats": {
+            "position": "FWD",
+            "minutes": 90,
+            "started": true,
+            "goals": 1,
+            "assists": 0,
+            "chancesCreated": 4,
+            "shotsOnTarget": 1,
+            "passesCompleted": 28,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 67,
+          "multiplier": 2,
+          "total": 134,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal (FWD)",
+              "count": 1,
+              "pointsEach": 40,
+              "points": 40
+            },
+            {
+              "label": "Chance created",
+              "count": 4,
+              "pointsEach": 3,
+              "points": 12
+            },
+            {
+              "label": "Shot on target",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 5,
+              "pointsEach": 1,
+              "points": 5
+            }
+          ]
+        },
+        {
+          "playerId": "dembele",
+          "sofascoreId": 818244,
+          "name": "Ousmane Dembélé",
+          "teamId": "be2-thalasons",
+          "role": "vice",
+          "stats": {
+            "position": "FWD",
+            "minutes": 90,
+            "started": true,
+            "goals": 1,
+            "assists": 0,
+            "chancesCreated": 4,
+            "shotsOnTarget": 1,
+            "passesCompleted": 28,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 67,
+          "multiplier": 1.5,
+          "total": 100.5,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal (FWD)",
+              "count": 1,
+              "pointsEach": 40,
+              "points": 40
+            },
+            {
+              "label": "Chance created",
+              "count": 4,
+              "pointsEach": 3,
+              "points": 12
+            },
+            {
+              "label": "Shot on target",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 5,
+              "pointsEach": 1,
+              "points": 5
+            }
+          ]
+        },
+        {
+          "playerId": "dembele",
+          "sofascoreId": 818244,
+          "name": "Ousmane Dembélé",
+          "teamId": "rcb-night-merchants",
+          "role": "captain",
+          "stats": {
+            "position": "FWD",
+            "minutes": 90,
+            "started": true,
+            "goals": 1,
+            "assists": 0,
+            "chancesCreated": 4,
+            "shotsOnTarget": 1,
+            "passesCompleted": 28,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 67,
+          "multiplier": 2,
+          "total": 134,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal (FWD)",
+              "count": 1,
+              "pointsEach": 40,
+              "points": 40
+            },
+            {
+              "label": "Chance created",
+              "count": 4,
+              "pointsEach": 3,
+              "points": 12
+            },
+            {
+              "label": "Shot on target",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 5,
+              "pointsEach": 1,
+              "points": 5
+            }
+          ]
+        },
+        {
+          "playerId": "olise",
+          "sofascoreId": 978838,
+          "name": "Michael Olise",
+          "teamId": "abhishek",
+          "role": "captain",
+          "stats": {
+            "position": "MID",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 1,
+            "shotsOnTarget": 0,
+            "passesCompleted": 40,
+            "tacklesWon": 2,
+            "interceptionsWon": 2,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 31,
+          "multiplier": 2,
+          "total": 62,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Chance created",
+              "count": 1,
+              "pointsEach": 3,
+              "points": 3
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 8,
+              "pointsEach": 1,
+              "points": 8
+            },
+            {
+              "label": "Tackle won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            },
+            {
+              "label": "Interception won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            }
+          ]
+        },
+        {
+          "playerId": "olise",
+          "sofascoreId": 978838,
+          "name": "Michael Olise",
+          "teamId": "night-merchants",
+          "role": "captain",
+          "stats": {
+            "position": "MID",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 1,
+            "shotsOnTarget": 0,
+            "passesCompleted": 40,
+            "tacklesWon": 2,
+            "interceptionsWon": 2,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 31,
+          "multiplier": 2,
+          "total": 62,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Chance created",
+              "count": 1,
+              "pointsEach": 3,
+              "points": 3
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 8,
+              "pointsEach": 1,
+              "points": 8
+            },
+            {
+              "label": "Tackle won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            },
+            {
+              "label": "Interception won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            }
+          ]
+        },
+        {
+          "playerId": "olise",
+          "sofascoreId": 978838,
+          "name": "Michael Olise",
+          "teamId": "be-shivadip",
+          "role": "vice",
+          "stats": {
+            "position": "MID",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 1,
+            "shotsOnTarget": 0,
+            "passesCompleted": 40,
+            "tacklesWon": 2,
+            "interceptionsWon": 2,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 31,
+          "multiplier": 1.5,
+          "total": 46.5,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Chance created",
+              "count": 1,
+              "pointsEach": 3,
+              "points": 3
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 8,
+              "pointsEach": 1,
+              "points": 8
+            },
+            {
+              "label": "Tackle won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            },
+            {
+              "label": "Interception won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            }
+          ]
+        },
+        {
+          "playerId": "olise",
+          "sofascoreId": 978838,
+          "name": "Michael Olise",
+          "teamId": "be2-thalasons",
+          "role": "captain",
+          "stats": {
+            "position": "MID",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 1,
+            "shotsOnTarget": 0,
+            "passesCompleted": 40,
+            "tacklesWon": 2,
+            "interceptionsWon": 2,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 31,
+          "multiplier": 2,
+          "total": 62,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Chance created",
+              "count": 1,
+              "pointsEach": 3,
+              "points": 3
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 8,
+              "pointsEach": 1,
+              "points": 8
+            },
+            {
+              "label": "Tackle won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            },
+            {
+              "label": "Interception won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            }
+          ]
+        },
+        {
+          "playerId": "olise",
+          "sofascoreId": 978838,
+          "name": "Michael Olise",
+          "teamId": "rcb-aman",
+          "role": "captain",
+          "stats": {
+            "position": "MID",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 1,
+            "shotsOnTarget": 0,
+            "passesCompleted": 40,
+            "tacklesWon": 2,
+            "interceptionsWon": 2,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 31,
+          "multiplier": 2,
+          "total": 62,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Chance created",
+              "count": 1,
+              "pointsEach": 3,
+              "points": 3
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 8,
+              "pointsEach": 1,
+              "points": 8
+            },
+            {
+              "label": "Tackle won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            },
+            {
+              "label": "Interception won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            }
+          ]
+        },
+        {
+          "playerId": "doue",
+          "sofascoreId": 1154605,
+          "name": "Désiré Doué",
+          "teamId": "jemin",
+          "role": "vice",
+          "stats": {
+            "position": "MID",
+            "minutes": 77,
+            "started": true,
+            "goals": 0,
+            "assists": 1,
+            "chancesCreated": 3,
+            "shotsOnTarget": 2,
+            "passesCompleted": 33,
+            "tacklesWon": 2,
+            "interceptionsWon": 1,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 63,
+          "multiplier": 1.5,
+          "total": 94.5,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Assist",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            },
+            {
+              "label": "Chance created",
+              "count": 3,
+              "pointsEach": 3,
+              "points": 9
+            },
+            {
+              "label": "Shot on target",
+              "count": 2,
+              "pointsEach": 6,
+              "points": 12
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 6,
+              "pointsEach": 1,
+              "points": 6
+            },
+            {
+              "label": "Tackle won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            },
+            {
+              "label": "Interception won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            }
+          ]
+        },
+        {
+          "playerId": "doue",
+          "sofascoreId": 1154605,
+          "name": "Désiré Doué",
+          "teamId": "night-merchants",
+          "role": "none",
+          "stats": {
+            "position": "MID",
+            "minutes": 77,
+            "started": true,
+            "goals": 0,
+            "assists": 1,
+            "chancesCreated": 3,
+            "shotsOnTarget": 2,
+            "passesCompleted": 33,
+            "tacklesWon": 2,
+            "interceptionsWon": 1,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 63,
+          "multiplier": 1,
+          "total": 63,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Assist",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            },
+            {
+              "label": "Chance created",
+              "count": 3,
+              "pointsEach": 3,
+              "points": 9
+            },
+            {
+              "label": "Shot on target",
+              "count": 2,
+              "pointsEach": 6,
+              "points": 12
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 6,
+              "pointsEach": 1,
+              "points": 6
+            },
+            {
+              "label": "Tackle won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            },
+            {
+              "label": "Interception won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            }
+          ]
+        },
+        {
+          "playerId": "doue",
+          "sofascoreId": 1154605,
+          "name": "Désiré Doué",
+          "teamId": "be-kappsons",
+          "role": "none",
+          "stats": {
+            "position": "MID",
+            "minutes": 77,
+            "started": true,
+            "goals": 0,
+            "assists": 1,
+            "chancesCreated": 3,
+            "shotsOnTarget": 2,
+            "passesCompleted": 33,
+            "tacklesWon": 2,
+            "interceptionsWon": 1,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 63,
+          "multiplier": 1,
+          "total": 63,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Assist",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            },
+            {
+              "label": "Chance created",
+              "count": 3,
+              "pointsEach": 3,
+              "points": 9
+            },
+            {
+              "label": "Shot on target",
+              "count": 2,
+              "pointsEach": 6,
+              "points": 12
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 6,
+              "pointsEach": 1,
+              "points": 6
+            },
+            {
+              "label": "Tackle won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            },
+            {
+              "label": "Interception won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            }
+          ]
+        },
+        {
+          "playerId": "doue",
+          "sofascoreId": 1154605,
+          "name": "Désiré Doué",
+          "teamId": "be2-samarth",
+          "role": "none",
+          "stats": {
+            "position": "MID",
+            "minutes": 77,
+            "started": true,
+            "goals": 0,
+            "assists": 1,
+            "chancesCreated": 3,
+            "shotsOnTarget": 2,
+            "passesCompleted": 33,
+            "tacklesWon": 2,
+            "interceptionsWon": 1,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 63,
+          "multiplier": 1,
+          "total": 63,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Assist",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            },
+            {
+              "label": "Chance created",
+              "count": 3,
+              "pointsEach": 3,
+              "points": 9
+            },
+            {
+              "label": "Shot on target",
+              "count": 2,
+              "pointsEach": 6,
+              "points": 12
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 6,
+              "pointsEach": 1,
+              "points": 6
+            },
+            {
+              "label": "Tackle won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            },
+            {
+              "label": "Interception won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            }
+          ]
+        },
+        {
+          "playerId": "doue",
+          "sofascoreId": 1154605,
+          "name": "Désiré Doué",
+          "teamId": "rcb-chokers",
+          "role": "none",
+          "stats": {
+            "position": "MID",
+            "minutes": 77,
+            "started": true,
+            "goals": 0,
+            "assists": 1,
+            "chancesCreated": 3,
+            "shotsOnTarget": 2,
+            "passesCompleted": 33,
+            "tacklesWon": 2,
+            "interceptionsWon": 1,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 0
+          },
+          "base": 63,
+          "multiplier": 1,
+          "total": 63,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Assist",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            },
+            {
+              "label": "Chance created",
+              "count": 3,
+              "pointsEach": 3,
+              "points": 9
+            },
+            {
+              "label": "Shot on target",
+              "count": 2,
+              "pointsEach": 6,
+              "points": 12
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 6,
+              "pointsEach": 1,
+              "points": 6
+            },
+            {
+              "label": "Tackle won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            },
+            {
+              "label": "Interception won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            }
+          ]
+        },
+        {
+          "playerId": "mbappe",
+          "sofascoreId": 826643,
+          "name": "Kylian Mbappé",
+          "teamId": "aggarwal-sweets",
+          "role": "captain",
+          "stats": {
+            "position": "FWD",
+            "minutes": 77,
+            "started": true,
+            "goals": 1,
+            "assists": 1,
+            "chancesCreated": 4,
+            "shotsOnTarget": 2,
+            "passesCompleted": 26,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 1
+          },
+          "base": 73,
+          "multiplier": 2,
+          "total": 146,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal (FWD)",
+              "count": 1,
+              "pointsEach": 40,
+              "points": 40
+            },
+            {
+              "label": "Assist",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            },
+            {
+              "label": "Chance created",
+              "count": 4,
+              "pointsEach": 3,
+              "points": 12
+            },
+            {
+              "label": "Shot on target",
+              "count": 2,
+              "pointsEach": 6,
+              "points": 12
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 5,
+              "pointsEach": 1,
+              "points": 5
+            },
+            {
+              "label": "Penalty missed",
+              "count": 1,
+              "pointsEach": -20,
+              "points": -20
+            }
+          ]
+        },
+        {
+          "playerId": "mbappe",
+          "sofascoreId": 826643,
+          "name": "Kylian Mbappé",
+          "teamId": "mradul-mavericks",
+          "role": "captain",
+          "stats": {
+            "position": "FWD",
+            "minutes": 77,
+            "started": true,
+            "goals": 1,
+            "assists": 1,
+            "chancesCreated": 4,
+            "shotsOnTarget": 2,
+            "passesCompleted": 26,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 1
+          },
+          "base": 73,
+          "multiplier": 2,
+          "total": 146,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal (FWD)",
+              "count": 1,
+              "pointsEach": 40,
+              "points": 40
+            },
+            {
+              "label": "Assist",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            },
+            {
+              "label": "Chance created",
+              "count": 4,
+              "pointsEach": 3,
+              "points": 12
+            },
+            {
+              "label": "Shot on target",
+              "count": 2,
+              "pointsEach": 6,
+              "points": 12
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 5,
+              "pointsEach": 1,
+              "points": 5
+            },
+            {
+              "label": "Penalty missed",
+              "count": 1,
+              "pointsEach": -20,
+              "points": -20
+            }
+          ]
+        },
+        {
+          "playerId": "mbappe",
+          "sofascoreId": 826643,
+          "name": "Kylian Mbappé",
+          "teamId": "be-zeeshan",
+          "role": "captain",
+          "stats": {
+            "position": "FWD",
+            "minutes": 77,
+            "started": true,
+            "goals": 1,
+            "assists": 1,
+            "chancesCreated": 4,
+            "shotsOnTarget": 2,
+            "passesCompleted": 26,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 1
+          },
+          "base": 73,
+          "multiplier": 2,
+          "total": 146,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal (FWD)",
+              "count": 1,
+              "pointsEach": 40,
+              "points": 40
+            },
+            {
+              "label": "Assist",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            },
+            {
+              "label": "Chance created",
+              "count": 4,
+              "pointsEach": 3,
+              "points": 12
+            },
+            {
+              "label": "Shot on target",
+              "count": 2,
+              "pointsEach": 6,
+              "points": 12
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 5,
+              "pointsEach": 1,
+              "points": 5
+            },
+            {
+              "label": "Penalty missed",
+              "count": 1,
+              "pointsEach": -20,
+              "points": -20
+            }
+          ]
+        },
+        {
+          "playerId": "mbappe",
+          "sofascoreId": 826643,
+          "name": "Kylian Mbappé",
+          "teamId": "be2-samarth",
+          "role": "captain",
+          "stats": {
+            "position": "FWD",
+            "minutes": 77,
+            "started": true,
+            "goals": 1,
+            "assists": 1,
+            "chancesCreated": 4,
+            "shotsOnTarget": 2,
+            "passesCompleted": 26,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 1
+          },
+          "base": 73,
+          "multiplier": 2,
+          "total": 146,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal (FWD)",
+              "count": 1,
+              "pointsEach": 40,
+              "points": 40
+            },
+            {
+              "label": "Assist",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            },
+            {
+              "label": "Chance created",
+              "count": 4,
+              "pointsEach": 3,
+              "points": 12
+            },
+            {
+              "label": "Shot on target",
+              "count": 2,
+              "pointsEach": 6,
+              "points": 12
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 5,
+              "pointsEach": 1,
+              "points": 5
+            },
+            {
+              "label": "Penalty missed",
+              "count": 1,
+              "pointsEach": -20,
+              "points": -20
+            }
+          ]
+        },
+        {
+          "playerId": "mbappe",
+          "sofascoreId": 826643,
+          "name": "Kylian Mbappé",
+          "teamId": "rcb-dip",
+          "role": "captain",
+          "stats": {
+            "position": "FWD",
+            "minutes": 77,
+            "started": true,
+            "goals": 1,
+            "assists": 1,
+            "chancesCreated": 4,
+            "shotsOnTarget": 2,
+            "passesCompleted": 26,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 0,
+            "penaltiesMissed": 1
+          },
+          "base": 73,
+          "multiplier": 2,
+          "total": 146,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal (FWD)",
+              "count": 1,
+              "pointsEach": 40,
+              "points": 40
+            },
+            {
+              "label": "Assist",
+              "count": 1,
+              "pointsEach": 20,
+              "points": 20
+            },
+            {
+              "label": "Chance created",
+              "count": 4,
+              "pointsEach": 3,
+              "points": 12
+            },
+            {
+              "label": "Shot on target",
+              "count": 2,
+              "pointsEach": 6,
+              "points": 12
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 5,
+              "pointsEach": 1,
+              "points": 5
+            },
+            {
+              "label": "Penalty missed",
+              "count": 1,
+              "pointsEach": -20,
+              "points": -20
+            }
+          ]
+        },
+        {
+          "playerId": "bounou",
+          "sofascoreId": 360938,
+          "name": "Yassine Bounou",
+          "teamId": "tanmay",
+          "role": "none",
+          "stats": {
+            "position": "GK",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 22,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 6,
+            "penaltiesSaved": 1,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 2,
+            "penaltiesMissed": 0
+          },
+          "base": 90,
+          "multiplier": 1,
+          "total": 90,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 4,
+              "pointsEach": 1,
+              "points": 4
+            },
+            {
+              "label": "Save",
+              "count": 6,
+              "pointsEach": 6,
+              "points": 36
+            },
+            {
+              "label": "Penalty saved",
+              "count": 1,
+              "pointsEach": 50,
+              "points": 50
+            },
+            {
+              "label": "Goal conceded",
+              "count": 2,
+              "pointsEach": -2,
+              "points": -4
+            }
+          ]
+        },
+        {
+          "playerId": "bounou",
+          "sofascoreId": 360938,
+          "name": "Yassine Bounou",
+          "teamId": "maclone",
+          "role": "none",
+          "stats": {
+            "position": "GK",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 22,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 6,
+            "penaltiesSaved": 1,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 2,
+            "penaltiesMissed": 0
+          },
+          "base": 90,
+          "multiplier": 1,
+          "total": 90,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 4,
+              "pointsEach": 1,
+              "points": 4
+            },
+            {
+              "label": "Save",
+              "count": 6,
+              "pointsEach": 6,
+              "points": 36
+            },
+            {
+              "label": "Penalty saved",
+              "count": 1,
+              "pointsEach": 50,
+              "points": 50
+            },
+            {
+              "label": "Goal conceded",
+              "count": 2,
+              "pointsEach": -2,
+              "points": -4
+            }
+          ]
+        },
+        {
+          "playerId": "bounou",
+          "sofascoreId": 360938,
+          "name": "Yassine Bounou",
+          "teamId": "be-nishank",
+          "role": "none",
+          "stats": {
+            "position": "GK",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 22,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 6,
+            "penaltiesSaved": 1,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 2,
+            "penaltiesMissed": 0
+          },
+          "base": 90,
+          "multiplier": 1,
+          "total": 90,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 4,
+              "pointsEach": 1,
+              "points": 4
+            },
+            {
+              "label": "Save",
+              "count": 6,
+              "pointsEach": 6,
+              "points": 36
+            },
+            {
+              "label": "Penalty saved",
+              "count": 1,
+              "pointsEach": 50,
+              "points": 50
+            },
+            {
+              "label": "Goal conceded",
+              "count": 2,
+              "pointsEach": -2,
+              "points": -4
+            }
+          ]
+        },
+        {
+          "playerId": "bounou",
+          "sofascoreId": 360938,
+          "name": "Yassine Bounou",
+          "teamId": "be2-nishank",
+          "role": "none",
+          "stats": {
+            "position": "GK",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 22,
+            "tacklesWon": 0,
+            "interceptionsWon": 0,
+            "saves": 6,
+            "penaltiesSaved": 1,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 2,
+            "penaltiesMissed": 0
+          },
+          "base": 90,
+          "multiplier": 1,
+          "total": 90,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 4,
+              "pointsEach": 1,
+              "points": 4
+            },
+            {
+              "label": "Save",
+              "count": 6,
+              "pointsEach": 6,
+              "points": 36
+            },
+            {
+              "label": "Penalty saved",
+              "count": 1,
+              "pointsEach": 50,
+              "points": 50
+            },
+            {
+              "label": "Goal conceded",
+              "count": 2,
+              "pointsEach": -2,
+              "points": -4
+            }
+          ]
+        },
+        {
+          "playerId": "hakimi",
+          "sofascoreId": 814594,
+          "name": "Achraf Hakimi",
+          "teamId": "shivadip",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 2,
+            "shotsOnTarget": 0,
+            "passesCompleted": 49,
+            "tacklesWon": 1,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 2,
+            "penaltiesMissed": 0
+          },
+          "base": 19,
+          "multiplier": 1,
+          "total": 19,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Chance created",
+              "count": 2,
+              "pointsEach": 3,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 9,
+              "pointsEach": 1,
+              "points": 9
+            },
+            {
+              "label": "Tackle won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal conceded",
+              "count": 2,
+              "pointsEach": -2,
+              "points": -4
+            }
+          ]
+        },
+        {
+          "playerId": "hakimi",
+          "sofascoreId": 814594,
+          "name": "Achraf Hakimi",
+          "teamId": "jokic",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 2,
+            "shotsOnTarget": 0,
+            "passesCompleted": 49,
+            "tacklesWon": 1,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 2,
+            "penaltiesMissed": 0
+          },
+          "base": 19,
+          "multiplier": 1,
+          "total": 19,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Chance created",
+              "count": 2,
+              "pointsEach": 3,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 9,
+              "pointsEach": 1,
+              "points": 9
+            },
+            {
+              "label": "Tackle won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal conceded",
+              "count": 2,
+              "pointsEach": -2,
+              "points": -4
+            }
+          ]
+        },
+        {
+          "playerId": "hakimi",
+          "sofascoreId": 814594,
+          "name": "Achraf Hakimi",
+          "teamId": "be-aman",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 2,
+            "shotsOnTarget": 0,
+            "passesCompleted": 49,
+            "tacklesWon": 1,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 2,
+            "penaltiesMissed": 0
+          },
+          "base": 19,
+          "multiplier": 1,
+          "total": 19,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Chance created",
+              "count": 2,
+              "pointsEach": 3,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 9,
+              "pointsEach": 1,
+              "points": 9
+            },
+            {
+              "label": "Tackle won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal conceded",
+              "count": 2,
+              "pointsEach": -2,
+              "points": -4
+            }
+          ]
+        },
+        {
+          "playerId": "hakimi",
+          "sofascoreId": 814594,
+          "name": "Achraf Hakimi",
+          "teamId": "be2-lefifa",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 2,
+            "shotsOnTarget": 0,
+            "passesCompleted": 49,
+            "tacklesWon": 1,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 2,
+            "penaltiesMissed": 0
+          },
+          "base": 19,
+          "multiplier": 1,
+          "total": 19,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Chance created",
+              "count": 2,
+              "pointsEach": 3,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 9,
+              "pointsEach": 1,
+              "points": 9
+            },
+            {
+              "label": "Tackle won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal conceded",
+              "count": 2,
+              "pointsEach": -2,
+              "points": -4
+            }
+          ]
+        },
+        {
+          "playerId": "hakimi",
+          "sofascoreId": 814594,
+          "name": "Achraf Hakimi",
+          "teamId": "rcb-tanmay",
+          "role": "none",
+          "stats": {
+            "position": "DEF",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 2,
+            "shotsOnTarget": 0,
+            "passesCompleted": 49,
+            "tacklesWon": 1,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 2,
+            "penaltiesMissed": 0
+          },
+          "base": 19,
+          "multiplier": 1,
+          "total": 19,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Chance created",
+              "count": 2,
+              "pointsEach": 3,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 9,
+              "pointsEach": 1,
+              "points": 9
+            },
+            {
+              "label": "Tackle won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Goal conceded",
+              "count": 2,
+              "pointsEach": -2,
+              "points": -4
+            }
+          ]
+        },
+        {
+          "playerId": "brahim-diaz",
+          "sofascoreId": 835485,
+          "name": "Brahim Díaz",
+          "teamId": "tanmay",
+          "role": "none",
+          "stats": {
+            "position": "FWD",
+            "minutes": 74,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 18,
+            "tacklesWon": 1,
+            "interceptionsWon": 2,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 2,
+            "penaltiesMissed": 0
+          },
+          "base": 19,
+          "multiplier": 1,
+          "total": 19,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 3,
+              "pointsEach": 1,
+              "points": 3
+            },
+            {
+              "label": "Tackle won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Interception won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            }
+          ]
+        },
+        {
+          "playerId": "brahim-diaz",
+          "sofascoreId": 835485,
+          "name": "Brahim Díaz",
+          "teamId": "jokic",
+          "role": "none",
+          "stats": {
+            "position": "FWD",
+            "minutes": 74,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 18,
+            "tacklesWon": 1,
+            "interceptionsWon": 2,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 2,
+            "penaltiesMissed": 0
+          },
+          "base": 19,
+          "multiplier": 1,
+          "total": 19,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 3,
+              "pointsEach": 1,
+              "points": 3
+            },
+            {
+              "label": "Tackle won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Interception won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            }
+          ]
+        },
+        {
+          "playerId": "brahim-diaz",
+          "sofascoreId": 835485,
+          "name": "Brahim Díaz",
+          "teamId": "be-aman",
+          "role": "none",
+          "stats": {
+            "position": "FWD",
+            "minutes": 74,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 18,
+            "tacklesWon": 1,
+            "interceptionsWon": 2,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 2,
+            "penaltiesMissed": 0
+          },
+          "base": 19,
+          "multiplier": 1,
+          "total": 19,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 3,
+              "pointsEach": 1,
+              "points": 3
+            },
+            {
+              "label": "Tackle won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Interception won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            }
+          ]
+        },
+        {
+          "playerId": "brahim-diaz",
+          "sofascoreId": 835485,
+          "name": "Brahim Díaz",
+          "teamId": "rcb-aman",
+          "role": "none",
+          "stats": {
+            "position": "FWD",
+            "minutes": 74,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 0,
+            "shotsOnTarget": 0,
+            "passesCompleted": 18,
+            "tacklesWon": 1,
+            "interceptionsWon": 2,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 2,
+            "penaltiesMissed": 0
+          },
+          "base": 19,
+          "multiplier": 1,
+          "total": 19,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 3,
+              "pointsEach": 1,
+              "points": 3
+            },
+            {
+              "label": "Tackle won",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Interception won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            }
+          ]
+        },
+        {
+          "playerId": "ounahi",
+          "sofascoreId": 991421,
+          "name": "Azzedine Ounahi",
+          "teamId": "mradul-mavericks",
+          "role": "vice",
+          "stats": {
+            "position": "MID",
+            "minutes": 90,
+            "started": true,
+            "goals": 0,
+            "assists": 0,
+            "chancesCreated": 1,
+            "shotsOnTarget": 1,
+            "passesCompleted": 61,
+            "tacklesWon": 2,
+            "interceptionsWon": 0,
+            "saves": 0,
+            "penaltiesSaved": 0,
+            "cleanSheet": false,
+            "yellowCards": 0,
+            "redCards": 0,
+            "ownGoals": 0,
+            "goalsConceded": 2,
+            "penaltiesMissed": 0
+          },
+          "base": 33,
+          "multiplier": 1.5,
+          "total": 49.5,
+          "lines": [
+            {
+              "label": "Started",
+              "count": 1,
+              "pointsEach": 4,
+              "points": 4
+            },
+            {
+              "label": "Chance created",
+              "count": 1,
+              "pointsEach": 3,
+              "points": 3
+            },
+            {
+              "label": "Shot on target",
+              "count": 1,
+              "pointsEach": 6,
+              "points": 6
+            },
+            {
+              "label": "Passes completed (per 5)",
+              "count": 12,
+              "pointsEach": 1,
+              "points": 12
+            },
+            {
+              "label": "Tackle won",
+              "count": 2,
+              "pointsEach": 4,
+              "points": 8
+            }
+          ]
+        }
+      ],
+      "unresolved": [
+        "Lucas Digne",
+        "Manu Koné",
+        "Warren Zaïre-Emery",
+        "Jean-Philippe Mateta",
+        "Bradley Barcola",
+        "Malo Gusto",
+        "Issa Diop",
+        "Noussair Mazraoui",
+        "Anass Salah-Eddine",
+        "Ayyoub Bouaddi",
+        "Neil El Aynaoui",
+        "Chemsdine Talbi",
+        "Bilal El Khannouss",
+        "Sofyan Amrabat",
+        "Soufiane Rahimi",
+        "Zakaria El Ouahdi",
+        "Gessime Yassine",
+        "Amine Sbai"
+      ],
+      "unmatchedDrafted": [
+        {
+          "playerId": "tchouameni",
+          "name": "Aurélien Tchouaméni",
+          "country": "France",
+          "teamId": "tanmay"
+        },
+        {
+          "playerId": "theo-hernandez",
+          "name": "Theo Hernández",
+          "country": "France",
+          "teamId": "mfk"
+        },
+        {
+          "playerId": "cherki",
+          "name": "Rayan Cherki",
+          "country": "France",
+          "teamId": "jemin"
+        },
+        {
+          "playerId": "theo-hernandez",
+          "name": "Theo Hernández",
+          "country": "France",
+          "teamId": "bangalore-vibrators"
+        },
+        {
+          "playerId": "lucas-hernandez",
+          "name": "Lucas Hernández",
+          "country": "France",
+          "teamId": "cco-zeeshan"
+        },
+        {
+          "playerId": "tchouameni",
+          "name": "Aurélien Tchouaméni",
+          "country": "France",
+          "teamId": "saishith"
+        },
+        {
+          "playerId": "cherki",
+          "name": "Rayan Cherki",
+          "country": "France",
+          "teamId": "nishank"
+        },
+        {
+          "playerId": "kante",
+          "name": "N'Golo Kanté",
+          "country": "France",
+          "teamId": "mradul-mavericks"
+        },
+        {
+          "playerId": "konate",
+          "name": "Ibrahima Konaté",
+          "country": "France",
+          "teamId": "mradul-mavericks"
+        },
+        {
+          "playerId": "tchouameni",
+          "name": "Aurélien Tchouaméni",
+          "country": "France",
+          "teamId": "be-ayush"
+        },
+        {
+          "playerId": "saibari",
+          "name": "Ismael Saibari",
+          "country": "Morocco",
+          "teamId": "be-shivadip"
+        },
+        {
+          "playerId": "cherki",
+          "name": "Rayan Cherki",
+          "country": "France",
+          "teamId": "be-ritz"
+        },
+        {
+          "playerId": "cherki",
+          "name": "Rayan Cherki",
+          "country": "France",
+          "teamId": "be2-nishank"
+        },
+        {
+          "playerId": "thuram",
+          "name": "Marcus Thuram",
+          "country": "France",
+          "teamId": "be2-maclone"
+        },
+        {
+          "playerId": "saibari",
+          "name": "Ismael Saibari",
+          "country": "Morocco",
+          "teamId": "be2-mradul"
+        },
+        {
+          "playerId": "theo-hernandez",
+          "name": "Theo Hernández",
+          "country": "France",
+          "teamId": "be2-kappsons"
+        },
+        {
+          "playerId": "tchouameni",
+          "name": "Aurélien Tchouaméni",
+          "country": "France",
+          "teamId": "be2-lefifa"
+        },
+        {
+          "playerId": "cherki",
+          "name": "Rayan Cherki",
+          "country": "France",
+          "teamId": "rcb-saisuresh"
+        },
+        {
+          "playerId": "saibari",
+          "name": "Ismael Saibari",
+          "country": "Morocco",
+          "teamId": "rcb-aman"
+        },
+        {
+          "playerId": "tchouameni",
+          "name": "Aurélien Tchouaméni",
+          "country": "France",
+          "teamId": "rcb-tanmay"
+        },
+        {
+          "playerId": "konate",
+          "name": "Ibrahima Konaté",
+          "country": "France",
+          "teamId": "rcb-haggu"
+        },
+        {
+          "playerId": "theo-hernandez",
+          "name": "Theo Hernández",
+          "country": "France",
+          "teamId": "rcb-team10"
+        }
+      ]
+    },
     "12813018": {
       "eventId": 12813018,
       "home": "Australia",
