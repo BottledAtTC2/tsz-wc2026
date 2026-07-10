@@ -1087,7 +1087,9 @@
       "away": "Morocco",
       "kickoff": "2026-07-09T20:00:00.000Z",
       "venue": "Gillette Stadium",
-      "status": "scheduled",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "finished",
       "sofascoreId": 12813016
     },
     {
@@ -1123,7 +1125,7 @@
     {
       "id": "12813008",
       "stage": "Semifinals",
-      "home": "W97",
+      "home": "France",
       "away": "W98",
       "kickoff": "2026-07-14T19:00:00.000Z",
       "venue": "AT&T Stadium",
