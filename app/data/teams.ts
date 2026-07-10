@@ -72,12 +72,12 @@ export const teams: FantasyTeam[] = [
       "bruno-guimaraes", "valverde", "morgan-rogers", "kane", "ronaldo", "salah"
     ],
     replacements: [
-    {
-      outgoingId: "schlotterbeck",
-      incomingId: "brown",
-      startsEventId: 15186907, // inclusive: replacement counts from this game onwards
-    },
-  ],
+      {
+        outgoingId: "schlotterbeck",
+        incomingId: "brown",
+        startsEventId: 15186907, // inclusive: replacement counts from this game onwards
+      },
+    ],
     captainId: "kane",
     viceCaptainId: "nuno-mendes",
     points: 0,
@@ -191,12 +191,12 @@ export const teams: FantasyTeam[] = [
       "reijnders"
     ],
     replacements: [
-    {
-      outgoingId: "schlotterbeck",
-      incomingId: "brown",
-      startsEventId: 15186907, // inclusive: replacement counts from this game onwards
-    },
-  ],
+      {
+        outgoingId: "schlotterbeck",
+        incomingId: "brown",
+        startsEventId: 15186907, // inclusive: replacement counts from this game onwards
+      },
+    ],
     captainId: "yamal",
     viceCaptainId: "vitinha",
     points: 0,
@@ -529,12 +529,12 @@ export const teams: FantasyTeam[] = [
       "bellingham", "mctominay", "ferran-torres", "doue", "messi", "vinicius"
     ],
     replacements: [
-    {
-      outgoingId: "reece-james",
-      incomingId: "spence",
-      startsEventId: 15186676, // inclusive: replacement counts from this game onwards
-    },
-  ],
+      {
+        outgoingId: "reece-james",
+        incomingId: "spence",
+        startsEventId: 15186676, // inclusive: replacement counts from this game onwards
+      },
+    ],
     captainId: "messi",
     viceCaptainId: "vinicius",
     points: 0,
@@ -560,12 +560,12 @@ export const teams: FantasyTeam[] = [
       "bernardo-silva", "dani-olmo", "cherki", "raphinha", "pulisic", "gyokeres"
     ],
     replacements: [
-    {
-      outgoingId: "schlotterbeck",
-      incomingId: "brown",
-      startsEventId: 15186907, // inclusive: replacement counts from this game onwards
-    },
-  ],
+      {
+        outgoingId: "schlotterbeck",
+        incomingId: "brown",
+        startsEventId: 15186907, // inclusive: replacement counts from this game onwards
+      },
+    ],
     captainId: "raphinha",
     viceCaptainId: "cherki",
     points: 0,
@@ -589,6 +589,13 @@ export const teams: FantasyTeam[] = [
     squad: [
       "raya", "upamecano", "cancelo", "van-dijk", "wirtz", "tielemans",
       "bruno-guimaraes", "olise", "brahim-diaz", "luis-diaz", "saibari",
+    ],
+    replacements: [
+      {
+        outgoingId: "saibari",
+        incomingId: "ounahi",
+        startsEventId: 12813016, // inclusive: replacement counts from this game onwards
+      },
     ],
     captainId: "olise",
     viceCaptainId: "wirtz",
