@@ -1111,7 +1111,9 @@
       "away": "England",
       "kickoff": "2026-07-11T21:00:00.000Z",
       "venue": "Hard Rock Stadium",
-      "status": "scheduled",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "finished",
       "sofascoreId": 12813017
     },
     {
@@ -1121,7 +1123,9 @@
       "away": "Switzerland",
       "kickoff": "2026-07-12T01:00:00.000Z",
       "venue": "Arrowhead Stadium",
-      "status": "scheduled",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "finished",
       "sofascoreId": 12813015
     },
     {
@@ -1137,8 +1141,8 @@
     {
       "id": "12812996",
       "stage": "Semifinals",
-      "home": "W99",
-      "away": "W100",
+      "home": "England",
+      "away": "Argentina",
       "kickoff": "2026-07-15T19:00:00.000Z",
       "venue": "Mercedes-Benz Stadium",
       "status": "scheduled",
