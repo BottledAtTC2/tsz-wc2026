@@ -1135,7 +1135,9 @@
       "away": "Spain",
       "kickoff": "2026-07-14T19:00:00.000Z",
       "venue": "AT&T Stadium",
-      "status": "scheduled",
+      "homeScore": 0,
+      "awayScore": 2,
+      "status": "finished",
       "sofascoreId": 12813008
     },
     {
@@ -1145,14 +1147,16 @@
       "away": "Argentina",
       "kickoff": "2026-07-15T19:00:00.000Z",
       "venue": "Mercedes-Benz Stadium",
-      "status": "scheduled",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "finished",
       "sofascoreId": 12812996
     },
     {
       "id": "12813003",
       "stage": "Match for 3rd place",
-      "home": "L101",
-      "away": "L102",
+      "home": "France",
+      "away": "England",
       "kickoff": "2026-07-18T21:00:00.000Z",
       "venue": "Hard Rock Stadium",
       "status": "scheduled",
@@ -1161,8 +1165,8 @@
     {
       "id": "12813005",
       "stage": "Final",
-      "home": "W101",
-      "away": "W102",
+      "home": "Spain",
+      "away": "Argentina",
       "kickoff": "2026-07-19T19:00:00.000Z",
       "venue": "MetLife Stadium",
       "status": "scheduled",
