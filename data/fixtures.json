@@ -1159,7 +1159,9 @@
       "away": "England",
       "kickoff": "2026-07-18T21:00:00.000Z",
       "venue": "Hard Rock Stadium",
-      "status": "scheduled",
+      "homeScore": 4,
+      "awayScore": 6,
+      "status": "finished",
       "sofascoreId": 12813003
     },
     {
